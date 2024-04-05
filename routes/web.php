@@ -22,4 +22,6 @@ Route::get('/coba', function(){
 });
 
 //kelola daftar menu
-Route::get('/pedagang/daftarmenu', [daftarmenuController::class, 'index']);
+Route::get('/pedagang/daftarmenu', [daftarmenuController::class, 'index'])->name('menu.create');
+Route::post('/pedagang/daftarmenu/store', [daftarmenuController::class, 'store'])->name('menu.store');
+

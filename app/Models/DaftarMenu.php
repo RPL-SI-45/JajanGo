@@ -9,5 +9,6 @@ class DaftarMenu extends Model
 {
     use HasFactory;
     protected $table = 'menu';
-    protected $guarded = [];
+    protected $fillable = ['namaMenu', 'harga', 'deskripsiMenu', 'kategoriMenu', 'gambarMenu'];
+    protected $guarded = ['id'];
 }

@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>JajanGO</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
@@ -23,8 +23,8 @@
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.svg" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="#"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="#"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -91,22 +91,26 @@
               <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <form class="forms-sample">
+                    <form class="forms-sample" action="{{ route('menu.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                       <div class="form-group">
-                        <label for="exampleInputUsername1">Nama Menu</label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Nama Menu">
+                        <label for="namamenu">Nama Menu</label>
+                        <input type="text" class="form-control" id="namaMenu" placeholder="Nama Menu" name="namaMenu">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Harga</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Harga">
+                        <label for="harga">Harga</label>
+                        <input type="text" class="form-control" id="harga" placeholder="Harga" name="harga">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputPassword1">Deskripsi</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Deskripsi">
+                        <label for="deskripsiMenu">Deskripsi</label>
+                        <input type="text" class="form-control" id="deskripsiMenu" placeholder="Deskripsi" name="deskripsiMenu">
+                      <div class="form-group">
+                        <label for="kategoriMenu">Kategori Menu</label>
+                        <input type="text" class="form-control" id="kategoriMenu" placeholder="Kategori Menu" name="kategoriMenu">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputConfirmPassword1">Upload gambar</label>
-                        <input type="file" class="form-control" id="exampleInputConfirmPassword1">
+                        <label for="gambarmenu">Upload gambar</label>
+                        <input type="file" class="form-control" id="gambarMenu" name="gambarMenu">
                       </div>
                       <button type="submit" class="btn btn-gradient-primary me-2">Input Menu</button>
                       <button class="btn btn-light">Cancel</button>
@@ -118,10 +122,6 @@
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">
-            <div class="container-fluid d-flex justify-content-between">
-              <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © bootstrapdash.com 2021</span>
-              <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin template</a> from Bootstrapdash.com</span>
-            </div>
           </footer>
           <!-- partial -->
         </div>
