@@ -7,6 +7,8 @@
     <title>Web page pertama</title>
 </head>
 <body>
-    <h1>JajanGo</h1>
+    <nav class="navbar">
+
+    </nav>
 </body>
 </html>
