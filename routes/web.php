@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\DaftarpedagangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/coba', function(){
-    return view('coba');
-});
+Route::get('/daftarpedagang',[DaftarpedagangController::class,'index']);
