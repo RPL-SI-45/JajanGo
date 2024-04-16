@@ -84,61 +84,44 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Tambahkan Daftar Menu </h3>
+            </div>
             <div class="row">
               <div class="col-md-6 grid-margin stretch-card">
-                <div class="card" >
-                  <div class="card-body" style="width: min-content">
-                    <h3 class="mb-3" style="text-align: center" > List Daftar Menu </h3>
-                    <a href="/pedagang/daftarmenu/create" class="btn btn-light mb-3">Tambah Menu</a>
-                    @foreach ($daftarmenu as $d)
-                    <div class="card mb-2" style="width: 15rem; align-items: center; background-color: #F6F5F2">
-                        @if($d->gambarMenu)
-                            <img src="{{ asset('images/' . $d->gambarMenu) }}" alt="" class="mt-2" style="max-width: 100px;">
-                        @else
-                            Tidak ada foto
-                        @endif
-                        <div class="card-body">
-                          <h1 class="card-title">{{  $d->namaMenu  }}</h1>
-                          <p class="card-text">{{  $d->deskripsiMenu  }}</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item" style="background-color: #F6F5F2">Harga : {{  $d->harga  }}</li>
-                          <li class="list-group-item" style="background-color: #F6F5F2">Kategori : {{  $d->kategoriMenu  }}</li>
-                        </ul>
-                        <div class="card-body">
-                          <a href="{{  route('menu.edit', $d->id)  }}" class="card-link">Edit </a>
-                          <a href="#" class="card-link">Hapus </a>
-                        </div>
+                <div class="card">
+                  <div class="card-body">
+                    <form class="forms-sample" action="{{ route('menu.update', $daftarmenu->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                      <div class="form-group">
+                        <label for="namamenu">Nama Menu</label>
+                        <input type="text" class="form-control" id="namaMenu" name="namaMenu" value="{{  $daftarmenu->namaMenu  }}">
                       </div>
-                      @endforeach
-                    {{-- <table class="table">
-                        <thead>
-                          <tr>
-                            <th>Nama Menu</th>
-                            <th>Harga</th>
-                            <th>Deskripsi</th>
-                            <th>Kategori Menu</th>
-                            <th>Foto</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($daftarmenu as $d)
-                            <tr>
-                                <td>{{  $d->namaMenu  }}</td>
-                                <td>{{  $d->harga  }}</td>
-                                <td>{{  $d->deskripsiMenu  }}</td>
-                                <td>{{  $d->kategoriMenu  }}</td>
-                                <td>
-                                    @if($d->gambarMenu)
-                                        <img src="{{ asset('images/' . $d->gambarMenu) }}" alt="">
-                                    @else
-                                        Tidak ada foto
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                      </table> --}}
+                      <div class="form-group">
+                        <label for="harga">Harga</label>
+                        <input type="text" class="form-control" id="harga" name="harga" value="{{  $daftarmenu->harga  }}">
+                      </div>
+                      <div class="form-group">
+                        <label for="deskripsiMenu">Deskripsi</label>
+                        <input type="text" class="form-control" id="deskripsiMenu"  name="deskripsiMenu" value="{{  $daftarmenu->deskripsiMenu  }}">
+                      <div class="form-group">
+                        <label for="kategoriMenu">Kategori Menu</label>
+                        <input type="text" class="form-control" id="kategoriMenu"  name="kategoriMenu" value="{{  $daftarmenu->kategoriMenu  }}">
+                      </div>
+                      <div class="form-group">
+                        <label for="gambarmenu">Upload gambar</label>
+                        <input type="file" class="form-control" id="gambarMenu" name="gambarMenu">
+                      </div>
+                      <button type="submit" class="btn btn-gradient-primary me-2">Perbarui Menu</button>
+                      <a href="/pedagang/daftarmenu" class="btn btn-light" >Cancel</a>
+                      @if(session('success'))
+                        <div class="alert alert-success mt-2">
+                            {{ session('success') }}
+                        </div>
+
+                    @endif
+                    </form>
                   </div>
                 </div>
             </div>

@@ -9,7 +9,11 @@ class daftarmenuController extends Controller
 {
     public function index(){
         $daftarmenu = DaftarMenu::all();
-        return view('daftarmenu.index');
+        return view('daftarmenu.index', compact('daftarmenu'));
+    }
+
+    public function create(){
+        return view('daftarmenu.tambahMenu');
     }
 
     public function store(Request $request)
@@ -34,5 +38,37 @@ class daftarmenuController extends Controller
         $menu->save();
 
         return redirect()->route('menu.create')->with('success', 'Menu berhasil ditambahkan!');
+    }
+    public function edit($id)
+    {
+        $daftarmenu = DaftarMenu::findOrFail($id);
+        return view('daftarmenu.editMenu', compact('daftarmenu'));
+    }
+    
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'namaMenu' => 'required',
+            'harga' => 'required|numeric',
+            'deskripsiMenu' => 'required',
+            'kategoriMenu' => 'required',
+            'gambarMenu' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $daftarmenu = DaftarMenu::findOrFail($id);
+        $daftarmenu->namaMenu = $request->namaMenu;
+        $daftarmenu->harga = $request->harga;
+        $daftarmenu->deskripsiMenu = $request->deskripsiMenu;
+        $daftarmenu->kategoriMenu = $request->kategoriMenu;
+
+        if ($request->hasFile('gambarMenu')) {
+            $gambarMenuName = time() . '.' . $request->gambarMenu->extension();
+            $request->gambarMenu->move(public_path('images'), $gambarMenuName);
+            $menu->gambarMenu = $gambarMenuName;
+        }
+
+        $daftarmenu->save();
+
+        return redirect()->route('menu.index')->with('success', 'Menu berhasil diperbarui!');
     }
 }
