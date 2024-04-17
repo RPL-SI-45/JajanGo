@@ -23,11 +23,11 @@
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="#"><img src="../../assets/images/logo.svg" alt="logo" />
-            <span style="color: black; font-weight: bold; font-family: 'Times New Roman', Times, serif; font-size: 24px; margin-left: 5px;">JajanGo</span>
+          <a class="navbar-brand brand-logo" href="#"><img src="../../assets/images/logo-mini.svg" alt="logo" />
+            <span style="color: black; font-weight: bold; font-family: 'Times New Roman', Times, serif; font-size: 25px; margin-left: 5px;">JajanGo</span>
           </a>
           <a class="navbar-brand brand-logo-mini" href="#"><img src="../../assets/images/logo-mini.svg" alt="logo" />
-            <span style="color: black; font-weight: bold; font-family: 'Times New Roman', Times, serif; font-size: 24px; margin-left: 5px;">JajanGo</span>
+            <span style="color: black; font-weight: bold; font-family: 'Times New Roman', Times, serif; font-size: 25px; margin-left: 5px;">JajanGo</span>
           </a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
