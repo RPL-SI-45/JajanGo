@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/coba', function(){
-    return view('coba');
+Route::get('/detailpesanan', function(){
+    return view('detailpesanan.index');
 });
+
+Route::get('/pesanan',[PesananController::class,'index']);
