@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\DaftarpedagangController;
 use App\Http\Controllers\daftarmenuController;
+use App\Http\Controllers\PesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,8 @@ Route::get('/menu/{id}/edit', [daftarmenuController::class, 'edit'])->name('menu
 Route::put('/menu/{id}', [daftarmenuController::class, 'update'])->name('menu.update');
 Route::delete('/menu/{id}', [daftarmenuController::class, 'destroy'])->name('menu.destroy');
 
+Route::get('/detailpesanan', function(){
+    return view('detailpesanan.index');
+});
+
+Route::get('/pesanan',[PesananController::class,'index']);
