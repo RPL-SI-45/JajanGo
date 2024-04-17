@@ -27,4 +27,5 @@ Route::get('/pedagang/daftarmenu/create', [daftarmenuController::class, 'create'
 Route::post('/pedagang/daftarmenu/store', [daftarmenuController::class, 'store'])->name('menu.store');
 Route::get('/menu/{id}/edit', [daftarmenuController::class, 'edit'])->name('menu.edit');
 Route::put('/menu/{id}', [daftarmenuController::class, 'update'])->name('menu.update');
+Route::delete('/menu/{id}', [daftarmenuController::class, 'destroy'])->name('menu.destroy');
 

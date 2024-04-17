@@ -44,7 +44,7 @@ class daftarmenuController extends Controller
         $daftarmenu = DaftarMenu::findOrFail($id);
         return view('daftarmenu.editMenu', compact('daftarmenu'));
     }
-    
+
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
@@ -70,5 +70,11 @@ class daftarmenuController extends Controller
         $daftarmenu->save();
 
         return redirect()->route('menu.index')->with('success', 'Menu berhasil diperbarui!');
+    }
+
+    public function destroy($id){
+        $daftarmenu = DaftarMenu::findOrFail($id);
+        $daftarmenu->delete();
+        return redirect()->route('menu.index')->with('success', 'Menu berhasil dihapus!');
     }
 }

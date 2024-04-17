@@ -86,8 +86,8 @@
           <div class="content-wrapper">
             <div class="row">
               <div class="col-md-6 grid-margin stretch-card">
-                <div class="card" >
-                  <div class="card-body" style="width: min-content">
+                <div class="card" style="align-items: center">
+                  <div class="card-body" style="width: min-content; align-content:center">
                     <h3 class="mb-3" style="text-align: center" > List Daftar Menu </h3>
                     <a href="/pedagang/daftarmenu/create" class="btn btn-light mb-3">Tambah Menu</a>
                     @foreach ($daftarmenu as $d)
@@ -106,8 +106,12 @@
                           <li class="list-group-item" style="background-color: #F6F5F2">Kategori : {{  $d->kategoriMenu  }}</li>
                         </ul>
                         <div class="card-body">
-                          <a href="{{  route('menu.edit', $d->id)  }}" class="card-link">Edit </a>
-                          <a href="#" class="card-link">Hapus </a>
+                          <a href="{{  route('menu.edit', $d->id)  }}" class="card-link"><button class="btn btn-gradient-info btn-rounded btn-fw mb-3">Edit</button></a><br>
+                          <form action="{{  route('menu.destroy', $d->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-gradient-danger btn-rounded btn-fw">Hapus</button>
+                        </form>
                         </div>
                       </div>
                       @endforeach

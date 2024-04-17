@@ -88,7 +88,7 @@
               <h3 class="page-title"> Tambahkan Daftar Menu </h3>
             </div>
             <div class="row">
-              <div class="col-md-6 grid-margin stretch-card">
+              <div class="col-md-6 grid-margin stretch-card" style="align-content:center">
                 <div class="card">
                   <div class="card-body">
                     <form class="forms-sample" action="{{ route('menu.store') }}" method="POST" enctype="multipart/form-data">
@@ -112,14 +112,16 @@
                         <label for="gambarmenu">Upload gambar</label>
                         <input type="file" class="form-control" id="gambarMenu" name="gambarMenu">
                       </div>
-                      <button type="submit" class="btn btn-gradient-primary me-2">Input Menu</button>
+                      <div style="text-align: center">
+                      <button type="submit" class="btn btn-gradient-primary mb-3">Input Menu</button>
+                      <br>
                       <a href="/pedagang/daftarmenu" class="btn btn-light" >Cancel</a>
                       @if(session('success'))
                         <div class="alert alert-success mt-2">
                             {{ session('success') }}
                         </div>
-
-                    @endif
+                        @endif
+                    </div>
                     </form>
                   </div>
                 </div>
