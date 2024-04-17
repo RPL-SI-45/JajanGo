@@ -34,7 +34,7 @@
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
           </button>
-          <input type="text" class="form-control bg-transparent border-0" placeholder="Cari Toko">
+          {{-- <input type="text" class="form-control bg-transparent border-0" placeholder="Cari Toko"> --}}
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
