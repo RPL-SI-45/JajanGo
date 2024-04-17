@@ -50,3 +50,4 @@ Route::get('/konfirmasiPembayaranCash', function(){
     return view('pembayaran.konfirmasiPembayaranCash');
 });
 Route::get('/menu',[menuuserController::class,'index']);
+Route::get('/daftarpedagang',[DaftarpedagangController::class,'index']);
