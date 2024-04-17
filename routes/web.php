@@ -25,9 +25,6 @@ use App\Http\Controllers\menuuserController;
 //home(user)
 Route::get('/',[DaftarpedagangController::class,'index']);
 Route::get('/daftarpedagang',[DaftarpedagangController::class,'index']);
-Route::get('/coba', function(){
-    return view('coba');
-});
 
 //kelola daftar menu(pedagang)
 Route::get('/pedagang/daftarmenu', [daftarmenuController::class, 'index'])->name('menu.index');
