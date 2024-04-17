@@ -105,7 +105,8 @@
                           <li class="list-group-item" style="background-color: #F6F5F2; text-align:center">Harga : {{  $d->harga  }}</li>
                           <li class="list-group-item" style="background-color: #F6F5F2">Kategori : {{  $d->kategoriMenu  }}</li>
                         </ul>
-                        <button type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-4 mdi mdi-basket">Tambah Menu</button>
+                        <button type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-4">Beli</button>
+                        <button type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-4 mdi mdi-cart">Tambah ke Keranjang</button>
                       </div>
                       @endforeach
                   </div>
