@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use APP\Http\Controllers\AboutController;
+use App\Http\Controllers\konfirmasiPembayaranController;
+use App\Http\Controllers\PembayaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +22,13 @@ Route::get('/', function () {
 
 Route::get('/coba', function(){
     return view('coba');
+});
+
+Route::get('/pembayaran', function(){
+    return view('pembayaran.index');
+});
+Route::get('/konfirmasipembayaran', [konfirmasiPembayaranController::class, 'index']);
+Route::post('/konfirmasipembayaran/store', [konfirmasiPembayaranController::class, 'store'])->name('pembayaran.store');
+Route::get('/konfirmasiPembayaranCash', function(){
+    return view('pembayaran.konfirmasiPembayaranCash');
 });
