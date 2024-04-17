@@ -7,6 +7,7 @@ use App\Http\Controllers\daftarmenuController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\konfirmasiPembayaranController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\menuuserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +49,4 @@ Route::post('/konfirmasipembayaran/store', [konfirmasiPembayaranController::clas
 Route::get('/konfirmasiPembayaranCash', function(){
     return view('pembayaran.konfirmasiPembayaranCash');
 });
+Route::get('/menu',[menuuserController::class,'index']);
