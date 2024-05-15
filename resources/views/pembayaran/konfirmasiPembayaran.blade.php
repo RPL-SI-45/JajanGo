@@ -279,7 +279,8 @@
                 <p class="card-title">BCA : 284629458 </p>
                 <p class="card-title">BNI : 37642839275 </p>
               <input type="radio" id="qris" name="metodePembayaran" value="qris">
-              <label for="qris">QRIS</label><br>
+              <label for="qris">QRIS</label><br><br>
+              <img src="/contohqr.jpeg" width="200px" height="250px" alt="">
             <div class="form-group"> <br>
                 <label for="gambarmenu">Upload gambar</label>
                 <input type="file" class="form-control" id="gambarMenu" name="gambarMenu">
