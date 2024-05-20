@@ -6,6 +6,7 @@ use App\Http\Controllers\DaftarpedagangController;
 use App\Http\Controllers\daftarmenuController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\konfirmasiPembayaranController;
+use App\Http\Controllers\LacakpesananController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\menuuserController;
 
@@ -52,4 +53,9 @@ Route::get('/konfirmasiPembayaranCash', function(){
 
 //menu(user)
 Route::get('/menu',[menuuserController::class,'index']);
+
+//lacakPesanan (user)
+Route::get('/lacakpesanan/lacakpesananUser', [LacakpesananController::class, 'index']);
+
+
 

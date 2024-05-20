@@ -20,11 +20,11 @@ class konfirmasiPembayaranController extends Controller
             // 'metodePembayaran' => 'required',
             // 'tanggalPembayaran' => 'required',
             // 'totalPembayaran' => 'required',
-            'gambarBuktiPembayaran' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'buktiPembayaran' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $gambarBuktiPembayaran = time() . '.' . $request->gambarBuktiPembayaran->extension();
-        $request->gambarBuktiPembayaran->move(public_path('images'), $gambarBuktiPembayaran);
+        $buktiPembayaran = time() . '.' . $request->gambarBuktiPembayaran->extension();
+        $request->gambarBuktiPembayaran->move(public_path('images'), $buktiPembayaran);
 
         $pembayaran = new Pembayaran;
         // $pembayaran->idPembayaran = $request->idPembayaran;
@@ -32,7 +32,7 @@ class konfirmasiPembayaranController extends Controller
         // $pembayaran->metodePembayaran = $request->metodePembayaran;
         // $pembayaran->tanggalPembayaran = $request->tanggalPembayaran;
         // $pembayaran->totalPembayaran = $request->totalPembayaran;
-        $pembayaran->gambarBuktiPembayaran = $gambarBuktiPembayaran;
+        $pembayaran->gambarBuktiPembayaran = $buktiPembayaran;
         $pembayaran->save();
 
         return redirect()->route('pembayaran.index')->with('success', 'Pembayaran berhasil dilakukan!');

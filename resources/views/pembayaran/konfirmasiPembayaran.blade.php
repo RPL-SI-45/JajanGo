@@ -282,8 +282,8 @@
               <label for="qris">QRIS</label><br><br>
               <img src="/contohqr.jpeg" width="200px" height="250px" alt="">
             <div class="form-group"> <br>
-                <label for="gambarmenu">Upload gambar</label>
-                <input type="file" class="form-control" id="gambarMenu" name="gambarMenu">
+                <label for="buktiPembayaran">Upload gambar</label>
+                <input type="file" class="form-control" id="buktiPembayaran" name="buktiPembayaran">
             </div>
                 <button type="submit" id="submitBtn" class="btn btn-gradient-primary me-2" disabled>Submit</button>
             </form>
