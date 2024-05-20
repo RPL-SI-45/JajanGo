@@ -278,7 +278,7 @@
                     </div>
                     <form class="forms-sample">
                       <a href="/konfirmasiPembayaranCash" class="btn btn-gradient-primary me-2">Kembali</a><br>
-                      <a href="/konfirmasipembayaran" class="btn btn-gradient-primary mt-2">Lacak Pesanan</a>
+                      <a href="/lacakpesanan/lacakpesananUser" class="btn btn-gradient-primary mt-2">Lacak Pesanan</a>
                     </form>
                   </div>
                     <form class="forms-sample">

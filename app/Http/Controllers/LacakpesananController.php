@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class LacakpesananController extends Controller
 {
-    public function index (){
-        $lacakpesanan = Lacakpesanan::all();
-        return view('lacakpesanan.lacakpesananUser', compact(['lacakpesanan']));
-    }
+    public function index()
+{
+    $lacakpesanan = Lacakpesanan::all();
+    return view('lacakpesanan.lacakpesananUser', compact('lacakpesanan'));
+}
 
 }
