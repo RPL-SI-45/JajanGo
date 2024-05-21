@@ -132,7 +132,7 @@
               <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Seblak Rizki</h4>
+                    <h4 class="card-title">Nama Pedagang</h4>
                     <p class="card-description"> Mohon untuk check kembali pesanan kamu </p>
                     <form class="forms-sample">
                       <div class="form-group row">
@@ -153,7 +153,25 @@
                           <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Pedes dikit ajaa">
                         </div>
                       </div>
-                      <div class="form-check form-check-flat form-check-primary">
+                      <div class="form-group row">
+                  <label for="totalHarga" class="col-sm-3 col-form-label">Total Harga</label>
+                  <div class="col-sm-9">
+                    <input type="number" class="form-control" id="totalHarga" placeholder="100000">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="diskon" class="col-sm-3 col-form-label">Diskon (%)</label>
+                  <div class="col-sm-9">
+                    <input type="number" class="form-control" id="diskon" placeholder="10">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="hargaSetelahDiskon" class="col-sm-3 col-form-label">Harga Setelah Diskon</label>
+                  <div class="col-sm-9">
+                    <input type="number" class="form-control" id="hargaSetelahDiskon" readonly>
+                  </div>
+                </div>
+                <div class="form-check form-check-flat form-check-primary">
                         <label class="form-check-label">
                           <input type="checkbox" class="form-check-input"> Apakah pesanan kamu sudah benar? </label>
                       </div>
@@ -163,6 +181,14 @@
                   </div>
                 </div>
               </div>
+              <script>
+              function hitungDiskon() {
+                var totalHarga = document.getElementById("totalHarga").value;
+                var diskon = document.getElementById("diskon").value;
+                var hargaSetelahDiskon = totalHarga - (totalHarga * (diskon / 100));
+                document.getElementById("hargaSetelahDiskon").value = hargaSetelahDiskon;
+              }
+            </script>
               
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
