@@ -67,7 +67,7 @@
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
                   <span class="font-weight-bold mb-2">Christine N.L</span>
-                  <span class="text-secondary text-small">Pembeli</span>
+                  <span class="text-secondary text-small">Pedagang</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
@@ -111,7 +111,7 @@
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-secondary text-white me-2">
                   <i class="mdi mdi-home"></i>
-                </span> Selamat Datang, Christine!
+                </span> Informasi Pesanan
               </h3>
             </div>
             <div class="row">
@@ -119,15 +119,15 @@
                 <div class="page-header">
                   <div class="card" >
                     <div class="card-body" style="width: min-content">
-                  @foreach($daftarpedagang as $d)
+                  @foreach($informasipesanan as $i)
                   <div class="card bg-secondary card-img-holder text-white mb-5">
                     <div class="card-body" style="text-align: center">
                       <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                      <h2 class="card-title" style="text-align: center;"><a href="#" class="text-light">{{$d->namaToko}}</a></h2>
+                      <h2 class="card-title" style="text-align: center;"><a href="#" class="text-light">{{$i->namaPesanan}}</a></h2>
                       <img src="takoyaki.jpg" width="150" height="100" class="d-inline-block align-top mb-3" alt="">
-                      <h6 class="card-text">{{$d->deskripsiToko}}</h6>
+                      <h6 class="card-text">{{$i->tanggalPesanan}}</h6>
                       <hr>
-                      <h6 class="card-text">{{$d->alamatToko}}</h6>
+                      <h6 class="card-text">{{$i->totalHarga}}</h6>
                     </div>
                   </div>
                 @endforeach

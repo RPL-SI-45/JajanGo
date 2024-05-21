@@ -9,6 +9,6 @@ class InformasiPesanan extends Model
 {
     use HasFactory;
     protected $table = 'informasipesanan';
-    protected $fillable = ['namaToko', 'alamatToko', 'deskripsiToko'];
+    protected $fillable = ['namaPesanan', 'tanggalPesanan', 'totalHarga'];
     protected $guarded = ['id'];
 }
