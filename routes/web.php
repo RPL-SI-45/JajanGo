@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\InformasiPesanan;
+use App\Http\Controllers\InformasiPesananController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\DaftarpedagangController;
@@ -55,5 +56,5 @@ Route::get('/konfirmasiPembayaranCash', function(){
 Route::get('/menu',[menuuserController::class,'index']);
 
 //informasi pesanan (pedagang)
-Route::get('/',[InformasiPesanan::class,'index']);
-Route::get('/informasipesanan',[InformasiPesanan::class,'index']);
+Route::get('/',[InformasiPesananController::class,'index']);
+Route::get('/informasipesanan',[InformasiPesananController::class,'index']);
