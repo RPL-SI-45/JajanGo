@@ -53,3 +53,6 @@ Route::get('/konfirmasiPembayaranCash', function(){
 //menu(user)
 Route::get('/menu',[menuuserController::class,'index']);
 
+//informasi pesanan (pedagang)
+Route::get('/',[InformasiPesananController::class,'index']);
+Route::get('/pedagang/informasi',[InformasiPesananController::class,'index']);
