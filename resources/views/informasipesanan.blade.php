@@ -85,12 +85,6 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="riwayatpembelian">
-                <span class="menu-title">Riwayat Pembelian</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="pengaturan">
                 <span class="menu-title">Pengaturan</span>
                 <i class="mdi mdi-settings menu-icon"></i>
