@@ -281,11 +281,14 @@
               <input type="radio" id="qris" name="metodePembayaran" value="qris">
               <label for="qris">QRIS</label><br><br>
               <img src="/contohqr.jpeg" width="200px" height="250px" alt="">
-            <div class="form-group"> <br>
-                <label for="buktiPembayaran">Upload gambar</label>
-                <input type="file" class="form-control" id="buktiPembayaran" name="buktiPembayaran">
-            </div>
-                <button type="submit" id="submitBtn" class="btn btn-gradient-primary me-2" disabled>Submit</button>
+              <form id="formPembayaran" class="forms-sample" action="{{ route('konfirmasiPembayaran.store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div class="form-group">
+        <label for="buktiPembayaran">Upload gambar</label>
+        <input type="file" class="form-control" id="buktiPembayaran" name="buktiPembayaran">
+    </div>
+    <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+</form>
             </form>
         </div>
       </div>
@@ -321,14 +324,14 @@
     <script src="../../assets/js/file-upload.js"></script>
     <!-- End custom js for this page -->
     <script>
-    document.getElementById('gambarMenu').addEventListener('change', function() {
-        // Cek apakah ada file yang dipilih
-        if (this.files.length > 0) {
-            document.getElementById('submitBtn').disabled = false; // Aktifkan tombol submit
-        } else {
-            document.getElementById('submitBtn').disabled = true; // Nonaktifkan tombol submit
-        }
-    });
-</script>
+document.getElementById('buktiPembayaran').addEventListener('change', function() {
+    // Cek apakah ada file yang dipilih
+    if (this.files.length > 0) {
+        document.getElementById('submitBtn').disabled = false; // Aktifkan tombol submit
+    } else {
+        document.getElementById('submitBtn').disabled = true; // Nonaktifkan tombol submit
+    }
+});
+    </script>
   </body>
 </html>

@@ -50,6 +50,7 @@ Route::post('/konfirmasipembayaran/store', [konfirmasiPembayaranController::clas
 Route::get('/konfirmasiPembayaranCash', function(){
     return view('pembayaran.konfirmasiPembayaranCash');
 });
+Route::post('/konfirmasi-pembayaran', [KonfirmasiPembayaranController::class, 'store'])->name('konfirmasiPembayaran.store');
 
 //menu(user)
 Route::get('/menu',[menuuserController::class,'index']);

@@ -92,7 +92,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                <span class="menu-title">Daftar Menu</span>
+                <span class="menu-title">Lacak Pesanan</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
@@ -102,7 +102,7 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Proses Pesanan </h3>
+              <h3 class="page-title"> Status Pesanan </h3>
             </div>
             <div class="row">
               <div class="col-md-12 grid-margin stretch-card">
