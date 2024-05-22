@@ -117,9 +117,9 @@
                   <div class="card bg-secondary card-img-holder text-white mb-5">
                     <div class="card-body" style="text-align: center">
                       <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                      <h2 class="card-title" style="text-align: center;"><a href="#" class="text-light">{{$i->namaPesanan}}</a></h2>
-                      <img src="takoyaki.jpg" width="150" height="100" class="d-inline-block align-top mb-3" alt="">
-                      <h6 class="card-text">{{$i->tanggalPesanan}}</h6>
+                      <h2 class="card-title text-light" style="text-align: center;" class="text-light">{{$i->namaPesanan}}</a></h2>
+                        <img src="takoyaki.jpg" width="150" height="100" class="d-inline-block align-top mb-3" alt="">
+                        <h6 class="card-text">{{$i->tanggalPesanan}}</h6>
                       <hr>
                       <h6 class="card-text">{{$i->totalHarga}}</h6>
                     </div>
