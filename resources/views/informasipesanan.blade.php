@@ -78,7 +78,7 @@
       margin: 5px 0;
     }
 
-    .card-custom .content .description {
+    .card-custom .content .price {
       font-size: 14px;
       color: #333;
       margin: 5px 0;
@@ -194,7 +194,7 @@
               <div class="content">
                 <h5>{{$i->idPembeli}}</h5>
                 <p>{{$i->namaPesanan}}</p>
-                <div class="description">{{$i->totalHarga}}</div>
+                <div class="price">{{$i->totalHarga}}</div>
                 <div class="date">{{$i->tanggalPesanan}}</div>
               </div>
             </div>
