@@ -19,7 +19,7 @@
   <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
   <style>
     .container-scroller {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
@@ -50,7 +50,7 @@
       margin-bottom: 20px;
       padding: 20px;
       display: flex;
-      align-items: center;
+      align-items: justify;
     }
 
     .card-custom img {
@@ -111,7 +111,7 @@
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
               <div class="nav-profile-img">
-                <img src="christine.jpg" alt="image">
+                <img src="../../assets/images/faces/face1.jpg" alt="image">
                 <span class="availability-status online"></span>
               </div>
               <div class="nav-profile-text">
@@ -133,7 +133,7 @@
           <li class="nav-item nav-profile">
             <a href="#" class="nav-link">
               <div class="nav-profile-image">
-                <img src="christine.jpg" alt="profile">
+                <img src="../../assets/images/faces/face1.jpg" alt="profile">
                 <span class="login-status online"></span>
                 <!--change to offline or busy as needed-->
               </div>
@@ -145,7 +145,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="daftarpedagang">
+            <a class="nav-link" href="home">
               <span class="menu-title">Home</span>
               <i class="mdi mdi-home menu-icon"></i>
             </a>
@@ -154,6 +154,12 @@
             <a class="nav-link" href="profile">
               <span class="menu-title">Profile</span>
               <i class="mdi mdi-contacts menu-icon"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="informasipesanan">
+              <span class="menu-title">Informasi Pesanan</span>
+              <i class="mdi mdi-newspaper menu-icon"></i>
             </a>
           </li>
           <li class="nav-item">
@@ -175,8 +181,8 @@
         <div class="content-wrapper">
           <div class="page-header">
             <h3 class="page-title">
-              <span class="page-title-icon bg-gradient-secondary text-white me-2">
-                <i class="mdi mdi-home"></i>
+              <span class="page-title-icon bg-gradient-primary text-white me-2">
+                <i class="mdi mdi-newspaper"></i>
               </span> Informasi Pesanan
             </h3>
           </div>
