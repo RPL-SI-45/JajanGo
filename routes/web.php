@@ -6,7 +6,8 @@ use App\Http\Controllers\DaftarpedagangController;
 use App\Http\Controllers\daftarmenuController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\konfirmasiPembayaranController;
-use App\Http\Controllers\LacakpesananController;
+use App\Http\Controllers\LacakpesananUserController;
+use App\Http\Controllers\LacakpesananPedagangController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\menuuserController;
 
@@ -59,8 +60,11 @@ Route::post('/pembayaran/konfirmasiPembayaran', [KonfirmasiPembayaranController:
 //menu(user)
 Route::get('/menu',[menuuserController::class,'index']);
 
-//lacakPesanan (user)
-Route::get('/lacakpesanan/lacakpesananUser', [LacakpesananController::class, 'index']);
+//lacakPesanan
+Route::get('/lacakpesanan/lacakpesananUser', [LacakpesananUserController::class, 'index']);
+Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController::class, 'index']);
+Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController::class, 'lacakpesananPedagang'])->name('lacakpesananPedagang');
+
 
 
 
