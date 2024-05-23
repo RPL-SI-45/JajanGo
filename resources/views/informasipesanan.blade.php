@@ -19,30 +19,29 @@
   <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
   <style>
     .container-scroller {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-  .page-body-wrapper {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
-  }
+    .page-body-wrapper {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
 
-  .main-panel {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    overflow: hidden;
-  }
+    .main-panel {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow: hidden;
+    }
 
-  .content-wrapper {
-    flex: 1;
-    overflow-y: auto; /* Menambahkan scroll vertikal */
-    padding: 20px; /* Padding opsional untuk tampilan lebih baik */
-  }
-
+    .content-wrapper {
+      flex: 1;
+      overflow-y: auto; /* Menambahkan scroll vertikal */
+      padding: 20px; /* Padding opsional untuk tampilan lebih baik */
+    }
 
     .card-custom {
       background-color: #fff;
@@ -53,32 +52,38 @@
       display: flex;
       align-items: center;
     }
+
     .card-custom img {
       margin-right: 15px;
       border-radius: 0px;
       flex-shrink: 0;
     }
+
     .card-custom .content {
       flex: 1;
       display: flex;
       flex-direction: column;
     }
+
     .card-custom .content h5 {
       font-size: 16px;
       font-weight: bold;
       color: #333;
       margin: 0;
     }
+
     .card-custom .content p {
       font-size: 14px;
       color: #777;
       margin: 5px 0;
     }
+
     .card-custom .content .description {
       font-size: 14px;
       color: #333;
       margin: 5px 0;
     }
+
     .card-custom .content .date {
       font-size: 12px;
       color: #777;
@@ -176,20 +181,19 @@
             </h3>
           </div>
           <div class="container-scroller">
-            <div class="col-12">
-              @foreach($informasipesanan as $i)
-              <div class="card card-custom">
-                <img src="takoyaki.jpg" width="50" height="50" class="d-inline-block align-top mb-3" alt="">
-                <div class="content">
-                  <h5>{{$i->idPembeli}}</h5>
-                  <p>{{$i->namaPesanan}}</p>
-                  <div class="description">{{$i->totalHarga}}</div>
-                  <div class="date">{{$i->tanggalPesanan}}</div>
-                </div>
-                </div>
+          <div class="col-12">
+            @foreach($informasipesanan as $i)
+            <div class="card card-custom">
+              <img src="takoyaki.jpg" width="50" height="50" class="d-inline-block align-top mb-3" alt="">
+              <div class="content">
+                <h5>{{$i->idPembeli}}</h5>
+                <p>{{$i->namaPesanan}}</p>
+                <div class="description">{{$i->totalHarga}}</div>
+                <div class="date">{{$i->tanggalPesanan}}</div>
               </div>
-              @endforeach
             </div>
+            @endforeach
+          </div>
           </div>
         </div>
         <!-- content-wrapper ends -->
@@ -210,11 +214,3 @@
   <!-- End plugin js for this page -->
   <!-- inject:js -->
   <script src="../../assets/js/off-canvas.js"></script>
-  <script src="../../assets/js/hoverable-collapse.js"></script>
-  <script src="../../assets/js/misc.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page -->
-  <script src="../../assets/js/file-upload.js"></script>
-  <!-- End custom js for this page -->
-</body>
-</html>
