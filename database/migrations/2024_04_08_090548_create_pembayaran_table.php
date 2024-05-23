@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('totalPembayaran');
             $table->string('gambarBuktiPembayaran');
             $table->timestamps();
+
+            $table->foreign('idPesanan')->references('id')->on('pesanan')->onDelete('cascade');
         });
     }
 

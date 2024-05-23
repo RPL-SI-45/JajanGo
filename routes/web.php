@@ -48,9 +48,13 @@ Route::get('/pembayaran', function(){
 Route::get('/konfirmasipembayaran', [konfirmasiPembayaranController::class, 'index']);
 Route::post('/konfirmasipembayaran/store', [konfirmasiPembayaranController::class, 'store'])->name('pembayaran.store');
 Route::get('/konfirmasiPembayaranCash', function(){
-    return view('pembayaran.konfirmasiPembayaranCash');
+    return view('pembayaran/konfirmasiPembayaranCash');
 });
 Route::post('/konfirmasi-pembayaran', [KonfirmasiPembayaranController::class, 'store'])->name('konfirmasiPembayaran.store');
+
+Route::get('/pembayaran/konfirmasiPembayaranCash', [KonfirmasiPembayaranController::class, 'konfirmasiPembayaranCash'])->name('pembayaran.konfirmasiPembayaranCash');
+Route::post('/pembayaran/konfirmasiPembayaran', [KonfirmasiPembayaranController::class, 'store'])->name('pembayaran.store');
+
 
 //menu(user)
 Route::get('/menu',[menuuserController::class,'index']);

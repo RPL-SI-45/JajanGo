@@ -267,34 +267,42 @@
         </nav>
         <!-- partial -->
         <div class="main-panel">
-          <div class="content-wrapper">
-            <div class="row">
-              <div class="col-md-6 grid-margin stretch-card">
-              <div class="card">
-        <div class="card-body">
-          <form id="formPembayaran" class="forms-sample" action="{{route('pembayaran.store')}}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <input type="radio" id="transferBank" name="metodePembayaran" value="transfer">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <form id="formPembayaran" class="forms-sample" action="{{ route('konfirmasiPembayaran.store') }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              <input type="radio" id="transferBank" name="metodePembayaran" value="transfer">
               <label for="transferBank">Transfer Bank</label><br>
-                <p class="card-title">BCA : 284629458 </p>
-                <p class="card-title">BNI : 37642839275 </p>
+              <p class="card-title">BCA : 284629458 </p>
+              <p class="card-title">BNI : 37642839275 </p>
               <input type="radio" id="qris" name="metodePembayaran" value="qris">
               <label for="qris">QRIS</label><br><br>
               <img src="/contohqr.jpeg" width="200px" height="250px" alt="">
-              <form id="formPembayaran" class="forms-sample" action="{{ route('konfirmasiPembayaran.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    <div class="form-group">
-        <label for="buktiPembayaran">Upload gambar</label>
-        <input type="file" class="form-control" id="buktiPembayaran" name="buktiPembayaran">
-    </div>
-    <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-</form>
+              {{-- <div class="form-group">
+                <label for="idPesanan">ID Pesanan</label>
+                <input type="number" class="form-control" id="idPesanan" name="idPesanan">
+              </div>
+              <div class="form-group">
+                <label for="totalPembayaran">Total Pembayaran</label>
+                <input type="number" class="form-control" id="totalPembayaran" name="totalPembayaran">
+              </div> --}}
+              <div class="form-group">
+                <label for="buktiPembayaran">Upload gambar</label>
+                <input type="file" class="form-control" id="buktiPembayaran" name="buktiPembayaran">
+              </div>
+              <a href="/pembayaran/konfirmasiPembayaranCash">
+                <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+              </a>
             </form>
+          </div>
         </div>
       </div>
-              </div>
-            </div>
-          </div>
+    </div>
+  </div>
+</div>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
           <footer class="footer">

@@ -91,10 +91,6 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span class="menu-title">Lacak Pesanan</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
             </li>
           </ul>
         </nav>
