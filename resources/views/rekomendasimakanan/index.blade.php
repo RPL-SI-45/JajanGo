@@ -33,8 +33,8 @@
             border-radius: 5px;
             font-size: 0.9em;
             position: absolute;
-            top: -10px;
-            left: 20px;
+            top: 10px;
+            left: 10px;
         }
         .img-fluid {
             border-radius: 10px;
@@ -131,7 +131,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <span class="menu-title">List Daftar Menu</span>
+                        <span class="menu-title">Daftar Rekomendasi Makanan</span>
                         <i class="mdi mdi-food menu-icon"></i>
                     </a>
                 </li>
@@ -141,30 +141,31 @@
             <div class="content-wrapper">
                 <div class="row mb-4">
                     <div class="col-12 text-center">
-                        <a href="{{ route('rekomendasiMakanan.index') }}" class="btn btn-gradient-primary btn-rounded btn-fw">Lihat Rekomendasi Makanan</a>
+                        <a href="{{ route('menuuser.index') }}" class="btn btn-gradient-primary btn-rounded btn-fw">Kembali ke Daftar Menu</a>
                     </div>
                 </div>
-                <h3 class="mb-3 text-center">List Daftar Menu</h3>
+                <h3 class="mb-3 text-center">List Rekomendasi Makanan</h3>
                 <div class="row">
-                    @foreach ($menuuser as $menu)
+                    @foreach ($rekomendasiMakanan as $makanan)
                         <div class="col-md-4 grid-margin stretch-card">
-                            <div class="card card-custom">
-                                <div class="card-body">
-                                    <h4 class="text-center">{{ $menu->namaMenu }}</h4>
-                                    <div class="text-center">
-                                        @if($menu->gambarMenu)
-                                            <img src="{{ asset('images/' . $menu->gambarMenu) }}" alt="" class="img-fluid mb-3">
-                                        @else
-                                            <img src="{{ asset('images/dummy-image.png') }}" alt="dummy" class="img-fluid mb-3">
-                                            <p class="text-center">Tidak ada foto</p>
-                                        @endif
-                                    </div>
-                                    <p class="text-center">{{ $menu->deskripsiMenu }}</p>
-                                    <p class="text-center">Harga: {{ $menu->harga }}</p>
-                                    <p class="text-center">Kategori: {{ $menu->kategoriMenu }}</p>
-                                    <div class="text-center">
-                                        <button type="button" class="btn btn-gradient-primary btn-rounded btn-fw mb-2">Beli</button>
-                                        <button type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-2 mdi mdi-cart">Tambah ke Keranjang</button>
+                            <div class="container-card">
+                                <div class="card card-custom">
+                                    <div class="card-body">
+                                        <div class="badge-custom">Best Sellers</div>
+                                        <h4 class="text-center">{{ $makanan->namaToko }}</h4>
+                                        <div class="text-center">
+                                            @if($makanan->gambar)
+                                                <img src="{{ asset('images/' . $makanan->gambar) }}" alt="" class="img-fluid mb-3">
+                                            @else
+                                                <p class="text-center">Tidak ada foto</p>
+                                            @endif
+                                        </div>
+                                        <h5 class="text-center">{{ $makanan->namaMakanan }}</h5>
+                                        <p class="text-center">Harga: {{ $makanan->harga }}</p>
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-gradient-primary btn-rounded btn-fw mb-2">Beli</button>
+                                            <button type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-2 mdi mdi-cart">Tambah ke Keranjang</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
