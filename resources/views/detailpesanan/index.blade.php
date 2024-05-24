@@ -187,29 +187,6 @@
         </div>
     </div>
 </div>
-<script>
-    function hitungDiskon() {
-          var totalHarga = parseFloat(document.getElementById("totalHarga").value) || 0;
-          var diskon = 0;
-  
-          if (totalHarga > 100000) {
-              diskon = 10;
-          } else if (totalHarga > 50000) {
-              diskon = 7;
-          } else if (totalHarga > 30000) {
-              diskon = 5;
-          } else if (totalHarga < 30000) {
-              diskon = 0;
-          } else () {
-          }
-
-          var hargaSetelahDiskon = totalHarga - (totalHarga * (diskon / 100));
-          document.getElementById("diskon").value = diskon;
-          document.getElementById("hargaSetelahDiskon").value = hargaSetelahDiskon.toFixed(2);
-      }
-</script>
-
-
                 <!-- content-wrapper ends -->
                 <!-- partial:../../partials/_footer.html -->
                 <footer class="footer">
