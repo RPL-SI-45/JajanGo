@@ -29,6 +29,10 @@
         width: 60%;
         max-width: 300px;
       }
+      .status-item.purple {
+        background-color: #C889F8;
+        color: #fff;
+      }
     </style>
     <!-- endinject -->
     <!-- Layout styles -->
@@ -56,7 +60,7 @@
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">David Greymaax</p>
+                  <p class="mb-1 text-black">Octamevia</p>
                 </div>
               </a>
             </li>
@@ -105,7 +109,7 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="status-container">
-                      <div class="status-item">
+                      <div class="status-item purple">
                         <p class="status-text">Makanan telah diterima penjual</p>
                       </div>
                       <div class="status-item">
@@ -139,4 +143,5 @@
     <script src="../../assets/js/off-canvas.js"></script>
     <script src="../../assets/js/hoverable-collapse.js"></script>
     <script src="../../assets/js/misc.js"></script>
-   
+  </body>
+</html>

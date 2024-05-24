@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\DaftarpedagangController;
 use App\Http\Controllers\daftarmenuController;
@@ -12,7 +10,6 @@ use App\Http\Controllers\LacakpesananUserController;
 use App\Http\Controllers\LacakpesananPedagangController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\menuuserController;
->>>>>>> d0e27fb5f9751fe6cb7ecacef324a7ffc17bef85
 
 /*
 |--------------------------------------------------------------------------
@@ -24,16 +21,6 @@ use App\Http\Controllers\menuuserController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-<<<<<<< HEAD
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/coba', function(){
-    return view('coba');
-});
-=======
 // Route::get('/', function () {
 //     return view('daftarmenu.index');
 // });
@@ -81,4 +68,3 @@ Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController
 
 
 
->>>>>>> d0e27fb5f9751fe6cb7ecacef324a7ffc17bef85
