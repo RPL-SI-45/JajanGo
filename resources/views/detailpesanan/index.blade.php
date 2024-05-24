@@ -151,7 +151,7 @@
                                             <label for="inputjumlah" class="col-sm-3 col-form-label">Jumlah</label>
                                             <div class="col-sm-9">
                                                 <input type="number" class="form-control" id="inputjumlah"
-                                                    placeholder="Input Jumlah">
+                                                    placeholder="Input Jumlah" oninput="hitungDiskon()">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -173,7 +173,7 @@
                                             <label for="diskon" class="col-sm-3 col-form-label">Diskon (%)</label>
                                             <div class="col-sm-9">
                                                 <input type="number" class="form-control" id="diskon"
-                                                    placeholder="Input Diskon" oninput="hitungDiskon()">
+                                                    placeholder="Input Diskon" readonly>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -199,6 +199,24 @@
                         </div>
                     </div>
                 </div>
+                <script>
+                    function hitungDiskon() {
+                        var totalHarga = parseFloat(document.getElementById("totalHarga").value) || 0;
+                        var diskon = 0;
+
+                        if (totalHarga > 100000) {
+                            diskon = 10;
+                        } else if (totalHarga > 50000) {
+                            diskon = 7;
+                        } else if (totalHarga > 30000) {
+                            diskon = 5;
+                        }
+
+                        var hargaSetelahDiskon = totalHarga - (totalHarga * (diskon / 100));
+                        document.getElementById("diskon").value = diskon;
+                        document.getElementById("hargaSetelahDiskon").value = hargaSetelahDiskon.toFixed(2);
+                    }
+                </script>
                 <!-- content-wrapper ends -->
                 <!-- partial:../../partials/_footer.html -->
                 <footer class="footer">
