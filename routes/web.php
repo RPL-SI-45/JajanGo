@@ -35,9 +35,8 @@ Route::put('/menu/{id}', [daftarmenuController::class, 'update'])->name('menu.up
 Route::delete('/menu/{id}', [daftarmenuController::class, 'destroy'])->name('menu.destroy');
 
 //detail pesanan(user)
-Route::get('/detailpesanan', function(){
-    return view('detailpesanan.index');
-});
+Route::get('/detailpesanan', [PesananController::class, 'index'])->name('detailpesanan.index');
+
 
 //pembayaran(user)
 // Route::get('/pesanan',[PesananController::class,'index']);

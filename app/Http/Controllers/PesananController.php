@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers;
 
@@ -9,27 +9,25 @@ class PesananController extends Controller
 {
     public function index(){
         $pesanan = Pesanan::all();
-        return view('detailpesanan.index', ['pembayaran' => $pembayaran]);
+        return view('detailpesanan.index', ['pesanan' => $pesanan]);
     }
-    
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'id',
             'nama_menu' => 'required',
-            'jumlah' => 'required',
-            'catatan' => 'required|numeric',
+            'jumlah' => 'required|numeric',
+            'catatan' => 'required',
             'tanggal_pesanan' => 'required',
-            'harga' => 'required',
+            'harga' => 'required|numeric',
         ]);
         
-        pesanan::create([
-            'id',
-            'nama_menu' => $request -> nama_menu,
-            'jumlah' => $request -> jumlah,
-            'catatan' => $request -> catatan,
-            'tanggal_pesanan' => $request -> tanggal_pesanan,
-            'harga' => $request -> harga,
+        Pesanan::create([
+            'nama_menu' => $request->nama_menu,
+            'jumlah' => $request->jumlah,
+            'catatan' => $request->catatan,
+            'tanggal_pesanan' => $request->tanggal_pesanan,
+            'harga' => $request->harga,
         ]);
 
         return redirect()->route('detailpesanan.index')->with('success', 'Pesanan berhasil!');

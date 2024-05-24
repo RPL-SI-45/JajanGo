@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('pesanan', function (Blueprint $table) {
             $table->id();
             $table->string('nama_menu');
-            $table->string('jumlah');
+            $table->integer('jumlah');
             $table->text('catatan')->nullable();
-            $table->string('tanggal_pesanan');
-            $table->string('harga');
+            $table->date('tanggal_pesanan');
+            $table->decimal('harga', 15, 2); // Menggunakan decimal untuk harga, 15 digit total, 2 digit setelah koma
 
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('antrian');
+        Schema::dropIfExists('pesanan');
     }
 };
