@@ -90,24 +90,27 @@
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
             </li>
-            <li class="nav-item">
+            <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+              </a>
             </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{{ route('lacakpesananPedagang') }}">
+            <span class="menu-title">Lacak Pesanan</span>
+            <i class="mdi mdi-home menu-icon"></i>
+            </a>
           </ul>
         </nav>
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Status Pesanan </h3>
+              <h3 class="page-title"> Status Pesanan Pembeli </h3>
             </div>
             <div class="row">
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <div class="status-container">
-                      <div class="status-item">
-                        <p class="status-text">Makanan telah diterima penjual</p>
-                      </div>
                       <div class="status-item">
                         <p class="status-text">Makanan sedang dibuat</p>
                       </div>

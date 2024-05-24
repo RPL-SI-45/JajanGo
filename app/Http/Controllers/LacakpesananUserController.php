@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lacakpesanan;
+use App\Models\LacakpesananUser;
 use Illuminate\Http\Request;
 
-class LacakpesananController extends Controller
+class LacakpesananUserController extends Controller
 {
     public function index()
 {
-    $lacakpesanan = Lacakpesanan::all();
+    $lacakpesanan = LacakpesananUser::all();
     return view('lacakpesanan.lacakpesananUser', compact('lacakpesanan'));
 }
 

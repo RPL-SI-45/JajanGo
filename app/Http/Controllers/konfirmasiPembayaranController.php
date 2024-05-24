@@ -17,19 +17,34 @@ class konfirmasiPembayaranController extends Controller
     {
         $validatedData = $request->validate([
             'buktiPembayaran' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'metodePembayaran' => 'required|string',
         ]);
 
+        // Memindahkan file bukti pembayaran ke direktori yang diinginkan
         $buktiPembayaran = time() . '.' . $request->file('buktiPembayaran')->extension();
         $request->file('buktiPembayaran')->move(public_path('images'), $buktiPembayaran);
+
+        // Assigning static values for idPesanan and totalPembayaran
+        $idPesanan = 1;
+        $totalPembayaran = 3000;
+
+        // Getting the selected payment method
+        $metodePembayaran = $request->input('metodePembayaran');
+
+        // Saving the data to the database
         $pembayaran = new Pembayaran;
-        $pembayaran->tanggalPembayaran = now(); // Isi dengan nilai tanggal pembayaran yang sesuai dengan logika bisnis
+        $pembayaran->idPesanan = $idPesanan;
+        $pembayaran->metodePembayaran = $metodePembayaran;
+        $pembayaran->tanggalPembayaran = now();
+        $pembayaran->totalPembayaran = $totalPembayaran;
+        $pembayaran->gambarBuktiPembayaran = $buktiPembayaran;
         $pembayaran->save();
 
+        return redirect()->route('pembayaran.konfirmasiPembayaranCash')->with('success', 'Pembayaran berhasil dilakukan!');
+    }
 
-
-
-
-        return redirect()->route('pembayaran.index')->with('success', 'Pembayaran berhasil dilakukan!');
+    public function konfirmasiPembayaranCash()
+    {
+        return view('pembayaran.konfirmasiPembayaranCash');
     }
 }
-
