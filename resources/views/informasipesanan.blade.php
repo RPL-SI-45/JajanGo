@@ -37,6 +37,12 @@
       overflow: hidden;
     }
 
+    .content-wrapper {
+      flex: 1;
+      overflow-y: auto; /* Menambahkan scroll vertikal */
+      padding: 20px; /* Padding opsional untuk tampilan lebih baik */
+    }
+
     .card-custom {
       background-color: #fff;
       border-radius: 10px;
