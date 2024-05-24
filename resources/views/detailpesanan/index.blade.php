@@ -1,3 +1,6 @@
+Untuk mengubah kode HTML yang diberikan sehingga hanya menampilkan data dari database tanpa menggunakan form, kita perlu menghilangkan elemen form dan menggantinya dengan elemen yang hanya menampilkan data. Misalnya, kita akan mengganti elemen input dengan elemen seperti `<p>` atau `<span>` untuk menampilkan data. Kode di bawah ini mengimplementasikan perubahan tersebut:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,8 +39,7 @@
                 </button>
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-profile dropdown">
-                        <a class="nav-link dropdown-toggle" id="profileDropdown" href="#"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="nav-profile-img">
                                 <img src="../../assets/images/faces/face1.jpg" alt="image">
                                 <span class="availability-status online"></span>
@@ -65,8 +67,7 @@
                         </a>
                     </li>
                 </ul>
-                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-                    data-toggle="offcanvas">
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                     <span class="mdi mdi-menu"></span>
                 </button>
             </div>
@@ -81,7 +82,6 @@
                             <div class="nav-profile-image">
                                 <img src="../../assets/images/faces/face1.jpg" alt="profile">
                                 <span class="login-status online"></span>
-                                <!--change to offline or busy as needed-->
                             </div>
                             <div class="nav-profile-text d-flex flex-column">
                                 <span class="font-weight-bold mb-2">Antonio Ro Rizki</span>
@@ -138,51 +138,46 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Nama Pedagang</h4>
                                     <p class="card-description"> Mohon untuk check kembali pesanan kamu </p>
-                                    <form class="forms-sample">
-                                        <div class="form-group row">
-                                            <label for="inputnamapesanan" class="col-sm-3 col-form-label">Nama
-                                                Pesanan</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="inputnamapesanan"
-                                                    placeholder="Input Pesanan">
-                                            </div>
+                                    <div class="form-group row">
+
+                                        <label for = "nama_menu" class="col-sm-3 col-form-label">Nama Pesanan</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="nama_menu" class="form-control" placeholder="Masukkan nama pesanan" id="nama_menu" value="{{$pesanan->nama_menu}}"></br>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputjumlah" class="col-sm-3 col-form-label">Jumlah</label>
-                                            <div class="col-sm-9">
-                                                <input type="number" class="form-control" id="inputjumlah"
-                                                    placeholder="Input Jumlah" oninput="hitungDiskon()">
-                                            </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Jumlah</label>
+                                        <div class="col-sm-9">
+                                            <p id="jumlahPesanan">2</p>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputcatatan" class="col-sm-3 col-form-label">Catatan</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="inputcatatan"
-                                                    placeholder="Input Catatan">
-                                            </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                          <label for="inputcatatan" class="col-sm-3 col-form-label">Catatan</label>
+                                          <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="inputcatatan"
+                                              placeholder="Input Catatan">
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Total Harga</label>
+                                        <div class="col-sm-9">
+                                            <p id="totalHarga">Rp 50.000</p>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="totalHarga" class="col-sm-3 col-form-label">Total
-                                                Harga</label>
-                                            <div class="col-sm-9">
-                                                <input type="number" class="form-control" id="totalHarga"
-                                                    placeholder="Total Harga" oninput="hitungDiskon()">
-                                            </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Diskon (%)</label>
+                                        <div class="col-sm-9">
+                                            <p id="diskon">5%</p>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="diskon" class="col-sm-3 col-form-label">Diskon (%)</label>
-                                            <div class="col-sm-9">
-                                                <input type="number" class="form-control" id="diskon"
-                                                    placeholder="Input Diskon" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="hargaSetelahDiskon" class="col-sm-3 col-form-label">Harga
-                                                Setelah Diskon</label>
-                                            <div class="col-sm-9">
-                                                <input type="number" class="form-control" id="hargaSetelahDiskon"
-                                                    readonly>
-                                            </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Harga Setelah Diskon</label>
+                                        <div class="col-sm-9">
+                                            <p id="hargaSetelahDiskon">Rp 47.500</p>
                                         </div>
                                         <div class="form-check form-check-flat form-check-primary">
                                             <label class="form-check-label">
@@ -210,6 +205,9 @@
                             diskon = 7;
                         } else if (totalHarga > 30000) {
                             diskon = 5;
+                        } else if (totalHarga < 30000) {
+                            diskon = 0;
+                        } else () {
                         }
 
                         var hargaSetelahDiskon = totalHarga - (totalHarga * (diskon / 100));

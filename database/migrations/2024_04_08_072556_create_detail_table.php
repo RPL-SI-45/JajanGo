@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('catatan')->nullable();
             $table->string('tanggal_pesanan');
             $table->string('harga');
+
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('detail');
+        Schema::dropIfExists('antrian');
     }
 };
