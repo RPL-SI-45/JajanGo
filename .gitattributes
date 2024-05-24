@@ -5,11 +5,8 @@
 *.html diff=html
 *.md diff=markdown
 *.php diff=php
-<<<<<<< HEAD
-=======
 * text=auto
 
->>>>>>> d0e27fb5f9751fe6cb7ecacef324a7ffc17bef85
 
 /.github export-ignore
 CHANGELOG.md export-ignore
