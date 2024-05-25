@@ -6,10 +6,9 @@ use App\Http\Controllers\DaftarpedagangController;
 use App\Http\Controllers\daftarmenuController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\konfirmasiPembayaranController;
-use App\Http\Controllers\LacakpesananUserController;
-use App\Http\Controllers\LacakpesananPedagangController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\menuuserController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,22 +48,15 @@ Route::get('/pembayaran', function(){
 Route::get('/konfirmasipembayaran', [konfirmasiPembayaranController::class, 'index']);
 Route::post('/konfirmasipembayaran/store', [konfirmasiPembayaranController::class, 'store'])->name('pembayaran.store');
 Route::get('/konfirmasiPembayaranCash', function(){
-    return view('pembayaran/konfirmasiPembayaranCash');
+    return view('pembayaran.konfirmasiPembayaranCash');
 });
-Route::post('/konfirmasi-pembayaran', [KonfirmasiPembayaranController::class, 'store'])->name('konfirmasiPembayaran.store');
-
-Route::get('/pembayaran/konfirmasiPembayaranCash', [KonfirmasiPembayaranController::class, 'konfirmasiPembayaranCash'])->name('pembayaran.konfirmasiPembayaranCash');
-Route::post('/pembayaran/konfirmasiPembayaran', [KonfirmasiPembayaranController::class, 'store'])->name('pembayaran.store');
-
 
 //menu(user)
-Route::get('/menu',[menuuserController::class,'index']);
+Route::get('/menu',[daftarmenuController::class,'menuuser']);
 
-//lacakPesanan
-Route::get('/lacakpesanan/lacakpesananUser', [LacakpesananUserController::class, 'index']);
-Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController::class, 'index']);
-Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController::class, 'lacakpesananPedagang'])->name('lacakpesananPedagang');
+//keranjang
 
-
-
-
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
+Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');

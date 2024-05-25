@@ -77,7 +77,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/menu">
                 <span class="menu-title">Daftar Menu</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -87,43 +87,36 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
-          <h3 class="mb-3" style="text-align: center" > List Daftar Menu </h3>
+          <h3 class="mb-3" style="text-align: center" > Keranjang Belanja </h3>
             <div class="row">
               <div class="col-md-6 grid-margin stretch-card">
                 <div class="card" >
-                  <div class="card-body" style="width: min-content">
-                    @if (session('success'))
-                    <div class="alert alert-success" style="text-align: center">
-                        {{ session('success') }}
-                    </div>
-                    @endif
-
-                    @foreach ($menuuser as $d)
-                    <div class="card mb-2" style="width: 15rem; align-items: center; background-color: #F6F5F2">
-                        @if($d->gambarMenu)
-                            <img src="{{ asset('images/' . $d->gambarMenu) }}" alt="" class="mt-2" style="max-width: 100px;">
-                        @else
-                            Tidak ada foto
-                        @endif
-                        <div class="card-body">
-                          <h1 class="card-title" style="text-align: center;">{{  $d->namaMenu  }}</h1>
-                          <p class="card-text">{{  $d->deskripsiMenu  }}</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item" style="background-color: #F6F5F2; text-align:center">Harga : {{  $d->harga  }}</li>
-                          <li class="list-group-item" style="background-color: #F6F5F2">Kategori : {{  $d->kategoriMenu  }}</li>
-                        </ul>
-                        <resources/views/menuuser/index.blade.phpbutton type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-4">Beli</resources>
-                        <form action="{{ route('cart.add') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="menu_id" value="{{ $d->id }}">
-                            <input type="hidden" name="quantity" value="1"> <!-- Default quantity -->
-                            <button type="submit" class="btn btn-gradient-success btn-rounded btn-fw mb-4">Tambah ke Keranjang</button>
-                        </form>
-                    </div>
+                  <div class="card-body" style="">
+                    @if($cartItems->isEmpty())
+                        <p>Keranjang belanja Anda kosong.</p>
+                    @else
+                    @foreach($cartItems as $item)
+                    <p class="font-weight-bold">{{ $item->menu->namaMenu }}</p>
+                    <p>@ {{ $item->menu->harga }}</p>
+                    <form action="{{ route('cart.update') }}" method="POST" style="display:inline-block;">
+                        @csrf
+                        <input type="hidden" name="cart_item_id" value="{{ $item->id }}">
+                        <input type="number" name="quantity" value="{{ $item->quantity }}" min="1" style="width: 60px;">
+                        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                    </form>
+                    <p><span class="font-weight-bold">Total : </span>{{ $item->quantity * $item->menu->harga }}</p>
+                    <form action="{{ route('cart.remove') }}" method="POST" >
+                        @csrf
+                        <input type="hidden" name="cart_item_id" value="{{ $item->id }}">
+                        <button type="submit" class="btn btn-danger btn-sm mb-2">Hapus</button>
+                    </form>
                     @endforeach
-
-                  </div>
+                        <hr>
+                        <h4>Total Harga: {{ $total }}</h4>
+                    @endif
+                    <div style="text-align: center" class="mt-4">
+                        <a href="/pembayaran" class="btn btn-primary btn-sm">Lanjut ke pembayaran</a>
+                    </div>
                 </div>
             </div>
           </div>

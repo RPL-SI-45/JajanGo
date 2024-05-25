@@ -272,7 +272,7 @@
       <div class="col-md-6 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <form id="formPembayaran" class="forms-sample" action="{{ route('konfirmasiPembayaran.store') }}" method="POST" enctype="multipart/form-data">
+            <form id="formPembayaran" class="forms-sample" action="{{ route('pembayaran.store') }}" method="POST" enctype="multipart/form-data">
               @csrf
               <input type="radio" id="transferBank" name="metodePembayaran" value="transfer">
               <label for="transferBank">Transfer Bank</label><br>
