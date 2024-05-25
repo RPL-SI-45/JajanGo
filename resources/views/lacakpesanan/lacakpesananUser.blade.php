@@ -109,15 +109,17 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="status-container">
-                      <div class="status-item purple">
+                    @foreach($lacakpesanan as $lacak)
+                      <div class="status-item {{ $lacak->statusPelacakan == 'pesanan diterima' ? 'purple' : '' }}">
                         <p class="status-text">Makanan telah diterima penjual</p>
                       </div>
-                      <div class="status-item">
+                      <div class="status-item {{ $lacak->statusPelacakan == 'makanan sedang dibuat' ? 'purple' : '' }}">
                         <p class="status-text">Makanan sedang dibuat</p>
                       </div>
-                      <div class="status-item">
+                      <div class="status-item {{ $lacak->statusPelacakan == 'makanan siap diambil' ? 'purple' : '' }}">
                         <p class="status-text">Makanan siap diambil</p>
                       </div>
+                    @endforeach
                     </div>
                   </div>
                 </div>
