@@ -115,7 +115,7 @@
                 <span class="availability-status online"></span>
               </div>
               <div class="nav-profile-text">
-                <p class="mb-1 text-black">Grey S.H</p>
+                <p class="mb-1 text-black">Grey S.M</p>
               </div>
             </a>
           </li>
