@@ -9,6 +9,7 @@ use App\Http\Controllers\konfirmasiPembayaranController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\menuuserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\RekomendasiMakananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +21,11 @@ use App\Http\Controllers\CartController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// Route::get('/', function () {
-//     return view('daftarmenu.index');
-// });
-//home(user)
-Route::get('/',[DaftarpedagangController::class,'index']);
-Route::get('/daftarpedagang',[DaftarpedagangController::class,'index']);
 
-//kelola daftar menu(pedagang)
+Route::get('/', [DaftarpedagangController::class, 'index']);
+Route::get('/daftarpedagang', [DaftarpedagangController::class, 'index']);
+
+// Kelola daftar menu (pedagang)
 Route::get('/pedagang/daftarmenu', [daftarmenuController::class, 'index'])->name('menu.index');
 Route::get('/pedagang/daftarmenu/create', [daftarmenuController::class, 'create'])->name('menu.create');
 Route::post('/pedagang/daftarmenu/store', [daftarmenuController::class, 'store'])->name('menu.store');
@@ -35,13 +33,12 @@ Route::get('/menu/{id}/edit', [daftarmenuController::class, 'edit'])->name('menu
 Route::put('/menu/{id}', [daftarmenuController::class, 'update'])->name('menu.update');
 Route::delete('/menu/{id}', [daftarmenuController::class, 'destroy'])->name('menu.destroy');
 
-//detail pesanan(user)
+// Detail pesanan (user)
 Route::get('/detailpesanan', function(){
     return view('detailpesanan.index');
 });
 
-//pembayaran(user)
-// Route::get('/pesanan',[PesananController::class,'index']);
+// Pembayaran (user)
 Route::get('/pembayaran', function(){
     return view('pembayaran.index');
 });
@@ -60,3 +57,7 @@ Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
+
+// Rekomendasi makanan
+Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'])->name('rekomendasiMakanan.index');
+Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
