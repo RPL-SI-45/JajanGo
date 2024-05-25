@@ -105,14 +105,23 @@
                     <div class="row">
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
+                                @foreach($lacakpesanan as $lacak)
                                 <div class="card-body">
                                     <div class="status-container">
-                                        <select class="form-control dropdown">
-                                            <option>Makanan sedang dibuat</option>
-                                            <option>Makanan siap diambil</option>
-                                        </select>
+                                        <form action="{{ route('lacakpesanan.updateStatus') }}" class="form-control" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="idPelacakan" value="{{ $lacak->idPelacakan }}">
+                                            <select class="dropdown" name="status">
+                                                <option value="pesanan diterima"{{ $lacak->statusPelacakan == 'pesanan diterima' ? 'selected' : '' }}>Pesanan diterima</option>
+                                                <option value="makanan sedang dibuat"{{ $lacak->statusPelacakan == 'makanan sedang dibuat' ? 'selected' : '' }}>Makanan sedang dibuat</option>
+                                                <option value="makanan siap diambil"{{ $lacak->statusPelacakan == 'makanan siap diambil' ? 'selected' : '' }}>Makanan siap diambil</option>
+                                            </select>
+                                            <button type="submit" class="btn btn-primary">Ubah Status</button>
+                                        </form>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

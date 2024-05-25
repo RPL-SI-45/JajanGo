@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('lacakpesanan', function (Blueprint $table) {
             $table->unsignedBigInteger('idPesanan');
             $table->unsignedBigInteger('idPelacakan');
-            $table->enum('statusPelacakan', ['makanan telah diterima penjual', 'makanan sedang dibuat', 'makanan siap diambil']);
+            $table->string('statusPelacakan');
         });
     }
 

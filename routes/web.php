@@ -49,6 +49,13 @@ Route::get('/konfirmasiPembayaranCash', function(){
 
 //menu(user)
 Route::get('/menu',[daftarmenuController::class,'menuuser']);
+// Route::get('/menu',[menuuserController::class,'index']);
+
+//lacakPesanan
+Route::get('/lacakpesanan/lacakpesananUser', [LacakpesananUserController::class, 'index']);
+Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController::class, 'index'])->name('lacakpesananPedagang');
+Route::put('/lacakpesanan/updateStatus', [LacakpesananPedagangController::class, 'updateStatus'])->name('lacakpesanan.updateStatus');
+// Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController::class, 'lacakpesananPedagang'])->name('lacakpesananPedagang');
 
 //keranjang
 

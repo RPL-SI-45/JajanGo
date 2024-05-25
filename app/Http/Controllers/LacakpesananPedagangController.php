@@ -12,9 +12,20 @@ class LacakpesananPedagangController extends Controller
     $lacakpesanan = LacakpesananPedagang::all();
     return view('lacakpesanan.lacakpesananPedagang', compact('lacakpesanan'));
 }
-    public function lacakpesananPedagang()
-{
-    return view('lacakpesanan.lacakpesananPedagang');
+//     public function lacakpesananPedagang()
+// {
+//     return view('lacakpesanan.lacakpesananPedagang');
+// }
+
+    public function updateStatus(Request $request)
+    {
+        $lacakpesanan = LacakpesananPedagang::find($request->idPelacakan);
+
+        $lacakpesanan->update([
+            'statusPelacakan' => $request->status
+        ]);
+        return redirect()->back();
+    }
 }
-}
+
 
