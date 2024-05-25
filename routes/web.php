@@ -33,10 +33,9 @@ Route::get('/menu/{id}/edit', [daftarmenuController::class, 'edit'])->name('menu
 Route::put('/menu/{id}', [daftarmenuController::class, 'update'])->name('menu.update');
 Route::delete('/menu/{id}', [daftarmenuController::class, 'destroy'])->name('menu.destroy');
 
-// Detail pesanan (user)
-Route::get('/detailpesanan', function(){
-    return view('detailpesanan.index');
-});
+//detail pesanan(user)
+Route::get('/detailpesanan', [PesananController::class, 'index'])->name('detailpesanan.index');
+
 
 // Pembayaran (user)
 Route::get('/pembayaran', function(){
@@ -61,3 +60,4 @@ Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('ca
 // Rekomendasi makanan
 Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'])->name('rekomendasiMakanan.index');
 Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
+
