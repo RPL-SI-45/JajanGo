@@ -115,7 +115,7 @@
                 <span class="availability-status online"></span>
               </div>
               <div class="nav-profile-text">
-                <p class="mb-1 text-black">Christine</p>
+                <p class="mb-1 text-black">Grey S.M</p>
               </div>
             </a>
           </li>
@@ -138,7 +138,7 @@
                 <!--change to offline or busy as needed-->
               </div>
               <div class="nav-profile-text d-flex flex-column">
-                <span class="font-weight-bold mb-2">Christine N.L</span>
+                <span class="font-weight-bold mb-2">Grey S.M</span>
                 <span class="text-secondary text-small">Pedagang</span>
               </div>
               <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
