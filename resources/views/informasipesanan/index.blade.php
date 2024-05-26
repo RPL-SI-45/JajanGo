@@ -188,16 +188,17 @@
           </div>
           <div>
           <div>
+          <div class="card card-custom">
+            <p class="font-weight-bold">Menu :</p>
             @foreach($cartItems as $i)
-                <p class="font-weight-bold">Menu :</p>
-                <p>{{$i->menu->namaMenu}} x {{$i->quantity}}</p>
-                <p class="font-weight-bold">@ {{$i->menu->harga}}</p>
-                <br>
-                <!-- <div class="date">{{$i->tanggalPesanan}}</div> -->
-              </div>
-              @endforeach
-              <hr>
-                <h4>Total : {{$total}}</h4>
+              <p>{{$i->menu->namaMenu}} x {{$i->quantity}}</p>
+              <p class="font-weight-bold">Rp.{{$i->menu->harga}}</p>
+              <br>
+            @endforeach
+            <hr>
+            <h5>Total : Rp.{{$total}}</h5>
+          </div>
+            </div>
             </div>
           </div>
           </div>
