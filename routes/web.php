@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\InformasiPesanan;
+use App\Http\Controllers\InformasiPesananController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\DaftarpedagangController;
@@ -68,3 +70,6 @@ Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('ca
 Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'])->name('rekomendasiMakanan.index');
 Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
 
+//informasi pesanan (pedagang)
+Route::get('/',[InformasiPesananController::class,'index']);
+Route::get('/informasipesanan',[InformasiPesananController::class,'index']);
