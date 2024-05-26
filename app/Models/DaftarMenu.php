@@ -8,7 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class DaftarMenu extends Model
 {
     use HasFactory;
+    
     protected $table = 'menu';
-    protected $fillable = ['namaMenu', 'harga', 'deskripsiMenu', 'kategoriMenu', 'gambarMenu'];
+    
+    protected $fillable = [
+        'namaMenu', 
+        'harga', 
+        'deskripsiMenu', 
+        'kategoriMenu', 
+        'gambarMenu', 
+        'is_recommended' // tambahkan ini
+    ];
+
     protected $guarded = ['id'];
 }

@@ -47,7 +47,6 @@
                 <i class="mdi mdi-power"></i>
               </a>
             </li>
-
           </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
@@ -88,7 +87,7 @@
               <div class="col-md-6 grid-margin stretch-card">
                 <div class="card" style="align-items: center">
                   <div class="card-body" style="width: min-content; align-content:center">
-                    <h3 class="mb-3" style="text-align: center" > List Daftar Menu </h3>
+                    <h3 class="mb-3" style="text-align: center">List Daftar Menu</h3>
                     <a href="/pedagang/daftarmenu/create" class="btn btn-light mb-3">Tambah Menu</a>
                     @foreach ($daftarmenu as $d)
                     <div class="card mb-2" style="width: 15rem; align-items: center; background-color: #F6F5F2">
@@ -110,8 +109,19 @@
                           <form action="{{  route('menu.destroy', $d->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-gradient-danger btn-rounded btn-fw">Hapus</button>
-                        </form>
+                            <button type="submit" class="btn btn-gradient-danger btn-rounded btn-fw mb-3">Hapus</button>
+                          </form>
+                          <form action="{{ route('menu.toggleRecommendation', $d->id) }}" method="post">
+                              @csrf
+                              <button type="submit" class="btn btn-gradient-info btn-rounded btn-fw mb-3">
+                                  {{ $d->recommended ? 'Unrecommend' : 'Recommend' }}
+                              </button>
+                          </form>
+                          <form action="{{ route('menu.toggleRecommendation', $d->id) }}" method="post">
+                              @csrf
+                              @method('delete')
+                              <button type="submit" class="btn btn-gradient-danger btn-rounded btn-fw mb-3">Remove Recommendation</button>
+                          </form>
                         </div>
                       </div>
                       @endforeach
@@ -145,6 +155,7 @@
                       </table> --}}
                   </div>
                 </div>
+              </div>
             </div>
           </div>
           <!-- content-wrapper ends -->

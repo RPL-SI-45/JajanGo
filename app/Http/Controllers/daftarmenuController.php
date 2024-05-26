@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DaftarMenu;
 
-class daftarmenuController extends Controller
+class DaftarmenuController extends Controller
 {
     public function index(){
         $daftarmenu = DaftarMenu::all();
@@ -39,6 +39,7 @@ class daftarmenuController extends Controller
 
         return redirect()->route('menu.create')->with('success', 'Menu berhasil ditambahkan!');
     }
+
     public function edit($id)
     {
         $daftarmenu = DaftarMenu::findOrFail($id);
@@ -64,7 +65,7 @@ class daftarmenuController extends Controller
         if ($request->hasFile('gambarMenu')) {
             $gambarMenuName = time() . '.' . $request->gambarMenu->extension();
             $request->gambarMenu->move(public_path('images'), $gambarMenuName);
-            $menu->gambarMenu = $gambarMenuName;
+            $daftarmenu->gambarMenu = $gambarMenuName;
         }
 
         $daftarmenu->save();
@@ -79,6 +80,39 @@ class daftarmenuController extends Controller
     }
 
     public function menuuser(){
-        
+        $daftarmenu = DaftarMenu::all();
+        return view('menuuser.index', compact('daftarmenu'));
     }
+
+    public function recommend()
+    {
+        // $menu = DaftarMenu::findOrFail($id);
+        // $menu->is_recommended = true;
+        // $menu->save();
+
+        // return redirect()->route('menu.index')->with('success', 'Menu berhasil ditandai sebagai rekomendasi.');
+        $recommendedMenus = DaftarMenu::where('is_recommended', true)->get();
+
+        return view('rekomendasimakanan.index', ['recommendedMenus' => $recommendedMenus]);
+
+    }
+
+    public function toggleRecommendation($id)
+    {
+    $menu = DaftarMenu::find($id);
+    $menu->is_recommended = !$menu->is_recommended;
+    $menu->save();
+
+    return redirect()->back()->with('success', 'Recommendation status updated successfully');
+    }
+
+    public function removeRecommendation($id)
+    {
+    $menu = DaftarMenu::find($id);
+    $menu->is_recommended = false;
+    $menu->save();
+
+    return redirect()->back()->with('success', 'Menu removed from recommendations');
+    }
+
 }

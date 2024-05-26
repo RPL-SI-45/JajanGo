@@ -10,27 +10,19 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\menuuserController;
 use App\Http\Controllers\RekomendasiMakananController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', [DaftarpedagangController::class, 'index']);
 Route::get('/daftarpedagang', [DaftarpedagangController::class, 'index']);
 
 // Kelola daftar menu (pedagang)
 Route::get('/pedagang/daftarmenu', [daftarmenuController::class, 'index'])->name('menu.index');
 Route::get('/pedagang/daftarmenu/create', [daftarmenuController::class, 'create'])->name('menu.create');
-Route::post('/pedagang/daftarmenu/store', [daftarmenuController::class, 'store'])->name('menu.store');
+Route::post('/c/store', [daftarmenuController::class, 'store'])->name('menu.store');
 Route::get('/menu/{id}/edit', [daftarmenuController::class, 'edit'])->name('menu.edit');
 Route::put('/menu/{id}', [daftarmenuController::class, 'update'])->name('menu.update');
 Route::delete('/menu/{id}', [daftarmenuController::class, 'destroy'])->name('menu.destroy');
+
+// Tambahkan rute untuk rekomendasi menu
+Route::post('/menu/{id}/recommend', [daftarmenuController::class, 'recommend'])->name('menu.recommend');
 
 // Detail pesanan (user)
 Route::get('/detailpesanan', function(){
@@ -48,8 +40,10 @@ Route::get('/konfirmasiPembayaranCash', function(){
 });
 
 // Menu (user)
-Route::get('/menu', [menuuserController::class, 'index'])->name('menuuser.index');
+Route::get('/menu', [daftarmenuController::class, 'menuuser'])->name('menuuser.index');
 
 // Rekomendasi makanan
-Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'])->name('rekomendasiMakanan.index');
-Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
+Route::get('/rekomendasi-makanan', [daftarmenuController::class, 'recommend'])->name('rekomendasiMakanan.index');
+Route::post('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'toggleRecommendation'])->name('menu.toggleRecommendation');
+Route::delete('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'removeRecommendation'])->name('menu.removeRecommendation');
+
