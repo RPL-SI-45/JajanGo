@@ -109,7 +109,7 @@
                     @csrf
                     @method('put')
                 <div class="edit-image-container">
-                    <img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="gambarToko" class="centered-image" id="profileImage">
+                    <img src="{{ asset('gambarToko/' . $profilpedagang->gambarToko) }}" alt="gambarToko" class="centered-image" id="profileImage">
                     <input type="file" name="gambarToko" accept="image/*" class="d-none" id="imageUpload">
                     <label for="imageUpload" class="edit-icon mdi mdi-pencil"></label>
                 </div>
