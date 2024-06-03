@@ -131,7 +131,7 @@
                     <input type="text" class="form-control todo-list-input" name="deskripsiToko" placeholder="Masukkan Deskripsi Toko" value="{{ old('deskripsiToko', $profilpedagang->deskripsiToko) }}">
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group text-center">
                     <button type="submit" class="btn btn-gradient-primary me-2">Save</button>
                 </div>
                 </div>
