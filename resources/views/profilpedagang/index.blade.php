@@ -42,8 +42,7 @@
         display: none;
     }
     /* Responsif */
-    @media 
-    (max-width: 767px) {
+    @media (max-width: 767px) {
         .centered-image-container {
             width: 100%;
         }
@@ -53,6 +52,7 @@
         }
         .edit-icon {
             right: calc(44% - 15px); /* Setengah dari lebar ikon */
+            bottom: 5px;
         }
     }
   </style>
@@ -102,7 +102,7 @@
           <div class="page-header">
             <h3 class="page-title"> Edit Profil </h3>
           </div>
-          <div class="col-md-5 grid-margin stretch-card">
+          <div class="card card-custom">
             <div class="card">
                 <div class="card-body">
                 <form action='/profilpedagang/{{$profilpedagang->id}}/update' method="post" enctype="multipart/form-data">
