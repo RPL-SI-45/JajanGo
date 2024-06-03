@@ -69,7 +69,7 @@ class ProfilPedagangController extends Controller
 
         if ($request->hasFile('gambarToko')) {
             $gambarToko = time() . '.' . $request->gambarToko->extension();
-            $request->gambarToko->move(public_path('gambar'), $gambarToko);
+            $request->gambarToko->move(public_path('gambarToko'), $gambarToko);
         }
 
         $profilpedagang->update([
