@@ -35,11 +35,25 @@
         cursor: pointer;
     }
     .edit-icon i {
-        font-size: 18px;
+        font-size: 15px;
         color: black;
     }
     .d-none {
         display: none;
+    }
+    /* Responsif */
+    @media 
+    (max-width: 767px) {
+        .centered-image-container {
+            width: 100%;
+        }
+        .centered-image {
+            width: 100px;
+            height: 100px;
+        }
+        .edit-icon {
+            right: calc(44% - 15px); /* Setengah dari lebar ikon */
+        }
     }
   </style>
 </head>
@@ -111,7 +125,6 @@
                     <input type="text" class="form-control todo-list-input" name="alamatToko" placeholder="Masukkan Alamat Toko" value="{{ old('alamatToko', $profilpedagang->alamatToko) }}">
                     </div>
                 </div>
-                
                 <div class="form-group">
                     <h4 class="card-title text-black">Deskripsi Toko</h4>
                     <div class="add-items d-flex">
@@ -119,7 +132,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                <button type="submit" class="btn btn-gradient-primary me-2">Save</button>
+                    <button type="submit" class="btn btn-gradient-primary me-2">Save</button>
                 </div>
                 </div>
                 </form>
@@ -149,3 +162,4 @@
   </script>
 </body>
 </html>
+"
