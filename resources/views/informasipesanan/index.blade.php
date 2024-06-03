@@ -192,11 +192,11 @@
             <p class="font-weight-bold">Menu :</p>
             @foreach($cartItems as $i)
               <p>{{$i->menu->namaMenu}} x {{$i->quantity}}</p>
-              <p class="font-weight-bold">Rp.{{$i->menu->harga}}</p>
+              <p class="font-weight-bold">Rp. {{$i->menu->harga}}</p>
               <br>
             @endforeach
             <hr>
-            <h5>Total : Rp.{{$total}}</h5>
+            <h5>Total : Rp. {{$total}}</h5>
           </div>
             </div>
             </div>

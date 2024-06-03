@@ -12,7 +12,7 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\menuuserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\RekomendasiMakananController;
-
+use App\Http\Controllers\ProfilPedagangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,5 +71,7 @@ Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'
 Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
 
 //informasi pesanan (pedagang)
-// Route::get('/',[InformasiPesananController::class,'index']);
 Route::get('/informasipesanan',[InformasiPesananController::class,'index']);
+
+//profil pedagang
+Route::get('/profilpedagang', [ProfilPedagangController::class, 'show']);
