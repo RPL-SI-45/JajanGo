@@ -29,13 +29,13 @@ class ProfilPedagangController extends Controller
         ]);
 
         $gambarToko = time() . '.' . $request->gambarToko->extension();
-        $request->gambarToko->move(public_path('gambar'), $gambarToko);
+        $request->gambarToko->move(public_path('gambarToko'), $gambarToko);
 
         ProfilPedagang::create([
             'namaToko' => $request->namaToko,
             'alamatToko' => $request->alamatToko,
             'deskripsiToko' => $request->deskripsiToko,
-            'gambarToko' => $gambarToko,
+            'gambarToko' => $request->gambarToko,
         ]);
 
         return redirect()->route('profilpedagang.index')
