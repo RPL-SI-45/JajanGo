@@ -57,7 +57,7 @@ class ProfilPedagangController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $attributes= $request->validate([
             'namaToko' => 'required',
             'alamatToko' => 'required',
             'deskripsiToko' => 'required',
@@ -73,9 +73,9 @@ class ProfilPedagangController extends Controller
         }
 
         $profilpedagang->update([
-            'namaToko' => $request->namaToko,
-            'alamatToko' => $request->alamatToko,
-            'deskripsiToko' => $request->deskripsiToko,
+            'namaToko' => $attributes['namaToko'],
+            'alamatToko' => $attributes['alamatToko'],
+            'deskripsiToko' => $attributes['deskripsiToko'],
             'gambarToko' => $gambarToko,
         ]);
 

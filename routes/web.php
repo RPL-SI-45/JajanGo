@@ -75,3 +75,4 @@ Route::get('/informasipesanan',[InformasiPesananController::class,'index']);
 
 //profil pedagang
 Route::get('/profilpedagang', [ProfilPedagangController::class, 'show']);
+Route::put('/profilpedagang/{id}/update', [ProfilPedagangController::class, 'update'])->name('profilpedagang.update');

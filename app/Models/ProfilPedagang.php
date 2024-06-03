@@ -18,4 +18,3 @@ class ProfilPedagang extends Model
         'gambarToko'
     ];
 }
-
