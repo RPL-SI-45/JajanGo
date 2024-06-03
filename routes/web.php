@@ -10,6 +10,7 @@ use App\Http\Controllers\LacakpesananUserController;
 use App\Http\Controllers\LacakpesananPedagangController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\menuuserController;
+use App\Http\Controllers\riwayatPesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +67,8 @@ Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController
 Route::put('/lacakpesanan/updateStatus', [LacakpesananPedagangController::class, 'updateStatus'])->name('lacakpesanan.updateStatus');
 // Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController::class, 'lacakpesananPedagang'])->name('lacakpesananPedagang');
 
+
+Route::get('/riwayatPesanan', [riwayatPesananController::class, 'index'])->name('riwayatPesanan.index');
 
 
 
