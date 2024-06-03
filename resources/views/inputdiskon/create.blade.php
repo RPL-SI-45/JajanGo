@@ -25,8 +25,10 @@
         <!-- partial:../../partials/_navbar.html -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.svg" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
+                <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.svg"
+                        alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="../../index.html"><img
+                        src="../../assets/images/logo-mini.svg" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -34,7 +36,8 @@
                 </button>
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-profile dropdown">
-                        <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" id="profileDropdown" href="#"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="nav-profile-img">
                                 <img src="../../assets/images/faces/face1.jpg" alt="image">
                                 <span class="availability-status online"></span>
@@ -62,7 +65,8 @@
                         </a>
                     </li>
                 </ul>
-                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
                     <span class="mdi mdi-menu"></span>
                 </button>
             </div>
@@ -81,7 +85,6 @@
                             </div>
                             <div class="nav-profile-text d-flex flex-column">
                                 <span class="font-weight-bold mb-2">Antonio Ro Rizki</span>
-                                <span class="text-secondary text-small">User Silver</span>
                             </div>
                             <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
                         </a>
@@ -120,71 +123,43 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="page-header">
-                        <h3 class="page-title"> Detail Pesanan </h3>
+                        <h3 class="page-title"> Buat Kode Promo </h3>
                     </div>
                     <div class="row">
-    <div class="col-md-6 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Nama Pedagang</h4>
-                <p class="card-description"> Mohon untuk check kembali pesanan kamu </p>
-                <form id="checkoutForm" action="/pembayaran" method="GET">
-                    @foreach($pesanan as $i)
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Nama Pesanan</label>
-                        <div class="col-sm-9">
-                            <p id="namaPesanan">{{ $i->nama_menu }}</p>
+                        <div class="col-md-6 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Kode Promo</h4>
+                                    <p class="card-description"> Buat Kode Promo Toko Anda </p>
+                                    <form class="forms-sample" action="/inputdiskon/daftardiskon" method="POST">
+                                    @csrf
+                                    <form class="forms-sample">
+                                        <div class="form-group row">
+                                            <label for="kodeKupon" class="col-sm-3 col-form-label">Kode Promo</label>
+                                            <div class="col-sm-9">
+                                                <input dusk="kodeKupon" type="text" class="form-control" id="kodeKupon" name='kodeKupon'
+                                                    placeholder="Input Kode Promo (Hanya berupa huruf)">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="persentasediskon" class="col-sm-3 col-form-label">Persentase Diskon</label>
+                                            <div class="col-sm-9">
+                                                <input dusk="persentasediskon" type="number" class="form-control" id="persentasediskon" name='persentasediskon'
+                                                    placeholder="input Persentase Diskon">
+                                            </div>
+                                        </div>
+                                        <button dusk="submit" type="submit" class="btn btn-gradient-primary me-2">Tambahkan Kode Promo</button>
+                                        <button type="reset" class="btn btn-light">Cancel</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Jumlah</label>
-                        <div class="col-sm-9">
-                            <p id="jumlahPesanan">{{ $i->jumlah }}</p>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Catatan</label>
-                        <div class="col-sm-9">
-                            <p id="catatanPesanan">{{ $i->catatan }}</p>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Total Harga</label>
-                        <div class="col-sm-9">
-                            <p id="totalHarga">Rp {{ number_format($i->harga, 2, ',', '.') }}</p>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Diskon (%)</label>
-                        <div class="col-sm-9">
-                            <p id="diskon">{{ $i->diskon }}%</p>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Harga Setelah Diskon</label>
-                        <div class="col-sm-9">
-                            <p id="hargaSetelahDiskon">Rp {{ number_format($i->harga_setelah_diskon, 2, ',', '.') }}</p>
-                        </div>
-                    </div>
-                    @endforeach
-                    <div class="form-check form-check-flat form-check-primary">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" required> Apakah pesanan kamu sudah benar?
-                        </label>
-                    </div>
-                    <button type="submit" id="submitButton" class="btn btn-gradient-primary me-2">Pesan Sekarang</button>
-                    <button type="reset" class="btn btn-light">Cancel</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+                </div>
+
                 <!-- content-wrapper ends -->
                 <!-- partial:../../partials/_footer.html -->
                 <footer class="footer">
-                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2021</span>
-                    </div>
                 </footer>
                 <!-- partial -->
             </div>
@@ -202,9 +177,10 @@
     <script src="../../assets/js/off-canvas.js"></script>
     <script src="../../assets/js/hoverable-collapse.js"></script>
     <script src="../../assets/js/misc.js"></script>
-    <script src="../../assets/js/settings.js"></script>
-    <script src="../../assets/js/todolist.js"></script>
     <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/file-upload.js"></script>
+    <!-- End custom js for this page -->
 </body>
 
 </html>

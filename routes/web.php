@@ -8,6 +8,8 @@ use App\Http\Controllers\PesananController;
 use App\Http\Controllers\konfirmasiPembayaranController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\menuuserController;
+use App\Http\Controllers\DiskonController;
+use App\Http\Controllers\DaftarDiskonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +39,6 @@ Route::delete('/menu/{id}', [daftarmenuController::class, 'destroy'])->name('men
 //detail pesanan(user)
 Route::get('/detailpesanan', [PesananController::class, 'index'])->name('detailpesanan.index');
 
-
 //pembayaran(user)
 // Route::get('/pesanan',[PesananController::class,'index']);
 Route::get('/pembayaran', function(){
@@ -52,4 +53,10 @@ Route::get('/konfirmasiPembayaranCash', function(){
 //menu(user)
 Route::get('/menu',[menuuserController::class,'index']);
 
+//kupon diskon(pedagang)
+Route::get('/inputdiskon/create', [DiskonController::class, 'index'])->name('coupons.create');
+Route::post('/inputdiskon/daftardiskon', [DiskonController::class, 'create'])->name('coupons.create');
 
+//daftar diskon
+Route::get('/inputdiskon/daftardiskon', [DaftarDiskonController::class, 'index'])->name('daftardiskon.index');
+Route::post('/inputdiskon1/daftardiskon', [DaftarDiskonController::class, 'store'])->name('daftardiskon.store');
