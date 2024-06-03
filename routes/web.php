@@ -74,5 +74,6 @@ Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store
 Route::get('/informasipesanan',[InformasiPesananController::class,'index']);
 
 //profil pedagang
-Route::get('/profilpedagang', [ProfilPedagangController::class, 'show']);
+Route::get('/profilpedagang', [ProfilPedagangController::class, 'show'])->name('profilpedagang.index');
+Route::get('/profilpedagang/{id}/edit', [ProfilPedagangController::class, 'edit'])->name('profilpedagang.edit');
 Route::put('/profilpedagang/{id}/update', [ProfilPedagangController::class, 'update'])->name('profilpedagang.update');

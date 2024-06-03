@@ -102,20 +102,20 @@
                 <div class="form-group">
                     <h4 class="card-title text-black">Nama Toko</h4>
                     <div class="add-items d-flex">
-                    <input type="text" class="form-control todo-list-input" placeholder="Masukkan Nama Toko" value="{{$profilpedagang->namaToko}}">
+                    <input type="text" class="form-control todo-list-input" name="namaToko" placeholder="Masukkan Nama Toko" value="{{ old('namaToko', $profilpedagang->namaToko) }}">
                     </div>
                 </div>
                 <div class="form-group">
                     <h4 class="card-title text-black">Alamat Toko</h4>
                     <div class="add-items d-flex">
-                    <input type="text" class="form-control todo-list-input" placeholder="Masukkan Alamat Toko" value="{{$profilpedagang->alamatToko}}">
+                    <input type="text" class="form-control todo-list-input" name="alamatToko" placeholder="Masukkan Alamat Toko" value="{{ old('alamatToko', $profilpedagang->alamatToko) }}">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <h4 class="card-title text-black">Deskripsi Toko</h4>
                     <div class="add-items d-flex">
-                    <input type="text" class="form-control todo-list-input" placeholder="Masukkan Deskripsi Toko" value="{{$profilpedagang->deskripsiToko}}">
+                    <input type="text" class="form-control todo-list-input" name="deskripsiToko" placeholder="Masukkan Deskripsi Toko" value="{{ old('deskripsiToko', $profilpedagang->deskripsiToko) }}">
                     </div>
                 </div>
                 <div class="form-group">

@@ -44,7 +44,7 @@ class ProfilPedagangController extends Controller
 
     public function show()
     {
-        $profilpedagang = ProfilPedagang::where('namaToko', 'abc')->first();
+        $profilpedagang = ProfilPedagang::where('id', '1')->first();
         return view('profilpedagang.index', ['profilpedagang' => $profilpedagang]);
     }
     
@@ -53,7 +53,7 @@ class ProfilPedagangController extends Controller
     {
         $profilpedagang = ProfilPedagang::find($id);
         return view('profilpedagang.edit', compact('profilpedagang'));
-    }
+    }    
 
     public function update(Request $request, $id)
     {
