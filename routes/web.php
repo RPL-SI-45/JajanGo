@@ -1,16 +1,18 @@
 <?php
 
+use App\Http\Controllers\InformasiPesanan;
+use App\Http\Controllers\InformasiPesananController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\DaftarpedagangController;
 use App\Http\Controllers\daftarmenuController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\konfirmasiPembayaranController;
-use App\Http\Controllers\LacakpesananUserController;
-use App\Http\Controllers\LacakpesananPedagangController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\menuuserController;
 use App\Http\Controllers\riwayatPesananController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\RekomendasiMakananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,14 +24,11 @@ use App\Http\Controllers\riwayatPesananController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// Route::get('/', function () {
-//     return view('daftarmenu.index');
-// });
-//home(user)
-Route::get('/',[DaftarpedagangController::class,'index']);
-Route::get('/daftarpedagang',[DaftarpedagangController::class,'index']);
 
-//kelola daftar menu(pedagang)
+Route::get('/', [DaftarpedagangController::class, 'index']);
+Route::get('/daftarpedagang', [DaftarpedagangController::class, 'index']);
+
+// Kelola daftar menu (pedagang)
 Route::get('/pedagang/daftarmenu', [daftarmenuController::class, 'index'])->name('menu.index');
 Route::get('/pedagang/daftarmenu/create', [daftarmenuController::class, 'create'])->name('menu.create');
 Route::post('/pedagang/daftarmenu/store', [daftarmenuController::class, 'store'])->name('menu.store');
@@ -38,28 +37,22 @@ Route::put('/menu/{id}', [daftarmenuController::class, 'update'])->name('menu.up
 Route::delete('/menu/{id}', [daftarmenuController::class, 'destroy'])->name('menu.destroy');
 
 //detail pesanan(user)
-Route::get('/detailpesanan', function(){
-    return view('detailpesanan.index');
-});
+Route::get('/detailpesanan', [PesananController::class, 'index'])->name('detailpesanan.index');
 
-//pembayaran(user)
-// Route::get('/pesanan',[PesananController::class,'index']);
+
+// Pembayaran (user)
 Route::get('/pembayaran', function(){
     return view('pembayaran.index');
 });
 Route::get('/konfirmasipembayaran', [konfirmasiPembayaranController::class, 'index']);
 Route::post('/konfirmasipembayaran/store', [konfirmasiPembayaranController::class, 'store'])->name('pembayaran.store');
 Route::get('/konfirmasiPembayaranCash', function(){
-    return view('pembayaran/konfirmasiPembayaranCash');
+    return view('pembayaran.konfirmasiPembayaranCash');
 });
-Route::post('/konfirmasi-pembayaran', [KonfirmasiPembayaranController::class, 'store'])->name('konfirmasiPembayaran.store');
-
-Route::get('/pembayaran/konfirmasiPembayaranCash', [KonfirmasiPembayaranController::class, 'konfirmasiPembayaranCash'])->name('pembayaran.konfirmasiPembayaranCash');
-Route::post('/pembayaran/konfirmasiPembayaran', [KonfirmasiPembayaranController::class, 'store'])->name('pembayaran.store');
-
 
 //menu(user)
-Route::get('/menu',[menuuserController::class,'index']);
+Route::get('/menu',[daftarmenuController::class,'menuuser']);
+// Route::get('/menu',[menuuserController::class,'index']);
 
 //lacakPesanan
 Route::get('/lacakpesanan/lacakpesananUser', [LacakpesananUserController::class, 'index']);
@@ -67,8 +60,19 @@ Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController
 Route::put('/lacakpesanan/updateStatus', [LacakpesananPedagangController::class, 'updateStatus'])->name('lacakpesanan.updateStatus');
 // Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController::class, 'lacakpesananPedagang'])->name('lacakpesananPedagang');
 
+//keranjang
 
 Route::get('/riwayatPesanan', [riwayatPesananController::class, 'index'])->name('riwayatPesanan.index');
 
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
+Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
+// Rekomendasi makanan
+Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'])->name('rekomendasiMakanan.index');
+Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
 
+//informasi pesanan (pedagang)
+Route::get('/',[InformasiPesananController::class,'index']);
+Route::get('/informasipesanan',[InformasiPesananController::class,'index']);
