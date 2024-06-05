@@ -11,7 +11,7 @@ class PembayaranController extends Controller
         $pembayaran = Pembayaran::all();
         return view('pembayaran.index', ['pembayaran' => $pembayaran]);
     }
-    
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([

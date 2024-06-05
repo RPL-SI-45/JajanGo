@@ -13,6 +13,9 @@ use App\Http\Controllers\menuuserController;
 use App\Http\Controllers\riwayatPesananController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\RekomendasiMakananController;
+use App\Http\Controllers\LacakpesananPedagangController;
+use App\Http\Controllers\LacakpesananUserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +27,7 @@ use App\Http\Controllers\RekomendasiMakananController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//home
 Route::get('/', [DaftarpedagangController::class, 'index']);
 Route::get('/daftarpedagang', [DaftarpedagangController::class, 'index']);
 
@@ -74,5 +77,5 @@ Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'
 Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
 
 //informasi pesanan (pedagang)
-Route::get('/',[InformasiPesananController::class,'index']);
+// Route::get('/',[InformasiPesananController::class,'index']);
 Route::get('/informasipesanan',[InformasiPesananController::class,'index']);
