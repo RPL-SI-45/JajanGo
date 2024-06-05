@@ -190,9 +190,9 @@
           <div>
           <div class="card card-custom">
             <p class="font-weight-bold">Menu :</p>
-            @foreach($cartItems as $i)
-              <p>{{$i->menu->namaMenu}} x {{$i->quantity}}</p>
-              <p class="font-weight-bold">Rp. {{$i->menu->harga}}</p>
+            @foreach($pesanan as $i)
+              <p>{{$i->nama_menu}} x {{$i->jumlah}}</p>
+              <p class="font-weight-bold">Rp. {{$i->nama_menu->harga}}</p>
               <br>
             @endforeach
             <hr>
