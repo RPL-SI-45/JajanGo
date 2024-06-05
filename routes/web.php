@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\DaftarpedagangController;
 use App\Http\Controllers\daftarmenuController;
@@ -10,6 +11,8 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\menuuserController;
 use App\Http\Controllers\DiskonController;
 use App\Http\Controllers\DaftarDiskonController;
+=======
+>>>>>>> 82e8271 (Framework)
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +24,7 @@ use App\Http\Controllers\DaftarDiskonController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+<<<<<<< HEAD
 // Route::get('/', function () {
 //     return view('daftarmenu.index');
 // });
@@ -60,3 +64,13 @@ Route::post('/inputdiskon/daftardiskon', [DiskonController::class, 'create'])->n
 //daftar diskon
 Route::get('/inputdiskon/daftardiskon', [DaftarDiskonController::class, 'index'])->name('daftardiskon.index');
 Route::post('/inputdiskon1/daftardiskon', [DaftarDiskonController::class, 'store'])->name('daftardiskon.store');
+=======
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/coba', function(){
+    return view('coba');
+});
+>>>>>>> 82e8271 (Framework)
