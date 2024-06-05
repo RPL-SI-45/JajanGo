@@ -77,4 +77,10 @@ class daftarmenuController extends Controller
         $daftarmenu->delete();
         return redirect()->route('menu.index')->with('success', 'Menu berhasil dihapus!');
     }
+
+    public function menuuser(){
+        $menuuser = DaftarMenu::all();
+        return view('menuuser.index', compact('menuuser'));
+    }
+
 }

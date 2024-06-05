@@ -276,6 +276,10 @@
                     <div class="card-body">
                         <p>Terimakasih telah melakukan pemesanan. Silahkan tunggu pesanan anda!</p>
                     </div>
+                    <form class="forms-sample">
+                      <a href="/pembayaran" class="btn btn-gradient-primary me-2">Kembali</a><br>
+                      <a href="/lacakpesanan/lacakpesananUser" class="btn btn-gradient-primary mt-2">Lacak Pesanan</a>
+                    </form>
                   </div>
                     <form class="forms-sample">
                     </form>
