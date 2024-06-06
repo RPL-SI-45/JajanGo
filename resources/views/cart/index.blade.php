@@ -115,7 +115,7 @@
                         <h4>Total Harga: {{ $total }}</h4>
                     @endif
                     <div style="text-align: center" class="mt-4">
-                        <a href="/pembayaran" class="btn btn-primary btn-sm">Lanjut ke pembayaran</a>
+                        <a href="/checkout" class="btn btn-primary btn-sm">Lanjut ke pembayaran</a>
                     </div>
                 </div>
             </div>

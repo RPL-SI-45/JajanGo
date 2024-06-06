@@ -79,3 +79,10 @@ Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store
 //informasi pesanan (pedagang)
 // Route::get('/',[InformasiPesananController::class,'index']);
 Route::get('/informasipesanan',[InformasiPesananController::class,'index']);
+
+//TESTING UNTUK PEMBAYARAN BARU
+Route::get('/checkout', [PembayaranController::class, 'showCheckout'])->name('checkout');
+Route::post('/payment/cash', [PembayaranController::class, 'payCash'])->name('payment.cash');
+Route::get('/payment/confirmation', [PembayaranController::class, 'showCashConfirmation'])->name('payment.cash.confirmation');
+Route::get('/payment/upload', [PembayaranController::class, 'showUploadForm'])->name('payment.upload');
+Route::post('/payment/upload', [PembayaranController::class, 'uploadProof'])->name('payment.upload.submit');

@@ -1,3 +1,21 @@
+{{-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+</head>
+<body>
+    <h1>Checkout</h1>
+    <p>Total belanja: {{ $total}}</p>
+
+    <form action="{{ route('payment.cash') }}" method="POST">
+        @csrf
+        <button type="submit">Bayar Cash</button>
+    </form>
+
+    <a href="{{ route('payment.upload') }}">Upload Bukti Pembayaran</a>
+</body>
+</html> --}}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -267,34 +285,26 @@
         </nav>
         <!-- partial -->
         <div class="main-panel">
-          <div class="content-wrapper">
-            <div class="row">
-              <div class="col-md-6 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                  <div class="card">
-                        <h3 style="text-align: center">Terimakasih telah melakukan pemesanan.</h3>
-                        <p class="text-info" style="text-align: center">*Note: Siapkan uang pas untuk memudahkan dalam transaksi ke pedagang!</p>
-                    <form class="forms-sample" style="text-align: center">
-                      <a href="/" class="btn btn-gradient-primary me-2" >Kembali ke home</a><br>
-                      <a href="/lacakpesanan/lacakpesananUser" class="btn btn-gradient-primary mt-2">Lacak Pesanan</a>
-                    </form>
-                  </div>
-                    <form class="forms-sample">
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body" style="text-align: center">
+            <h1>Checkout</h1>
+            <p>Total belanja: {{ $total}}</p>
+            <form action="{{ route('payment.cash') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-gradient-primary me-2">Bayar Cash</button>
+            </form>
+            <a href="{{ route('payment.upload') }}" class="btn btn-gradient-primary mt-2">Upload Bukti Pembayaran</a>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
-          <footer class="footer">
-            <div class="container-fluid d-flex justify-content-between">
-              <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © bootstrapdash.com 2021</span>
-              <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin template</a> from Bootstrapdash.com</span>
-            </div>
-          </footer>
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
@@ -315,5 +325,17 @@
     <!-- Custom js for this page -->
     <script src="../../assets/js/file-upload.js"></script>
     <!-- End custom js for this page -->
+    <script>
+document.getElementById('buktiPembayaran').addEventListener('change', function() {
+    // Cek apakah ada file yang dipilih
+    if (this.files.length > 0) {
+        document.getElementById('submitBtn').disabled = false; // Aktifkan tombol submit
+    } else {
+        document.getElementById('submitBtn').disabled = true; // Nonaktifkan tombol submit
+    }
+});
+    </script>
   </body>
 </html>
+
+
