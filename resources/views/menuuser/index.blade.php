@@ -243,7 +243,7 @@
                 </div>
                 <h3 class="mb-3 text-center">List Daftar Menu</h3>
                 <div class="row">
-                    @foreach ($menuuser as $menu)
+                    @foreach ($daftarmenu as $menu)
                         <div class="col-md-4 grid-margin stretch-card">
                             <div class="card card-custom">
                                 <div class="card-body">
