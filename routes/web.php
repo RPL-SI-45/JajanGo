@@ -46,7 +46,8 @@ Route::get('/konfirmasiPembayaranCash', function(){
 });
 
 //menu(user)
-Route::get('/menu',[daftarmenuController::class,'menuuser']);
+Route::get('/menu', [daftarmenuController::class, 'menuuser'])->name('menuuser.index');
+// Route::get('/menu',[daftarmenuController::class,'menuuser']);
 // Route::get('/menu',[menuuserController::class,'index']);
 
 //lacakPesanan
@@ -67,10 +68,8 @@ Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'
 Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
 
 //informasi pesanan (pedagang)
-Route::get('/',[InformasiPesananController::class,'index']);
+// Route::get('/',[InformasiPesananController::class,'index']);
 Route::get('/informasipesanan',[InformasiPesananController::class,'index']);
-// Menu (user)
-Route::get('/menu', [daftarmenuController::class, 'menuuser'])->name('menuuser.index');
 
 // Rekomendasi makanan
 Route::get('/rekomendasi-makanan', [daftarmenuController::class, 'recommend'])->name('rekomendasiMakanan.index');

@@ -91,6 +91,9 @@
             </button>
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item nav-profile dropdown">
+                    <a href="/cart" class="mdi mdi-cart-outline nav-link"></a>
+                </li>
+                <li class="nav-item nav-profile dropdown">
                     <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="nav-profile-img">
                             <img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="image">
@@ -145,6 +148,11 @@
                 </div>
                 <h3 class="mb-3 text-center">Rekomendasi Makanan</h3>
                 <div class="row">
+                    @if (session('success'))
+                    <div class="alert alert-success" style="text-align: center">
+                        {{ session('success') }}
+                    </div>
+                    @endif
                     @foreach ($recommendedMenus as $menu)
                         <div class="col-md-4 grid-margin stretch-card">
                             <div class="card card-custom">
@@ -163,7 +171,13 @@
                                     <p class="text-center">Kategori: {{ $menu->kategoriMenu }}</p>
                                     <div class="text-center">
                                         <button type="button" class="btn btn-gradient-primary btn-rounded btn-fw mb-2">Beli</button>
-                                        <button type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-2 mdi mdi-cart">Tambah ke Keranjang</button>
+                                        {{-- <button type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-2 mdi mdi-cart">Tambah ke Keranjang</button> --}}
+                                        <form action="{{ route('cart.add') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="menu_id" value="{{ $menu->id }}">
+                                            <input type="hidden" name="quantity" value="1"> <!-- Default quantity -->
+                                            <button type="submit" class="btn btn-gradient-success btn-rounded btn-fw mb-2 mdi mdi-cart">Tambah ke Keranjang</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
