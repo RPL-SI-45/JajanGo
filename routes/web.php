@@ -32,7 +32,7 @@ Route::get('/daftarpedagang', [DaftarpedagangController::class, 'index']);
 // Kelola daftar menu (pedagang)
 Route::get('/pedagang/daftarmenu', [daftarmenuController::class, 'index'])->name('menu.index');
 Route::get('/pedagang/daftarmenu/create', [daftarmenuController::class, 'create'])->name('menu.create');
-Route::post('/pedagang/daftarmenu/store', [daftarmenuController::class, 'store'])->name('menu.store');
+Route::post('/c/store', [daftarmenuController::class, 'store'])->name('menu.store');
 Route::get('/menu/{id}/edit', [daftarmenuController::class, 'edit'])->name('menu.edit');
 Route::put('/menu/{id}', [daftarmenuController::class, 'update'])->name('menu.update');
 Route::delete('/menu/{id}', [daftarmenuController::class, 'destroy'])->name('menu.destroy');
@@ -56,10 +56,20 @@ Route::get('/konfirmasiPembayaranCash', function(){
 //menu(user)
 Route::get('/menu',[daftarmenuController::class,'menuuser']);
 // Route::get('/menu',[menuuserController::class,'index']);
+// Menu (user)
+Route::get('/menu', [daftarmenuController::class, 'menuuser'])->name('menuuser.index');
+
+// Rekomendasi makanan
+Route::get('/rekomendasi-makanan', [daftarmenuController::class, 'recommend'])->name('rekomendasiMakanan.index');
+Route::post('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'toggleRecommendation'])->name('menu.toggleRecommendation');
+Route::delete('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'removeRecommendation'])->name('menu.removeRecommendation');
+
+// Daftar Promo
+Route::get('/diskon/daftarpromo', [DaftarDiskonController::class, 'showpromo'])->name('promo.index');
 
 //kupon diskon(pedagang)
-Route::get('/inputdiskon/create', [DiskonController::class, 'index'])->name('coupons.create');
-Route::post('/inputdiskon/daftardiskon', [DiskonController::class, 'create'])->name('coupons.create');
+Route::get('/diskon/create', [DiskonController::class, 'index'])->name('index.coupons.create');
+Route::post('/diskon/create/perform', [DiskonController::class, 'create'])->name('coupons.create.perform');
 
 //daftar diskon
 Route::get('/inputdiskon/daftardiskon', [DaftarDiskonController::class, 'index'])->name('daftardiskon.index');
@@ -84,3 +94,8 @@ Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store
 //informasi pesanan (pedagang)
 Route::get('/',[InformasiPesananController::class,'index']);
 Route::get('/informasipesanan',[InformasiPesananController::class,'index']);
+Route::get('/diskon/daftardiskon', [DaftarDiskonController::class, 'index'])->name('daftardiskon.index');
+Route::get('/diskon/daftardiskon1', [DaftarDiskonController::class, 'store'])->name('daftardiskon.store');
+Route::delete('/diskon/hapusdaftardiskon/{id}', [DaftarDiskonController::class, 'destroy'])->name('daftardiskon.delete');
+Route::get('/diskon/{id}/edit', [DaftarDiskonController::class, 'edit'])->name('daftardiskon.edit');
+Route::put('/diskon/{id}/perform', [DaftarDiskonController::class, 'update'])->name('daftardiskon.perform');

@@ -85,6 +85,7 @@
                             </div>
                             <div class="nav-profile-text d-flex flex-column">
                                 <span class="font-weight-bold mb-2">Antonio Ro Rizki</span>
+                                <span class="text-secondary text-small">Pedagang</span>
                             </div>
                             <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
                         </a>
@@ -106,17 +107,6 @@
                             <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                         </a>
                     </li>
-                    <li class="nav-item sidebar-actions">
-                        <span class="nav-link">
-                            <div class="border-bottom">
-                                <h6 class="font-weight-normal mb-3">Pesanan</h6>
-                            </div>
-                            <button class="btn btn-block btn-lg btn-gradient-primary mt-4">+ Tambah Pesanan</button>
-                            <div class="mt-4">
-                                <div class="border-bottom">
-                                </div>
-                        </span>
-                    </li>
                 </ul>
             </nav>
             <!-- partial -->
@@ -131,25 +121,39 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Kode Promo</h4>
                                     <p class="card-description"> Buat Kode Promo Toko Anda </p>
-                                    <form class="forms-sample" action="/inputdiskon/daftardiskon" method="POST">
+                                    <form class="forms-sample" action="/diskon/{{ $diskon->id }}/perform" method="POST">
                                     @csrf
-                                    <form class="forms-sample">
+                                    @method('PUT')
+                                <form class="forms-sample">
+                                    <div class="form-group row">
+                                            <label for="kodeKupon" class="col-sm-3 col-form-label">Kode Promo</label>
+                                            <div class="col-sm-9">
+                                                <input dusk="kodeKupon" type="text" class="form-control" id="kodeKupon" name='kodeKupon'
+                                                    value="{{ $diskon->namaMenu }}"disabled>
+                                            </div>
+                                        </div>
                                         <div class="form-group row">
                                             <label for="kodeKupon" class="col-sm-3 col-form-label">Kode Promo</label>
                                             <div class="col-sm-9">
                                                 <input dusk="kodeKupon" type="text" class="form-control" id="kodeKupon" name='kodeKupon'
-                                                    placeholder="Input Kode Promo (Hanya berupa huruf)">
+                                                value="{{ $diskon->kodeKupon }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="persentasediskon" class="col-sm-3 col-form-label">Persentase Diskon</label>
+                                            <label for="persentaseDiskon" class="col-sm-3 col-form-label">Persentase Diskon</label>
                                             <div class="col-sm-9">
-                                                <input dusk="persentasediskon" type="number" class="form-control" id="persentasediskon" name='persentasediskon'
-                                                    placeholder="input Persentase Diskon">
+                                                <input dusk="persentaseDiskon" type="number" class="form-control" id="persentaseDiskon" name='persentaseDiskon'
+                                                value="{{ $diskon->persentaseDiskon }}">
                                             </div>
                                         </div>
                                         <button dusk="submit" type="submit" class="btn btn-gradient-primary me-2">Tambahkan Kode Promo</button>
                                         <button type="reset" class="btn btn-light">Cancel</button>
+                                        @if(session('success'))
+                                            <div class="alert alert-success mt-2">
+                                                {{ session('success') }}
+                                            </div>
+
+                                        @endif
                                     </form>
                                 </div>
                             </div>
