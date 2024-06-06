@@ -71,7 +71,7 @@ Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'
 Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
 
 //informasi pesanan (pedagang)
-Route::get('/informasipesanan',[InformasiPesananController::class,'index']);
+Route::get('/informasipesanan',[InformasiPesananController::class,'index'])->name('pesanan.index');
 
 //profil pedagang
 Route::get('/profilpedagang', [ProfilPedagangController::class, 'show'])->name('profilpedagang.index');
