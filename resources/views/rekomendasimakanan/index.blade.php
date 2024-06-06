@@ -140,7 +140,7 @@
             <div class="content-wrapper">
                 <div class="row mb-4">
                     <div class="col-12 text-center">
-                        <a href="{{ route('menu.index') }}" class="btn btn-gradient-primary btn-rounded btn-fw">Lihat Daftar Menu</a>
+                        <a href="{{ route('menuuser.index') }}" class="btn btn-gradient-primary btn-rounded btn-fw">Lihat Daftar Menu</a>
                     </div>
                 </div>
                 <h3 class="mb-3 text-center">Rekomendasi Makanan</h3>
