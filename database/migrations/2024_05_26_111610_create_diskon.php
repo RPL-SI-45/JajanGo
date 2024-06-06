@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('diskon', function (Blueprint $table) {
+        Schema::create('pesanan', function (Blueprint $table) {
             $table->id();
-            $table->string('kodeKupon');
-            $table->integer('persentaseDiskon');
+            $table->string('nama_menu');
+            $table->integer('jumlah');
+            $table->text('catatan')->nullable();
+            $table->date('tanggal_pesanan');
+            $table->decimal('harga'); 
+
             $table->timestamps();
         });
     }
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('diskon');
+        Schema::dropIfExists('pesanan');
     }
 };

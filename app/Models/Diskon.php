@@ -10,6 +10,11 @@ class Diskon extends Model
     use HasFactory;
 
     protected $table = 'diskon';
-    protected $fillable = ['kodeKupon', 'persentaseDiskon'];
+    protected $fillable = ['kodeKupon', 'persentaseDiskon','namaMenu'];
+    
+    public function daftarMenu()
+    {
+        return $this->belongsTo(DaftarMenu::class, 'namaMenu', 'namaMenu');
+    }
 
 }

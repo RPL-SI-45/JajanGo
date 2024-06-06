@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>JajanGo</title>
+    <title>Riwayat Daftar Diskon</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
@@ -85,6 +85,7 @@
                             </div>
                             <div class="nav-profile-text d-flex flex-column">
                                 <span class="font-weight-bold mb-2">Antonio Ro Rizki</span>
+                                <span class="text-secondary text-small">Pedagang</span>
                             </div>
                             <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
                         </a>
@@ -108,13 +109,6 @@
                     </li>
                     <li class="nav-item sidebar-actions">
                         <span class="nav-link">
-                            <div class="border-bottom">
-                                <h6 class="font-weight-normal mb-3">Pesanan</h6>
-                            </div>
-                            <button class="btn btn-block btn-lg btn-gradient-primary mt-4">+ Tambah Pesanan</button>
-                            <div class="mt-4">
-                                <div class="border-bottom">
-                                </div>
                         </span>
                     </li>
                 </ul>
@@ -130,12 +124,13 @@
                         <div class="col-md-12 col-lg-6 mb-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Kode Promo</h4>
-                                    <p class="card-description"> Riwayat Kode Promo Toko Anda </p>
-                                    <form class="forms-sample" action="/inputdiskon/create" method="GET">
+                                    <h4 class="card-title">{{ $i->namaMenu }}</h4>
+                                    <p class="card-description"> Riwayat Kode Promo Toko Anda </p>                                    
+                                    
+                                    
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Kode Promo</label>
-                                            <div class="col-sm-9">
+                                            <div class="col-sm-7">
                                                 <p id="kodeKupon">{{ $i->kodeKupon }}</p>
                                             </div>
                                         </div>
@@ -145,6 +140,14 @@
                                                 <p id="persentaseDiskon">{{ $i->persentaseDiskon }}</p>
                                             </div>
                                         </div>
+                                        <form class="forms-sample" action="/diskon/{{ $i->id }}/edit" method="GET">
+                                        <button type="submit" class="btn btn-primary">Edit</button>
+                                        </form>
+
+                                        <form class="forms-sample" action="/diskon/hapusdaftardiskon/{{ $i->id }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Hapus</button>
                                     </form>
                                 </div>
                             </div>
