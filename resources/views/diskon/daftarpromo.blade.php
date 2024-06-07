@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>JajanGO</title>
+    <title>Daftar Promo</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('assets/vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
@@ -91,9 +91,6 @@
             </button>
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item nav-profile dropdown">
-                    <a href="/cart" class="mdi mdi-cart-outline nav-link"></a>
-                </li>
-                <li class="nav-item nav-profile dropdown">
                     <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="nav-profile-img">
                             <img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="image">
@@ -123,7 +120,6 @@
                         <div class="nav-profile-image">
                             <img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="profile">
                             <span class="login-status online"></span>
-                            <!--change to offline or busy as needed-->
                         </div>
                         <div class="nav-profile-text d-flex flex-column">
                             <span class="font-weight-bold mb-2">David Grey. H</span>
@@ -134,7 +130,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <span class="menu-title">List Daftar Menu</span>
+                        <span class="menu-title">Daftar Promo</span>
                         <i class="mdi mdi-food menu-icon"></i>
                     </a>
                 </li>
@@ -144,54 +140,53 @@
             <div class="content-wrapper">
                 <div class="row mb-4">
                     <div class="col-12 text-center">
-                        <a href="{{ route('rekomendasiMakanan.index') }}" class="btn btn-gradient-primary btn-rounded btn-fw">Lihat Rekomendasi Makanan</a>
+                        <a href="{{ route('menu.index') }}" class="btn btn-gradient-primary btn-rounded btn-fw">Lihat Daftar Menu</a>
                     </div>
                 </div>
-                <h3 class="mb-3 text-center">List Daftar Menu</h3>
+                <h3 class="mb-3 text-center">Daftar Promo</h3>
                 <div class="row">
-                    @if (session('success'))
-                    <div class="alert alert-success" style="text-align: center">
-                        {{ session('success') }}
-                    </div>
-                    @endif
-                    @foreach ($daftarmenu as $menu)
+                    @foreach ($diskon as $menu)
                         <div class="col-md-4 grid-margin stretch-card">
                             <div class="card card-custom">
                                 <div class="card-body">
                                     <h4 class="text-center">{{ $menu->namaMenu }}</h4>
                                     <div class="text-center">
-                                        @if($menu->gambarMenu)
-                                            <img src="{{ asset('images/' . $menu->gambarMenu) }}" alt="" class="img-fluid mb-3">
-                                        @else
-                                            <img src="{{ asset('images/dummy-image.png') }}" alt="dummy" class="img-fluid mb-3">
-                                            <p class="text-center">Tidak ada foto</p>
-                                        @endif
-                                    </div>
-                                    <p class="text-center">{{ $menu->deskripsiMenu }}</p>
-                                    <p class="text-center">Harga: {{ $menu->harga }}</p>
-                                    <p class="text-center">Kategori: {{ $menu->kategoriMenu }}</p>
-                                    <div class="text-center">
-                                        <button type="button" class="btn btn-gradient-primary btn-rounded btn-fw mb-2">Beli</button>
-                                        {{-- <button type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-2 mdi mdi-cart">Tambah ke Keranjang</button> --}}
-                                        <form action="{{ route('cart.add') }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="menu_id" value="{{ $menu->id }}">
-                                            <input type="hidden" name="quantity" value="1"> <!-- Default quantity -->
-                                            <button type="submit" class="btn btn-gradient-success btn-rounded btn-fw mb-2 mdi mdi-cart">Tambah ke Keranjang</button>
-                                        </form>
-                                    </div>
+            
+                                            @if ($menu->daftarMenu)
+                                                <img src="{{ asset('images/' . $menu->daftarMenu->gambarMenu) }}" alt="" class="img-fluid mb-3">
+                                            @else
+                                                <p class="text-center">Gambar tidak tersedia</p>
+                                                
+                                            @endif
+
+                                            @php
+                                            $harga = $menu->daftarMenu->harga;
+                                            $persentaseDiskon = $menu->persentaseDiskon / 100;
+                                            $hargaDiskon = $harga - ($harga * $persentaseDiskon);
+                                            @endphp
+
+                                            <p class="text-center">Harga Setelah Diskon: {{ number_format($hargaDiskon, 2) }}</p>
+                                     
+                                            </div>
+                                            <p class="text-center">{{ $menu->deskripsiMenu }}</p>
+                                            <p class="text-center">Harga: {{ $menu->daftarMenu->harga }}</p>
+                                            <p class="text-center">Kategori: {{ $menu->daftarMenu->kategoriMenu }}</p>
+
+                                        
+                                               
+                                                    <p class="text-center">Kode Kupon: {{ $menu->kodeKupon }}</p>
+                                                    <p class="text-center">Diskon: {{ $menu->persentaseDiskon }}%</p>
+                                     
+
+                                            <div class="text-center">
+                                                <button type="button" class="btn btn-gradient-primary btn-rounded btn-fw mb-2">Beli</button>
+                                                <button type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-2 mdi mdi-cart">Tambah ke Keranjang</button>
+                                            </div>
+                                            
                                 </div>
                             </div>
                         </div>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item" style="background-color: #F6F5F2; text-align:center">Harga : {{  $d->harga  }}</li>
-                          <li class="list-group-item" style="background-color: #F6F5F2">Kategori : {{  $d->kategoriMenu  }}</li>
-                        </ul>
-                        <button type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-4">Beli</button>
-                        <button type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-4 mdi mdi-cart">Tambah ke Keranjang</button>
-                      </div>
-                      @endforeach
-                  </div>
+                    @endforeach
                 </div>
             </div>
             <footer class="footer">

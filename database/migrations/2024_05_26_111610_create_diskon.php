@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('jumlah');
             $table->text('catatan')->nullable();
             $table->date('tanggal_pesanan');
-            $table->decimal('harga', 15, 2);
+            $table->decimal('harga'); 
 
             $table->timestamps();
         });
