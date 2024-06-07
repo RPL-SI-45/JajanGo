@@ -3,83 +3,51 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProfilPedagang;
+use App\Models\Pedagang;
 use Illuminate\Http\Request;
 use App\Models\User;
 
 class ProfilPedagangController extends Controller
 {
-    public function index()
+    // Method untuk menampilkan profil pedagang
+    public function show($id)
     {
-        $profilpedagang = ProfilPedagang::paginate(10);
-        return view('profilpedagang.index', compact('profilpedagang'));
+        $pedagang = Pedagang::findOrFail($id);
+        return view('profilpedagang.index', compact('pedagang'));
     }
 
-    public function create()
-    {
-        return view('profilpedagang.create');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'namaToko' => 'required',
-            'alamatToko' => 'required',
-            'deskripsiToko' => 'required',
-            'gambarToko' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        $gambarToko = time() . '.' . $request->gambarToko->extension();
-        $request->gambarToko->move(public_path('gambarToko'), $gambarToko);
-
-        ProfilPedagang::create([
-            'namaToko' => $request->namaToko,
-            'alamatToko' => $request->alamatToko,
-            'deskripsiToko' => $request->deskripsiToko,
-            'gambarToko' => $request->gambarToko,
-        ]);
-
-        return redirect()->route('profilpedagang.index')
-            ->with('success', 'Profil Pedagang telah dibuat.');
-    }
-
-    public function show()
-    {
-        $profilpedagang = ProfilPedagang::where('id', '1')->first();
-        return view('profilpedagang.index', ['profilpedagang' => $profilpedagang]);
-    }
-    
-
+    // Method untuk menampilkan form edit profil pedagang
     public function edit($id)
     {
-        $profilpedagang = ProfilPedagang::find($id);
-        return view('profilpedagang.edit', compact('profilpedagang'));
-    }    
+        $pedagang = Pedagang::findOrFail($id);
+        return view('profilpedagang.edit', compact('pedagang'));
+    }
 
+    // Method untuk menyimpan perubahan profil pedagang
     public function update(Request $request, $id)
     {
-        $attributes= $request->validate([
-            'namaToko' => 'required',
-            'alamatToko' => 'required',
-            'deskripsiToko' => 'required',
-            'gambarToko' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        $request->validate([
+            'nama_toko' => 'required|string|max:255',
+            'alamat_toko' => 'required|string|max:255',
+            'no_telepon_pedagang' => 'required|string|max:255|unique:pedagang,no_telepon_pedagang,' . $id,
+            'username_pedagang' => 'required|string|max:255|unique:pedagang,username_pedagang,' . $id,
+            'password' => 'nullable|string|min:8|confirmed',
+            'deskripsi_toko' => 'nullable|string',
         ]);
 
-        $profilpedagang = ProfilPedagang::find($id);
-        $gambarToko = $profilpedagang->gambarToko;
+        $pedagang = Pedagang::findOrFail($id);
+        $pedagang->nama_toko = $request->nama_toko;
+        $pedagang->alamat_toko = $request->alamat_toko;
+        $pedagang->no_telepon_pedagang = $request->no_telepon_pedagang;
+        $pedagang->username_pedagang = $request->username_pedagang;
 
-        if ($request->hasFile('gambarToko')) {
-            $gambarToko = time() . '.' . $request->gambarToko->extension();
-            $request->gambarToko->move(public_path('gambarToko'), $gambarToko);
+        if ($request->filled('password')) {
+            $pedagang->password = bcrypt($request->password);
         }
 
-        $profilpedagang->update([
-            'namaToko' => $attributes['namaToko'],
-            'alamatToko' => $attributes['alamatToko'],
-            'deskripsiToko' => $attributes['deskripsiToko'],
-            'gambarToko' => $gambarToko,
-        ]);
+        $pedagang->deskripsi_toko = $request->deskripsi_toko;
+        $pedagang->save();
 
-        return redirect()->route('profilpedagang.index')
-            ->with('success', 'Profil Pedagang telah diubah.');
+        return redirect()->route('pedagang.show', $pedagang->id)->with('success', 'Profil berhasil diperbarui');
     }
 }

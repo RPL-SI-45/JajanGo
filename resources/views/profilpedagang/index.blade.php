@@ -59,26 +59,31 @@
 </head>
 <body>
   <div class="container-scroller">
-    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="#"><img src="{{ asset('assets/images/logo-mini.svg') }}" alt="logo" /></a>
-        <a class="navbar-brand brand-logo-mini" href="#"><img src="{{ asset('assets/images/logo-mini.svg') }}" alt="logo" /></a>
-      </div>
-      <div class="navbar-menu-wrapper d-flex align-items-stretch">
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-          <span class="mdi mdi-menu"></span>
-        </button>
-        <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item nav-profile dropdown">
-            <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-            </a>
-          </li>
-        </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-          <span class="mdi mdi-menu"></span>
-        </button>
-      </div>
-    </nav>
+  <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo" href="#"><img src="../../assets/images/logo-mini.svg" alt="logo" />
+            <span style="color: black; font-weight: bold; font-family: 'Times New Roman', Times, serif; font-size: 25px; margin-left: 10px;">JajanGo</span>
+          </a>
+          <a class="navbar-brand brand-logo-mini" href="#"><img src="../../assets/images/logo-mini.svg" alt="logo" />
+            <span style="color: black; font-weight: bold; font-family: 'Times New Roman', Times, serif; font-size: 10px; margin-left: 10px;">JajanGo</span>
+          </a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          {{-- <input type="text" class="form-control bg-transparent border-0" placeholder="Cari Toko"> --}}
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item nav-profile dropdown">
+              <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+              </a>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
     <div class="container-fluid page-body-wrapper">
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
@@ -89,7 +94,7 @@
                 <span class="login-status online"></span>
               </div>
               <div class="nav-profile-text d-flex flex-column">
-                <span class="font-weight-bold mb-2">David Grey. H</span>
+                <span class="font-weight-bold mb-2">David</span>
                 <span class="text-secondary text-small">Pedagang</span>
               </div>
               <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
@@ -100,44 +105,52 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="page-header">
-            <h3 class="page-title"> Edit Profil </h3>
+            <h3 class="page-title"> Profil Pedagang </h3>
           </div>
           <div class="card card-custom">
             <div class="card">
-                <div class="card-body">
-                <form action='/profilpedagang/{{$profilpedagang->id}}/update' method="post" enctype="multipart/form-data">
-                    @csrf
-                    @method('put')
-                <div class="edit-image-container">
-                    <img src="{{ asset('gambarToko/' . $profilpedagang->gambarToko) }}" alt="gambarToko" class="centered-image" id="profileImage">
-                    <input type="file" name="gambarToko" accept="image/*" class="d-none" id="imageUpload">
-                    <label for="imageUpload" class="edit-icon mdi mdi-pencil"></label>
-                </div>
-                <div class="form-group">
-                    <h4 class="card-title text-black">Nama Toko</h4>
-                    <div class="add-items d-flex">
-                    <input type="text" class="form-control todo-list-input" name="namaToko" placeholder="Masukkan Nama Toko" value="{{ old('namaToko', $profilpedagang->namaToko) }}">
+              <div class="card-body">
+                <div class="container">
+                  @if (session('success'))
+                    <div class="alert alert-success">
+                      {{ session('success') }}
                     </div>
-                </div>
-                <div class="form-group">
-                    <h4 class="card-title text-black">Alamat Toko</h4>
+                  @endif
+                  <div class="form-group">
+                    <h4 class="card-title text-black">Nama Toko: </h4>
                     <div class="add-items d-flex">
-                    <input type="text" class="form-control todo-list-input" name="alamatToko" placeholder="Masukkan Alamat Toko" value="{{ old('alamatToko', $profilpedagang->alamatToko) }}">
+                      <input type="text" class="form-control todo-list-input" value="{{ old('alamatToko', $pedagang->nama_toko) }}" readonly>
                     </div>
-                </div>
-                <div class="form-group">
-                    <h4 class="card-title text-black">Deskripsi Toko</h4>
+                  </div>
+                  <div class="form-group">
+                    <h4 class="card-title text-black">Alamat Toko: </h4>
                     <div class="add-items d-flex">
-                    <input type="text" class="form-control todo-list-input" name="deskripsiToko" placeholder="Masukkan Deskripsi Toko" value="{{ old('deskripsiToko', $profilpedagang->deskripsiToko) }}">
+                      <input type="text" class="form-control todo-list-input" value="{{ old('alamatToko', $pedagang->alamat_toko) }}" readonly>
                     </div>
+                  </div>
+                  <div class="form-group">
+                    <h4 class="card-title text-black">No Telepon Pedagang: </h4>
+                    <div class="add-items d-flex">
+                      <input type="text" class="form-control todo-list" value="{{$pedagang->no_telepon_pedagang}}" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <h4 class="card-title text-black">Username Pedagang: </h4>
+                    <div class="add-items d-flex">
+                      <input type="text" class="form-control todo-list-input" value="{{ old('alamatToko', $pedagang->username_pedagang) }}" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <h4 class="card-title text-black">Deskripsi Toko: </h4>
+                    <div class="add-items d-flex">
+                      <input type="text" class="form-control todo-list-input" value="{{ old('alamatToko', $pedagang->deskripsi_toko) }}" readonly>
+                    </div>
+                  </div>
+                  <a href="{{ route('pedagang.edit', $pedagang->id) }}" class="btn btn-primary">Edit Profil</a>
                 </div>
-                <div class="form-group text-center">
-                    <button type="submit" class="btn btn-gradient-primary me-2">Save</button>
-                </div>
-                </div>
-                </form>
+              </div>
             </div>
-            </div>
+          </div>
           <footer class="footer">
           </footer>
         </div>

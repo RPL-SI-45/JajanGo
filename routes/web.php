@@ -133,8 +133,11 @@ Route::middleware(['role:pedagang'])->group(function () {
     Route::get('/informasipesanan',[InformasiPesananController::class,'index'])->name('pesanan.index');
     Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController::class, 'index'])->name('lacakpesananPedagang');
     Route::put('/lacakpesanan/updateStatus', [LacakpesananPedagangController::class, 'updateStatus'])->name('lacakpesanan.updateStatus');
-    Route::get('/profilpedagang', [ProfilPedagangController::class, 'show'])->name('profilpedagang.index');
-    Route::put('/profilpedagang/{id}/update', [ProfilPedagangController::class, 'update'])->name('profilpedagang.update');
+    // Route::get('/profilpedagang', [ProfilPedagangController::class, 'show'])->name('profilpedagang.index');
+    // Route::put('/profilpedagang/{id}/update', [ProfilPedagangController::class, 'update'])->name('profilpedagang.update');
+    Route::get('/pedagang/{id}', [ProfilPedagangController::class, 'show'])->name('pedagang.show');
+    Route::get('/pedagang/{id}/edit', [ProfilPedagangController::class, 'edit'])->name('pedagang.edit');
+    Route::put('/pedagang/{id}', [ProfilPedagangController::class, 'update'])->name('pedagang.update');
 });
 
 // Rute untuk pembeli
