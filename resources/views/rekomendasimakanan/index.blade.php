@@ -143,7 +143,7 @@
             <div class="content-wrapper">
                 <div class="row mb-4">
                     <div class="col-12 text-center">
-                        <a href="{{ route('menuuser.index') }}" class="btn btn-gradient-primary btn-rounded btn-fw">Lihat Daftar Menu</a>
+                        <a href="/menu" class="btn btn-gradient-primary btn-rounded btn-fw">Lihat Daftar Menu</a>
                     </div>
                 </div>
                 <h3 class="mb-3 text-center">Rekomendasi Makanan</h3>
@@ -153,7 +153,7 @@
                         {{ session('success') }}
                     </div>
                     @endif
-                    @foreach ($recommendedMenus as $menu)
+                    @foreach ($rekomendasiMakanan as $menu)
                         <div class="col-md-4 grid-margin stretch-card">
                             <div class="card card-custom">
                                 <div class="card-body">

@@ -29,19 +29,19 @@
                 <hr>
                 <form method="POST" action="{{ url('register/user') }}">
                     @csrf
-                    <label for="nama_user">Nama</label>
+                    <label for="nama_user">Nama: </label>
                     <input type="text" id="nama_user" name="nama_user" required><br><br>
-                    <label for="nomor_telepon_user">Nomor Telepon</label>
+                    <label for="nomor_telepon_user">Nomor Telepon: </label>
                     <input type="text" id="nomor_telepon_user" name="nomor_telepon_user" required><br><br>
-                    <label for="email">Email:</label>
+                    <label for="email">Email: </label>
                     <input type="email" id="email" name="email" required><br><br>
-                    <label for="username_user">Username</label>
+                    <label for="username_user">Username: </label>
                     <input type="text" id="username_user" name="username_user" required><br><br>
-                    <label for="password">Password:</label>
+                    <label for="password">Password: </label>
                     <input type="password" id="password" name="password" required><br><br>
-                    <label for="password_confirmation">Confirm Password:</label>
+                    <label for="password_confirmation">Confirm Password: </label>
                     <input type="password" id="password_confirmation" name="password_confirmation" required><br><br>
-                    <button type="submit">Register</button>
+                    <button type="submit">Register </button>
                 </form>
                 <a href="{{ route('user.login') }}">Login</a>
               </div>
