@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DaftarMenu;
+use App\Models\Pedagang;
 
 class DaftarmenuController extends Controller
 {
     public function index(){
         $daftarmenu = DaftarMenu::all();
-        return view('daftarmenu.index', compact('daftarmenu'));
+        $pedagang = Pedagang::all();
+        return view('daftarmenu.index', compact('daftarmenu', 'pedagang'));
     }
 
     public function create(){
