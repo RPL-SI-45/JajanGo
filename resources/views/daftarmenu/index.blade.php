@@ -78,6 +78,16 @@
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
+            <li>
+                <form id="logout-form" action="{{ route('logoutpedagang') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <a href="{{ route('logoutpedagang') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+                </form>
+            </li>
           </ul>
         </nav>
         <!-- partial -->

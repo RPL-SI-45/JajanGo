@@ -97,10 +97,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="logout">
-                <span class="menu-title">Keluar</span>
-                <i class="mdi mdi-logout menu-icon"></i>
-              </a>
+                <form id="logout-form" action="{{ route('logoutuser') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <a href="{{ route('logoutuser') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
             </li>
           </ul>
         </nav>
