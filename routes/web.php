@@ -12,6 +12,17 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\menuuserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\RekomendasiMakananController;
+use App\Http\Controllers\ProfilPedagangController;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
 
 Route::get('/', [DaftarpedagangController::class, 'index']);
 Route::get('/daftarpedagang', [DaftarpedagangController::class, 'index']);
@@ -77,3 +88,8 @@ Route::get('/rekomendasi-makanan', [daftarmenuController::class, 'recommend'])->
 Route::post('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'toggleRecommendation'])->name('menu.toggleRecommendation');
 Route::delete('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'removeRecommendation'])->name('menu.removeRecommendation');
 
+Route::get('/informasipesanan',[InformasiPesananController::class,'index'])->name('pesanan.index');
+
+//profil pedagang
+Route::get('/profilpedagang', [ProfilPedagangController::class, 'show'])->name('profilpedagang.index');
+Route::put('/profilpedagang/{id}/update', [ProfilPedagangController::class, 'update'])->name('profilpedagang.update');

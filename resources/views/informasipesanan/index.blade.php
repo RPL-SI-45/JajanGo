@@ -186,19 +186,20 @@
               </span> Informasi Pesanan
             </h3>
           </div>
-          <div class="container-scroller">
-          <div class="col-12">
-            @foreach($informasipesanan as $i)
-            <div class="card card-custom">
-              <img src="takoyaki.jpg" width="50" height="50" class="d-inline-block align-top mb-3" alt="">
-              <div class="content">
-                <h5>{{$i->idPembeli}}</h5>
-                <p>{{$i->namaPesanan}}</p>
-                <div class="price">{{$i->totalHarga}}</div>
-                <div class="date">{{$i->tanggalPesanan}}</div>
-              </div>
-            </div>
+          <div>
+          <div>
+          <div class="card card-custom">
+            <p class="font-weight-bold">Menu :</p>
+            @foreach($pesanan as $i)
+              <p>{{$i->nama_menu}} x {{$i->jumlah}}</p>
+              <p class="font-weight-bold">Rp. {{$i->nama_menu->harga}}</p>
+              <br>
             @endforeach
+            <hr>
+            <h5>Total : Rp. {{$total}}</h5>
+          </div>
+            </div>
+            </div>
           </div>
           </div>
         </div>

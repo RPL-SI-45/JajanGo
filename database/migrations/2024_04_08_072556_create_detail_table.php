@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('pesanan', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_menu');
+            $table->unsignedBigInteger('cart_item_id'); // Foreign key to cart_items table
             $table->integer('jumlah');
             $table->text('catatan')->nullable();
             $table->date('tanggal_pesanan');
-            $table->decimal('harga', 15, 2); // Menggunakan decimal untuk harga, 15 digit total, 2 digit setelah koma
-
+            $table->decimal('harga', 15, 2);
             $table->timestamps();
+
+            // Add foreign key constraint
+            $table->foreign('cart_item_id')->references('id')->on('cart_items')->onDelete('cascade');
         });
     }
 
