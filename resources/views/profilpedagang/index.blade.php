@@ -76,6 +76,13 @@
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="nav-profile-img">
+                  <img src="../../assets/images/faces/face1.jpg" alt="image">
+                  <span class="availability-status online"></span>
+                </div>
+                <div class="nav-profile-text">
+                  <p class="mb-1 text-black">David</p>
+                </div>
               </a>
             </li>
           </ul>
@@ -85,23 +92,58 @@
         </div>
       </nav>
     <div class="container-fluid page-body-wrapper">
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item nav-profile">
-            <a href="#" class="nav-link">
-              <div class="nav-profile-image">
-                <img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="profile">
-                <span class="login-status online"></span>
-              </div>
-              <div class="nav-profile-text d-flex flex-column">
-                <span class="font-weight-bold mb-2">David</span>
-                <span class="text-secondary text-small">Pedagang</span>
-              </div>
-              <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
-            </a>
-          </li>
-        </ul>
-      </nav>
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item nav-profile">
+              <a href="#" class="nav-link">
+                <div class="nav-profile-image">
+                  <img src="../../assets/images/faces/face1.jpg" alt="image">
+                  <span class="login-status online"></span>
+                  <!--change to offline or busy as needed-->
+                </div>
+                <div class="nav-profile-text d-flex flex-column">
+                  <span class="font-weight-bold mb-2">David</span>
+                  <span class="text-secondary text-small">Pedagang</span>
+                </div>
+                <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="daftarmenu">
+                <span class="menu-title">Home</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="id">
+                <span class="menu-title">Profile</span>
+                <i class="mdi mdi-contacts menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">
+                <span class="menu-title">Kode Promo</span>
+                <i class="mdi mdi-ticket-percent menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="informasipesanan">
+                <span class="menu-title">Informasi Pesanan</span>
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <form id="logout-form" action="{{ route('logoutpedagang') }}" method="POST" style="display: none;">
+                @csrf
+              </form>
+              <a class="nav-link" href="{{ route('logoutpedagang') }}" 
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <span class="menu-title">Logout</span>
+                <i class="mdi mdi-logout menu-icon"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="page-header">

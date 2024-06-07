@@ -85,15 +85,21 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">
-                <span class="menu-title">Kode Promo</span>
-                <i class="mdi mdi-ticket-percent menu-icon"></i>
+              <a class="nav-link" href="menu/{id}/edit">
+                <span class="menu-title">Daftar Menu</span>
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="informasipesanan">
                 <span class="menu-title">Informasi Pesanan</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                <i class="mdi mdi-newspaper menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">
+                <span class="menu-title">Kode Promo</span>
+                <i class="mdi mdi-ticket-percent menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
