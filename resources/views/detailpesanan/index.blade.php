@@ -125,7 +125,7 @@
             <p class="card-text">Harga per item: {{ $item->menu->harga }}</p>
             <p class="card-text">Quantity: {{ $item->quantity}}</p>
             <p class="card-text">Total: Rp {{ number_format($item->menu->harga * $item->quantity, 2, ',', '.') }}</p>
-            
+            <p>test</p>
         </div>
     </div>
     @endforeach
