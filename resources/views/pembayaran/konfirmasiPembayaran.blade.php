@@ -272,13 +272,11 @@
       <div class="col-md-6 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <form id="formPembayaran" class="forms-sample" action="{{ route('pembayaran.store') }}" method="POST" enctype="multipart/form-data">
+            <form id="formPembayaran" class="forms-sample" action="{{ route('payment.upload.submit') }}" method="POST" enctype="multipart/form-data">
               @csrf
-              <input type="radio" id="transferBank" name="metodePembayaran" value="transfer">
               <label for="transferBank">Transfer Bank</label><br>
               <p class="card-title">BCA : 284629458 </p>
               <p class="card-title">BNI : 37642839275 </p>
-              <input type="radio" id="qris" name="metodePembayaran" value="qris">
               <label for="qris">QRIS</label><br><br>
               <img src="/contohqr.jpeg" width="200px" height="250px" alt="">
               {{-- <div class="form-group">
@@ -288,10 +286,10 @@
               <div class="form-group">
                 <label for="totalPembayaran">Total Pembayaran</label>
                 <input type="number" class="form-control" id="totalPembayaran" name="totalPembayaran">
-              </div> --}}
+              </div> --}} <br>
               <div class="form-group">
                 <label for="buktiPembayaran">Upload gambar</label>
-                <input type="file" class="form-control" id="buktiPembayaran" name="buktiPembayaran">
+                <input type="file" class="form-control" id="proof" name="proof">
               </div>
               <a href="/pembayaran/konfirmasiPembayaranCash">
                 <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
@@ -305,12 +303,6 @@
 </div>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
-          <footer class="footer">
-            <div class="container-fluid d-flex justify-content-between">
-              <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © bootstrapdash.com 2021</span>
-              <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin template</a> from Bootstrapdash.com</span>
-            </div>
-          </footer>
           <!-- partial -->
         </div>
         <!-- main-panel ends -->

@@ -16,9 +16,21 @@ class CartController extends Controller
             'quantity' => 'required|integer|min:1'
         ]);
 
+        // Ambil informasi menu dari database
+        $menu = DaftarMenu::findOrFail($request->menu_id);
+
+        // Hitung harga item berdasarkan harga menu
+        $price = $menu->harga;
+
+        // Hitung total harga untuk item ini (misalnya, harga x jumlah)
+        $total = $price * $request->quantity;
+
+        // Tambahkan atau update item ke keranjang belanja
         $cartItem = CartItem::updateOrCreate(
             ['menu_id' => $request->menu_id],
-            ['quantity' => \DB::raw('quantity + ' . $request->quantity)]
+            ['quantity' => \DB::raw('quantity + ' . $request->quantity),
+             'price' => $price,
+             'total' => \DB::raw('total + ' . $total)]
         );
 
         return redirect()->back()->with('success', 'Menu added to cart!');
