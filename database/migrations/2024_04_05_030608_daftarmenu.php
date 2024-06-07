@@ -12,12 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('menu', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('namaMenu');
             $table->integer('harga');
             $table->string('deskripsiMenu');
             $table->string('kategoriMenu');
             $table->string('gambarMenu')->nullable();
+            $table->boolean('recommended')->default(false);
             $table->timestamps();
         });
     }

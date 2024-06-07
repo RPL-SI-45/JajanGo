@@ -273,9 +273,12 @@
                 <div class="card">
                   <div class="card-body">
                   <div class="card">
-                    <div class="card-body">
-                        <p>Terimakasih telah melakukan pemesanan. Silahkan tunggu pesanan anda!</p>
-                    </div>
+                        <h3 style="text-align: center">Terimakasih telah melakukan pemesanan.</h3>
+                        <p class="text-info" style="text-align: center">*Note: Siapkan uang pas untuk memudahkan dalam transaksi ke pedagang!</p>
+                    <form class="forms-sample" style="text-align: center">
+                      <a href="/" class="btn btn-gradient-primary me-2" >Kembali ke home</a><br>
+                      <a href="/lacakpesanan/lacakpesananUser" class="btn btn-gradient-primary mt-2">Lacak Pesanan</a>
+                    </form>
                   </div>
                     <form class="forms-sample">
                     </form>

@@ -267,39 +267,42 @@
         </nav>
         <!-- partial -->
         <div class="main-panel">
-          <div class="content-wrapper">
-            <div class="row">
-              <div class="col-md-6 grid-margin stretch-card">
-              <div class="card">
-        <div class="card-body">
-          <form id="formPembayaran" class="forms-sample" action="{{route('pembayaran.store')}}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <input type="radio" id="transferBank" name="metodePembayaran" value="transfer">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <form id="formPembayaran" class="forms-sample" action="{{ route('payment.upload.submit') }}" method="POST" enctype="multipart/form-data">
+              @csrf
               <label for="transferBank">Transfer Bank</label><br>
-                <p class="card-title">BCA : 284629458 </p>
-                <p class="card-title">BNI : 37642839275 </p>
-              <input type="radio" id="qris" name="metodePembayaran" value="qris">
+              <p class="card-title">BCA : 284629458 </p>
+              <p class="card-title">BNI : 37642839275 </p>
               <label for="qris">QRIS</label><br><br>
               <img src="/contohqr.jpeg" width="200px" height="250px" alt="">
-            <div class="form-group"> <br>
-                <label for="gambarmenu">Upload gambar</label>
-                <input type="file" class="form-control" id="gambarMenu" name="gambarMenu">
-            </div>
-                <button type="submit" id="submitBtn" class="btn btn-gradient-primary me-2" disabled>Submit</button>
+              {{-- <div class="form-group">
+                <label for="idPesanan">ID Pesanan</label>
+                <input type="number" class="form-control" id="idPesanan" name="idPesanan">
+              </div>
+              <div class="form-group">
+                <label for="totalPembayaran">Total Pembayaran</label>
+                <input type="number" class="form-control" id="totalPembayaran" name="totalPembayaran">
+              </div> --}} <br>
+              <div class="form-group">
+                <label for="buktiPembayaran">Upload gambar</label>
+                <input type="file" class="form-control" id="proof" name="proof">
+              </div>
+              <a href="/pembayaran/konfirmasiPembayaranCash">
+                <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+              </a>
             </form>
+          </div>
         </div>
       </div>
-              </div>
-            </div>
-          </div>
+    </div>
+  </div>
+</div>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
-          <footer class="footer">
-            <div class="container-fluid d-flex justify-content-between">
-              <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © bootstrapdash.com 2021</span>
-              <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin template</a> from Bootstrapdash.com</span>
-            </div>
-          </footer>
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
@@ -321,14 +324,14 @@
     <script src="../../assets/js/file-upload.js"></script>
     <!-- End custom js for this page -->
     <script>
-    document.getElementById('gambarMenu').addEventListener('change', function() {
-        // Cek apakah ada file yang dipilih
-        if (this.files.length > 0) {
-            document.getElementById('submitBtn').disabled = false; // Aktifkan tombol submit
-        } else {
-            document.getElementById('submitBtn').disabled = true; // Nonaktifkan tombol submit
-        }
-    });
-</script>
+document.getElementById('buktiPembayaran').addEventListener('change', function() {
+    // Cek apakah ada file yang dipilih
+    if (this.files.length > 0) {
+        document.getElementById('submitBtn').disabled = false; // Aktifkan tombol submit
+    } else {
+        document.getElementById('submitBtn').disabled = true; // Nonaktifkan tombol submit
+    }
+});
+    </script>
   </body>
 </html>

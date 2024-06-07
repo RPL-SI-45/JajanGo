@@ -97,10 +97,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="logout">
-                <span class="menu-title">Keluar</span>
-                <i class="mdi mdi-logout menu-icon"></i>
-              </a>
+                <form id="logout-form" action="{{ route('logoutuser') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <a href="{{ route('logoutuser') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
             </li>
           </ul>
         </nav>
@@ -109,18 +112,18 @@
           <div class="content-wrapper">
             <div class="page-header">
               <h3 class="page-title">
-                <span class="page-title-icon bg-gradient-secondary text-white me-2">
+                <span class="page-title-icon bg-gradient-primary text-white me-2">
                   <i class="mdi mdi-home"></i>
                 </span> Selamat Datang, Christine!
               </h3>
             </div>
             <div class="row">
-              <div class="col-md-6 grid-margin stretch-card">
+              <div class="col-md-12 grid-margin stretch-card">
                 <div class="page-header">
                   <div class="card" >
                     <div class="card-body" style="width: min-content">
                   @foreach($daftarpedagang as $d)
-                  <div class="card bg-secondary card-img-holder text-white mb-5">
+                  <div class="card bg-gradient-primary card-img-holder text-white mb-5">
                     <div class="card-body" style="text-align: center">
                       <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
                       <h2 class="card-title" style="text-align: center;"><a href="#" class="text-light">{{$d->namaToko}}</a></h2>
