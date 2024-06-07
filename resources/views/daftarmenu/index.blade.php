@@ -88,6 +88,11 @@
                 </a>
                 </form>
             </li>
+            <li>
+            @foreach ($pedagang as $pedagangItem)
+              <a href="{{ route('pedagang.show', $pedagangItem->id) }}">Profil</a>
+              @endforeach
+            </li>
           </ul>
         </nav>
         <!-- partial -->
