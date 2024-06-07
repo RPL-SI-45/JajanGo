@@ -114,6 +114,10 @@
                         <hr>
                         <h4>Total Harga: {{ $total }}</h4>
                     @endif
+                    <form action="{{ route('transfer-to-pesanan') }}" style="text-align: center" class="mt-4" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Transfer to Pesanan</button>
+                    </form>
                     <div style="text-align: center" class="mt-4">
                         <a href="/pembayaran" class="btn btn-primary btn-sm">Lanjut ke pembayaran</a>
                     </div>

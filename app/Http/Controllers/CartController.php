@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\CartItem;
 use App\Models\DaftarMenu;
+use App\Models\Pesanan;
 
 class CartController extends Controller
 {
@@ -57,5 +58,26 @@ class CartController extends Controller
         $cartItem->delete();
 
         return redirect()->route('cart.index')->with('success', 'Item berhasil dihapus dari keranjang!');
+    }
+
+    public function transferToPesanan()
+    {
+        $cartItems = CartItem::all();
+
+        foreach ($cartItems as $cartItem) {
+            $menu = DaftarMenu::find($cartItem->menu_id);
+
+            if ($menu) {
+                Pesanan::create([
+                    'namaMenu' => $menu->namaMenu,
+                    'quantity' => $cartItem->quantity,
+                ]);
+            }
+        }
+
+        // Optionally, you can clear the cart after transferring the items
+        // CartItem::truncate();
+
+        return redirect()->back()->with('success', 'Items have been transferred to pesanan successfully.');
     }
 }

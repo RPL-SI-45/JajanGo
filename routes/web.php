@@ -62,6 +62,7 @@ Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::post('/transfer-to-pesanan', [CartController::class, 'transferToPesanan'])->name('transfer-to-pesanan');
 
 // Rekomendasi makanan
 Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'])->name('rekomendasiMakanan.index');
