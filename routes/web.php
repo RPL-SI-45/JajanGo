@@ -160,8 +160,9 @@ Route::middleware(['role:pembeli'])->group(function () {
     Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
     Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
     Route::post('/transfer-to-pesanan', [CartController::class, 'transferToPesanan'])->name('transfer-to-pesanan');
-    Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'])->name('rekomendasiMakanan.index');
-    Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
+    // Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'])->name('rekomendasiMakanan.index');
+    // Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
+    Route::get('/rekomendasi-makanan', [daftarmenuController::class, 'recommend'])->name('rekomendasiMakanan.index');
     Route::post('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'toggleRecommendation'])->name('menu.toggleRecommendation');
     Route::delete('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'removeRecommendation'])->name('menu.removeRecommendation');
 });
@@ -172,9 +173,9 @@ Route::get('/menu',[daftarmenuController::class,'menuuser']);
 Route::get('/menu', [daftarmenuController::class, 'menuuser'])->name('menuuser.index');
 
 // Rekomendasi makanan
-Route::get('/rekomendasi-makanan', [daftarmenuController::class, 'recommend'])->name('rekomendasiMakanan.index');
-Route::post('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'toggleRecommendation'])->name('menu.toggleRecommendation');
-Route::delete('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'removeRecommendation'])->name('menu.removeRecommendation');
+// Route::get('/rekomendasi-makanan', [daftarmenuController::class, 'recommend'])->name('rekomendasiMakanan.index');
+// Route::post('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'toggleRecommendation'])->name('menu.toggleRecommendation');
+// Route::delete('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'removeRecommendation'])->name('menu.removeRecommendation');
 
 // Daftar Promo
 Route::get('/diskon/daftarpromo', [DaftarDiskonController::class, 'showpromo'])->name('promo.index');
@@ -202,8 +203,8 @@ Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.u
 Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
 // Rekomendasi makanan
-Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'])->name('rekomendasiMakanan.index');
-Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
+// Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'])->name('rekomendasiMakanan.index');
+// Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
 
 //informasi pesanan (pedagang)
 // Route::get('/',[InformasiPesananController::class,'index']);
