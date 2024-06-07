@@ -85,6 +85,12 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="lacakpesanan/lacakpesananuser">
+                <span class="menu-title">Pelacakan Pesanan</span>
+                <i class="mdi mdi-clock-fast menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="riwayatPesanan">
                 <span class="menu-title">Riwayat Pesanan</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
