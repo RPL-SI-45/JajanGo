@@ -171,7 +171,7 @@
                                     <p class="text-center">Harga: {{ $menu->harga }}</p>
                                     <p class="text-center">Kategori: {{ $menu->kategoriMenu }}</p>
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-gradient-primary btn-rounded btn-fw mb-2">Beli</button>
+                                        {{-- <button type="button" class="btn btn-gradient-primary btn-rounded btn-fw mb-2">Beli</button> --}}
                                         {{-- <button type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-2 mdi mdi-cart">Tambah ke Keranjang</button> --}}
                                         <form action="{{ route('cart.add') }}" method="POST">
                                             @csrf
