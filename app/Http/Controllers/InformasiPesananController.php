@@ -10,12 +10,7 @@ class InformasiPesananController extends Controller
 {
     public function index()
     {
-        $pesanan = Pesanan::with('cartItem')->get();
-        $total = $pesanan->sum(function($item) {
-            return $item->jumlah * $item->cartItem->menu->harga;
-        });
-
-        return view('informasipesanan.index', compact('pesanan', 'total'));
+        $pesanan = Pesanan::all();
+        return view('informasipesanan.index', compact('pesanan'));
     }
-
 }
