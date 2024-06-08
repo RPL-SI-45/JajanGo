@@ -79,7 +79,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{id}">
+              <a class="nav-link" href="1">
                 <span class="menu-title">Profile</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
               </a>
