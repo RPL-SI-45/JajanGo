@@ -87,9 +87,30 @@ class CartController extends Controller
             }
         }
 
-        // Optionally, you can clear the cart after transferring the items
-        // CartItem::truncate();
+        return redirect()->back()->with('success', 'Menu added to cart!');
+    }
 
-        return redirect()->back()->with('success', 'Items have been transferred to pesanan successfully.');
+    public function addToCartFromPromo(Request $request)
+    {
+        $request->validate([
+            'promo_id' => 'required|exists:daftar_promos,id'
+        ]);
+
+        // Dapatkan daftar menu dari promo
+        $promo = DaftarPromo::findOrFail($request->promo_id);
+        $daftarMenu = $promo->daftarMenu()->get();
+
+        // Tambahkan setiap menu dari promo ke keranjang
+        foreach ($daftarMenu as $menu) {
+            // Tambahkan atau update item ke keranjang belanja
+            $cartItem = CartItem::updateOrCreate(
+                ['menu_id' => $menu->id],
+                ['quantity' => \DB::raw('quantity + 1'), // Tambah 1 item untuk setiap menu
+                 'price' => $menu->harga,
+                 'total' => \DB::raw('total + ' . $menu->harga)]
+            );
+        }
+
+        return redirect()->route('cart.index')->with('success', 'Items from promo added to cart!');
     }
 }

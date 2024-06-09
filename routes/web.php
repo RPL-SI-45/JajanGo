@@ -12,6 +12,17 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\menuuserController;
 use App\Http\Controllers\DiskonController;
 use App\Http\Controllers\DaftarDiskonController;
+use App\Http\Controllers\CartController;
+
+Route::post('/logoutuser', function () {
+    Auth::logout();
+    return redirect('/login/user'); // atau arahkan ke halaman login yang sesuai
+})->name('logoutuser');
+
+Route::post('/logoutpedagang', function () {
+    Auth::logout();
+    return redirect('/login/pedagang'); // atau arahkan ke halaman login yang sesuai
+})->name('logoutpedagang');
 
 Route::get('/', [DaftarpedagangController::class, 'index']);
 Route::get('/daftarpedagang', [DaftarpedagangController::class, 'index']);
@@ -23,6 +34,9 @@ Route::post('/c/store', [daftarmenuController::class, 'store'])->name('menu.stor
 Route::get('/menu/{id}/edit', [daftarmenuController::class, 'edit'])->name('menu.edit');
 Route::put('/menu/{id}', [daftarmenuController::class, 'update'])->name('menu.update');
 Route::delete('/menu/{id}', [daftarmenuController::class, 'destroy'])->name('menu.destroy');
+
+//detail pesanan(user)
+Route::get('/detailpesanan', [PesananController::class, 'index'])->name('detailpesanan.index');
 
 // //menu(user)
 // Route::get('/menu', [daftarmenuController::class, 'menuuser'])->name('menuuser.index');
@@ -38,7 +52,7 @@ Route::delete('/menu/{id}', [daftarmenuController::class, 'destroy'])->name('men
 // //keranjang
 
 // Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
-// Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 // Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 // Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
 // Route::post('/transfer-to-pesanan', [CartController::class, 'transferToPesanan'])->name('transfer-to-pesanan');
@@ -88,3 +102,7 @@ Route::get('/diskon/daftardiskon1', [DaftarDiskonController::class, 'store'])->n
 Route::delete('/diskon/hapusdaftardiskon/{id}', [DaftarDiskonController::class, 'destroy'])->name('daftardiskon.delete');
 Route::get('/diskon/{id}/edit', [DaftarDiskonController::class, 'edit'])->name('daftardiskon.edit');
 Route::put('/diskon/{id}/perform', [DaftarDiskonController::class, 'update'])->name('daftardiskon.perform');
+
+//Add to cart From Promo
+Route::post('/cart/add-from-promo', [CartController::class, 'addToCartFromPromo'])->name('cart.add.from.promo');
+

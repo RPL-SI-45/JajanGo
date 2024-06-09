@@ -13,14 +13,23 @@ class DiskonTest extends DuskTestCase
      */
     public function testExample(): void
     {
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/inputdiskon/create')
+        $this->browse(function (Browser $browser) {            
+            $browser->visit('/diskon/create')
+                    ->waitFor('@namaMenu')
                     ->assertSee('Buat Kode Promo')
+                    ->pause(2000)
+                    ->assertSee('Nama Menu')
+                    ->select('@namaMenu', 'Soto Banjar')
+                    ->assertVisible('@persentaseDiskon')
                     ->type('@kodeKupon','mahasiswa')
-                    ->type('@persentasediskon','5')
+                    ->type('@persentaseDiskon','5')
                     ->press('@submit')
-                    ->assertPathIs('/inputdiskon/daftardiskon')
-                    ->assertSee('Daftar Kode Promo')
+                    ->assertPathIs('/diskon/daftardiskon');
+            $browser->visit('/diskon/daftardiskon')
+                    ->assertSee('Daftar Kode Promo');
+            $browser->visit('/diskon/daftarpromo')
+                    ->assertSee('Daftar Promo')
+                    ->press('Beli')
                     ;
         });
     }
