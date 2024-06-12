@@ -210,7 +210,7 @@ Route::put('/lacakpesanan/updateStatus', [LacakpesananPedagangController::class,
 
 //keranjang
 
-Route::get('/riwayatPesanan', [riwayatPesananController::class, 'index'])->name('riwayatPesanan.index');
+Route::get('/riwayatpesanan', [riwayatPesananController::class, 'index'])->name('riwayatPesanan.index');
 
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
