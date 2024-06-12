@@ -79,19 +79,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
-                <span class="menu-title">Profile</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="lacakpesanan/lacakpesananuser">
+              <a class="nav-link" href="/lacakpesanan/lacakpesananUser">
                 <span class="menu-title">Pelacakan Pesanan</span>
                 <i class="mdi mdi-clock-fast menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="riwayatPesanan">
+              <a class="nav-link" href="riwayatpesanan">
                 <span class="menu-title">Riwayat Pesanan</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
