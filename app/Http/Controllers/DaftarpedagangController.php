@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Daftarpedagang;
+use App\Models\Pedagang;
 use Illuminate\Http\Request;
 
 class DaftarpedagangController extends Controller
 {
     public function index(){
-        $daftarpedagang = Daftarpedagang::all();
+        $daftarpedagang = Pedagang::all();
         return view(('daftarpedagang'), compact('daftarpedagang'));
     }
 }
