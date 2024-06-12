@@ -39,11 +39,11 @@
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
-                  <img src="christine.jpg" alt="image">
+                  <img src="../../assets/images/faces/face1.jpg" alt="image">
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">Christine</p>
+                  <p class="mb-1 text-black">Riziq</p>
                 </div>
               </a>
             </li>
@@ -53,57 +53,58 @@
           </button>
         </div>
       </nav>
-      <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-        <!-- partial:../../partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                  <img src="christine.jpg" alt="profile">
+                  <img src="../../assets/images/faces/face1.jpg" alt="image">
                   <span class="login-status online"></span>
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">Christine N.L</span>
+                  <span class="font-weight-bold mb-2">Riziq</span>
                   <span class="text-secondary text-small">Pembeli</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="daftarpedagang">
+              <a class="nav-link" href="home">
                 <span class="menu-title">Home</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="profile">
+              <a class="nav-link" href="">
                 <span class="menu-title">Profile</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="riwayatpembelian">
-                <span class="menu-title">Riwayat Pembelian</span>
+              <a class="nav-link" href="lacakpesanan/lacakpesananuser">
+                <span class="menu-title">Pelacakan Pesanan</span>
+                <i class="mdi mdi-clock-fast menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="riwayatPesanan">
+                <span class="menu-title">Riwayat Pesanan</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pengaturan">
-                <span class="menu-title">Pengaturan</span>
-                <i class="mdi mdi-settings menu-icon"></i>
+              <form id="logout-form" action="{{ route('logoutuser') }}" method="POST" style="display: none;">
+                @csrf
+              </form>
+              <a class="nav-link" href="{{ route('logoutuser') }}" 
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <span class="menu-title">Logout</span>
+                <i class="mdi mdi-logout menu-icon"></i>
               </a>
-            </li>
-            <li class="nav-item">
-                <form id="logout-form" action="{{ route('logoutuser') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-                <a href="{{ route('logoutuser') }}"
-                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    Logout
-                </a>
             </li>
           </ul>
         </nav>
@@ -114,7 +115,7 @@
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
                   <i class="mdi mdi-home"></i>
-                </span> Selamat Datang, Christine!
+                </span> Selamat Datang, Riziq!
               </h3>
             </div>
             <div class="row">
