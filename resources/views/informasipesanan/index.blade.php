@@ -188,15 +188,15 @@
           </div>
           <div>
           <div>
+            @foreach($pesanan as $i)
           <div class="card card-custom">
-              @foreach($pesanan as $i)
               <p class="font-weight-bold">Menu :</p>
               <h3>{{$i->namaMenu}}</h3>
               <p class="font-weight-bold">Jumlah : </p>
               <h3>{{$i->quantity}}</h3>
+              <hr>
+              </div>
             @endforeach
-            <hr>
-          </div>
             </div>
             </div>
           </div>
