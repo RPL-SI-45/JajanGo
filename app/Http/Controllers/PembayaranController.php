@@ -1,40 +1,54 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\CartItem;
 use App\Models\Pembayaran;
+use App\Models\DaftarMenu;
 
 class PembayaranController extends Controller
 {
-    public function index(){
-        $pembayaran = Pembayaran::all();
-        return view('pembayaran.index', ['pembayaran' => $pembayaran]);
-    }
-    
-    public function store(Request $request)
+    public function showCheckout()
     {
-        $validatedData = $request->validate([
-            'idPembayaran' => 'required',
-            'idPesanan' => 'required|numeric',
-            'metodePembayaran' => 'required',
-            'tanggalPembayaran' => 'required',
-            'totalPembayaran' => 'required',
-            'gambarBuktiPembayaran' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // Misalkan user_id diset secara hardcoded untuk demonstrasi
+        $userId = 1;
+        $cartItems = CartItem::with('menu')->get();
+        $total = $cartItems->sum(function($item) {
+            return $item->quantity * $item->menu->harga;
+        });
+
+        return view('pembayaran.checkout', compact('cartItems','total'));
+    }
+
+    public function payCash()
+    {
+        // Redirect ke halaman konfirmasi pembayaran tunai
+        return redirect()->route('payment.cash.confirmation');
+    }
+
+    public function showCashConfirmation()
+    {
+        return view('pembayaran.konfirmasiPembayaranCash');
+    }
+
+    public function showUploadForm()
+    {
+        return view('pembayaran.konfirmasiPembayaran');
+    }
+
+    public function uploadProof(Request $request)
+    {
+        $request->validate([
+            'proof' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $gambarBuktiPembayaran = time() . '.' . $request->gambarBuktiPembayaran->extension();
-        $request->gambarBuktiPembayaran->move(public_path('images'), $gambarBuktiPembayaran);
+        $fileName = time().'.'.$request->proof->extension();
+        $request->proof->move(public_path('proofs'), $fileName);
 
-        $pembayaran = new Pembayaran;
-        $pembayaran->idPembayaran = $request->idPembayaran;
-        $pembayaran->idPesanan = $request->idPesanan;
-        $pembayaran->metodePembayaran = $request->metodePembayaran;
-        $pembayaran->tanggalPembayaran = $request->tanggalPembayaran;
-        $pembayaran->totalPembayaran = $request->totalPembayaran;
-        $pembayaran->gambarBuktiPembayaran = $gambarBuktiPembayaran;
-        $pembayaran->save();
+        // Simpan informasi bukti pembayaran di database jika diperlukan
+        // PaymentProof::create(['user_id' => 1, 'file_name' => $fileName]); // Hardcoded user_id untuk demonstrasi
 
-        return redirect()->route('pembayaran.index')->with('success', 'Pembayaran berhasil dilakukan!');
+        return redirect()->route('checkout')->with('success', 'Bukti pembayaran berhasil diunggah.');
     }
 }

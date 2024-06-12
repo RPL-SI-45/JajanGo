@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'pedagang' => [
+            'driver' => 'session',
+            'provider' => 'pedagangs',
+        ],
     ],
 
     /*
@@ -63,6 +67,13 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'pedagangs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pedagang::class,
+            'table' => 'pedagang',
+            'field' => 'username_pedagang',
         ],
 
         // 'users' => [
@@ -94,6 +105,13 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'pedagangs' => [
+            'provider' => 'pedagangs',
+            'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
         ],

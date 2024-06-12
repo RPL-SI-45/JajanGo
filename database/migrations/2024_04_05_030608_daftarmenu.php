@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('deskripsiMenu');
             $table->string('kategoriMenu');
             $table->string('gambarMenu')->nullable();
+            $table->boolean('recommended')->default(false);
             $table->timestamps();
         });
     }

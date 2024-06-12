@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>JajanGO</title>
+    <title>Rekomendasi Makanan</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('assets/vendors/mdi/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
@@ -33,8 +33,8 @@
             border-radius: 5px;
             font-size: 0.9em;
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: -10px;
+            left: 20px;
         }
         .img-fluid {
             border-radius: 10px;
@@ -91,6 +91,9 @@
             </button>
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item nav-profile dropdown">
+                    <a href="/cart" class="mdi mdi-cart-outline nav-link"></a>
+                </li>
+                <li class="nav-item nav-profile dropdown">
                     <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="nav-profile-img">
                             <img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="image">
@@ -120,7 +123,6 @@
                         <div class="nav-profile-image">
                             <img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="profile">
                             <span class="login-status online"></span>
-                            <!--change to offline or busy as needed-->
                         </div>
                         <div class="nav-profile-text d-flex flex-column">
                             <span class="font-weight-bold mb-2">David Grey. H</span>
@@ -131,7 +133,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <span class="menu-title">Daftar Rekomendasi Makanan</span>
+                        <span class="menu-title">Rekomendasi Makanan</span>
                         <i class="mdi mdi-food menu-icon"></i>
                     </a>
                 </li>
@@ -141,31 +143,41 @@
             <div class="content-wrapper">
                 <div class="row mb-4">
                     <div class="col-12 text-center">
-                        <a href="{{ route('menuuser.index') }}" class="btn btn-gradient-primary btn-rounded btn-fw">Kembali ke Daftar Menu</a>
+                        <a href="{{ route('menuuser.index') }}" class="btn btn-gradient-primary btn-rounded btn-fw">Lihat Daftar Menu</a>
                     </div>
                 </div>
-                <h3 class="mb-3 text-center">List Rekomendasi Makanan</h3>
+                <h3 class="mb-3 text-center">Rekomendasi Makanan</h3>
                 <div class="row">
-                    @foreach ($rekomendasiMakanan as $makanan)
+                    @if (session('success'))
+                    <div class="alert alert-success" style="text-align: center">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+                    @foreach ($recommendedMenus as $menu)
                         <div class="col-md-4 grid-margin stretch-card">
-                            <div class="container-card">
-                                <div class="card card-custom">
-                                    <div class="card-body">
-                                        <div class="badge-custom">Best Sellers</div>
-                                        <h4 class="text-center">{{ $makanan->namaToko }}</h4>
-                                        <div class="text-center">
-                                            @if($makanan->gambar)
-                                                <img src="{{ asset('images/' . $makanan->gambar) }}" alt="" class="img-fluid mb-3">
-                                            @else
-                                                <p class="text-center">Tidak ada foto</p>
-                                            @endif
-                                        </div>
-                                        <h5 class="text-center">{{ $makanan->namaMakanan }}</h5>
-                                        <p class="text-center">Harga: {{ $makanan->harga }}</p>
-                                        <div class="text-center">
-                                            <button type="button" class="btn btn-gradient-primary btn-rounded btn-fw mb-2">Beli</button>
-                                            <button type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-2 mdi mdi-cart">Tambah ke Keranjang</button>
-                                        </div>
+                            <div class="card card-custom">
+                                <div class="card-body">
+                                    <h4 class="text-center">{{ $menu->namaMenu }}</h4>
+                                    <div class="text-center">
+                                        @if($menu->gambarMenu)
+                                            <img src="{{ asset('images/' . $menu->gambarMenu) }}" alt="" class="img-fluid mb-3">
+                                        @else
+                                            <img src="{{ asset('images/dummy-image.png') }}" alt="dummy" class="img-fluid mb-3">
+                                            <p class="text-center">Tidak ada foto</p>
+                                        @endif
+                                    </div>
+                                    <p class="text-center">{{ $menu->deskripsiMenu }}</p>
+                                    <p class="text-center">Harga: {{ $menu->harga }}</p>
+                                    <p class="text-center">Kategori: {{ $menu->kategoriMenu }}</p>
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-gradient-primary btn-rounded btn-fw mb-2">Beli</button>
+                                        {{-- <button type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-2 mdi mdi-cart">Tambah ke Keranjang</button> --}}
+                                        <form action="{{ route('cart.add') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="menu_id" value="{{ $menu->id }}">
+                                            <input type="hidden" name="quantity" value="1"> <!-- Default quantity -->
+                                            <button type="submit" class="btn btn-gradient-success btn-rounded btn-fw mb-2 mdi mdi-cart">Tambah ke Keranjang</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
