@@ -100,7 +100,7 @@
               <form id="logout-form" action="{{ route('logoutuser') }}" method="POST" style="display: none;">
                 @csrf
               </form>
-              <a class="nav-link" href="{{ route('logoutuser') }}" 
+              <a class="nav-link" href="{{ route('logoutuser') }}"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <span class="menu-title">Logout</span>
                 <i class="mdi mdi-logout menu-icon"></i>
@@ -126,12 +126,12 @@
                   @foreach($daftarpedagang as $d)
                   <div class="card bg-gradient-primary card-img-holder text-white mb-5">
                     <div class="card-body" style="text-align: center">
-                      <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                      <h2 class="card-title" style="text-align: center;"><a href="#" class="text-light">{{$d->namaToko}}</a></h2>
+                        <a href="/menu" class="text-light"><img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" /></a>
+                      <h2 class="card-title" style="text-align: center;">{{$d->nama_toko}}</h2>
                       <img src="takoyaki.jpg" width="150" height="100" class="d-inline-block align-top mb-3" alt="">
-                      <h6 class="card-text">{{$d->deskripsiToko}}</h6>
+                      <h6 class="card-text">{{$d->deskripsi_toko}}</h6>
                       <hr>
-                      <h6 class="card-text">{{$d->alamatToko}}</h6>
+                      <h6 class="card-text">{{$d->alamat_toko}}</h6>
                     </div>
                   </div>
                 @endforeach
