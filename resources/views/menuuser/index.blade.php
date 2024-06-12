@@ -146,14 +146,12 @@
                     <div class="col-12 text-center">
                         <a href="{{ route('rekomendasiMakanan.index') }}" class="btn btn-gradient-primary btn-rounded btn-fw">Lihat Rekomendasi Makanan</a>
                     </div>
+                    <div class="col-12 text-center">
+                        <a href="{{ route('promo.index') }}" class="btn btn-gradient-primary btn-rounded btn-fw">Lihat Daftar Promo</a>
+                    </div>
                 </div>
                 <h3 class="mb-3 text-center">List Daftar Menu</h3>
                 <div class="row">
-                    @if (session('success'))
-                    <div class="alert alert-success" style="text-align: center">
-                        {{ session('success') }}
-                    </div>
-                    @endif
                     @foreach ($daftarmenu as $menu)
                         <div class="col-md-4 grid-margin stretch-card">
                             <div class="card card-custom">
@@ -192,6 +190,21 @@
             </footer>
         </div>
     </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/file-upload.js"></script>
+    <!-- End custom js for this page -->
+  </body>
 </div>
 <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
 <script src="{{ asset('assets/js/off-canvas.js') }}"></script>

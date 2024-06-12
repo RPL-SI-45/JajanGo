@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text('catatan')->nullable();
             $table->date('tanggal_pesanan');
             $table->decimal('harga', 15, 2);
-
             $table->timestamps();
         });
     }

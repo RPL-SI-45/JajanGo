@@ -15,11 +15,6 @@ use App\Http\Controllers\DiskonController;
 use App\Http\Controllers\DaftarDiskonController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\RekomendasiMakananController;
-use App\Http\Controllers\ProfilPedagangController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\LacakpesananPedagangController;
-use App\Http\Controllers\LacakpesananUserController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +27,18 @@ use App\Http\Controllers\LacakpesananUserController;
 |
 */
 
-// Route::get('/', [DaftarpedagangController::class, 'index']);
-// Route::get('/daftarpedagang', [DaftarpedagangController::class, 'index']);
+Route::post('/logoutuser', function () {
+    Auth::logout();
+    return redirect('/login/user'); // atau arahkan ke halaman login yang sesuai
+})->name('logoutuser');
+
+Route::post('/logoutpedagang', function () {
+    Auth::logout();
+    return redirect('/login/pedagang'); // atau arahkan ke halaman login yang sesuai
+})->name('logoutpedagang');
+
+Route::get('/', [DaftarpedagangController::class, 'index']);
+Route::get('/daftarpedagang', [DaftarpedagangController::class, 'index']);
 
 // // Kelola daftar menu (pedagang)
 // Route::get('/pedagang/daftarmenu', [daftarmenuController::class, 'index'])->name('menu.index');
@@ -43,27 +48,11 @@ use App\Http\Controllers\LacakpesananUserController;
 // Route::put('/menu/{id}', [daftarmenuController::class, 'update'])->name('menu.update');
 // Route::delete('/menu/{id}', [daftarmenuController::class, 'destroy'])->name('menu.destroy');
 
-// //detail pesanan(user)
-// Route::get('/detailpesanan', [PesananController::class, 'index'])->name('detailpesanan.index');
+//detail pesanan(user)
+Route::get('/detailpesanan', [PesananController::class, 'index'])->name('detailpesanan.index');
 
-// // Tambahkan rute untuk rekomendasi menu
-// Route::post('/menu/{id}/recommend', [daftarmenuController::class, 'recommend'])->name('menu.recommend');
-
-// // Detail pesanan (user)
-// Route::get('/detailpesanan', function(){
-//     return view('detailpesanan.index');
-// });
-
-// // Pembayaran (user)
-// Route::get('/pembayaran', function(){
-//     return view('pembayaran.index');
-// });
-// Route::get('/konfirmasipembayaran', [konfirmasiPembayaranController::class, 'index']);
-// Route::post('/konfirmasipembayaran/store', [konfirmasiPembayaranController::class, 'store'])->name('pembayaran.store');
-// Route::get('/konfirmasiPembayaranCash', function(){
-//     return view('pembayaran.konfirmasiPembayaranCash');
-// });
-
+//pembayaran(user)
+// Route::get('/pesanan',[PesananController::class,'index']);
 // //menu(user)
 // Route::get('/menu', [daftarmenuController::class, 'menuuser'])->name('menuuser.index');
 // // Route::get('/menu',[daftarmenuController::class,'menuuser']);
@@ -78,7 +67,7 @@ use App\Http\Controllers\LacakpesananUserController;
 // //keranjang
 
 // Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
-// Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 // Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 // Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
 // Route::post('/transfer-to-pesanan', [CartController::class, 'transferToPesanan'])->name('transfer-to-pesanan');
