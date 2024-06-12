@@ -98,8 +98,8 @@
                         @foreach($pesanan as $p)
                         <tr>
                           <td>{{ $p->id }}</td>
-                          <td>{{ $p->nama_menu }}</td>
-                          <td>{{ $p->jumlah }}</td>
+                          <td>{{ $p->namaMenu }}</td>
+                          <td>{{ $p->quantity }}</td>
                           <td>{{ $p->harga }}</td>
                           <td>{{ $p->updated_at }}</td>
                         </tr>
