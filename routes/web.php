@@ -104,6 +104,15 @@ use App\Http\Controllers\LacakpesananUserController;
 // Route::get('/profilpedagang', [ProfilPedagangController::class, 'show'])->name('profilpedagang.index');
 // Route::put('/profilpedagang/{id}/update', [ProfilPedagangController::class, 'update'])->name('profilpedagang.update');
 
+// Landing
+Route::get('/', function(){
+    return view('landing');
+});
+
+Route::get('/konfirmasiPembayaranCash', function(){
+    return view('pembayaran.konfirmasiPembayaranCash');
+});
+
 // Route untuk pengguna
 Route::get('login/user', [AuthController::class, 'showUserLoginForm'])->name('user.login');
 Route::post('login/user', [AuthController::class, 'userLogin']);
@@ -142,6 +151,9 @@ Route::middleware(['role:pedagang'])->group(function () {
     Route::get('/pedagang/{id}', [ProfilPedagangController::class, 'show'])->name('pedagang.show');
     Route::get('/pedagang/{id}/edit', [ProfilPedagangController::class, 'edit'])->name('pedagang.edit');
     Route::put('/pedagang/{id}', [ProfilPedagangController::class, 'update'])->name('pedagang.update');
+
+    //informasi pesanan (pedagang)
+    Route::get('/informasipesanan',[InformasiPesananController::class,'index']);
 });
 
 // Rute untuk pembeli
@@ -209,9 +221,7 @@ Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('ca
 // Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'])->name('rekomendasiMakanan.index');
 // Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
 
-//informasi pesanan (pedagang)
-// Route::get('/',[InformasiPesananController::class,'index']);
-Route::get('/informasipesanan',[InformasiPesananController::class,'index']);
+
 
 //TESTING UNTUK PEMBAYARAN BARU
 Route::get('/checkout', [PembayaranController::class, 'showCheckout'])->name('checkout');
