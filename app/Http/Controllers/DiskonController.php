@@ -9,7 +9,7 @@ class DiskonController extends Controller
 {
     public function index()
     {
-        $daftarMenu = DaftarMenu::where('id', '1')->get(); //KALO DAH ADA AUTH GANTI!!!!
+        $daftarMenu = DaftarMenu::all(); //KALO DAH ADA AUTH GANTI!!!!
         $diskon = Diskon::all();
 
         return view('diskon.create', compact('daftarMenu', 'diskon'));

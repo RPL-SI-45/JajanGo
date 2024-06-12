@@ -92,7 +92,7 @@
               <form id="logout-form" action="{{ route('logoutuser') }}" method="POST" style="display: none;">
                 @csrf
               </form>
-              <a class="nav-link" href="{{ route('logoutuser') }}" 
+              <a class="nav-link" href="{{ route('logoutuser') }}"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <span class="menu-title">Logout</span>
                 <i class="mdi mdi-logout menu-icon"></i>
@@ -116,42 +116,25 @@
                                 <div class="card-body">
                                     <h4 class="text-center">{{ $menu->namaMenu }}</h4>
                                     <div class="text-center">
-            
+
                                             @if ($menu->daftarMenu)
                                                 <img src="{{ asset('images/' . $menu->daftarMenu->gambarMenu) }}" alt="" class="img-fluid mb-3">
                                             @else
                                                 <p class="text-center">Gambar tidak tersedia</p>
-                                                
-                                            @endif
 
+                                            @endif
                                             @php
                                             $harga = $menu->daftarMenu->harga;
                                             $persentaseDiskon = $menu->persentaseDiskon / 100;
                                             $hargaDiskon = $harga - ($harga * $persentaseDiskon);
                                             @endphp
-
                                             <p class="text-center">Harga Setelah Diskon: {{ number_format($hargaDiskon, 2) }}</p>
-                                     
                                             </div>
                                             <p class="text-center">{{ $menu->deskripsiMenu }}</p>
                                             <p class="text-center">Harga: {{ $menu->daftarMenu->harga }}</p>
                                             <p class="text-center">Kategori: {{ $menu->daftarMenu->kategoriMenu }}</p>
-
-                                        
-                                               
-                                                    <p class="text-center">Kode Kupon: {{ $menu->kodeKupon }}</p>
-                                                    <p class="text-center">Diskon: {{ $menu->persentaseDiskon }}%</p>
-                                     
-
-                                                    <div class="text-center">
-                                                    {{-- <button type="button" class="btn btn-gradient-primary btn-rounded btn-fw mb-2">Beli</button> --}}
-                                                    {{-- <button type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-2 mdi mdi-cart">Tambah ke Keranjang</button> --}}
-                                                    <form action="{{ route('cart.add') }}" method="POST">
-                                                        @csrf
-                                                        <input type="hidden" name="menu_id" value="{{ $menu->id }}">
-                                                        <input type="hidden" name="quantity" value="1"> <!-- Default quantity -->
-                                                        <button type="submit" class="btn btn-gradient-success btn-rounded btn-fw mb-2 mdi mdi-cart">Tambah ke Keranjang</button>
-                                                    </form>
+                                            <p class="text-center">Kode Kupon: {{ $menu->kodeKupon }}</p>
+                                            <p class="text-center">Diskon: {{ $menu->persentaseDiskon }}%</p>
                                     </div>
                                 </div>
                             </div>
