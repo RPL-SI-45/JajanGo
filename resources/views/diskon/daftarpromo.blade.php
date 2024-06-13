@@ -65,7 +65,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="home">
+              <a class="nav-link" href="/home">
                 <span class="menu-title">Home</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -105,7 +105,7 @@
             <div class="content-wrapper">
                 <div class="row mb-4">
                     <div class="col-12 text-center">
-                        <a href="{{ route('menu.index') }}" class="btn btn-gradient-primary btn-rounded btn-fw">Lihat Daftar Menu</a>
+                        <a href="/menu" class="btn btn-gradient-primary btn-rounded btn-fw">Lihat Daftar Menu</a>
                     </div>
                 </div>
                 <h3 class="mb-3 text-center">Daftar Promo</h3>

@@ -73,31 +73,27 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="daftarmenu">
+              <a class="nav-link" href="/pedagang/daftarmenu">
                 <span class="menu-title">Home</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="1">
+             @foreach ($pedagang as $pedagangItem)
+              <a class="nav-link" href="{{ route('pedagang.show', $pedagangItem->id) }}">
+            @endforeach
                 <span class="menu-title">Profile</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="menu/{id}/edit">
-                <span class="menu-title">Daftar Menu</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="informasipesanan">
+              <a class="nav-link" href="/informasipesanan">
                 <span class="menu-title">Informasi Pesanan</span>
                 <i class="mdi mdi-newspaper menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">
+              <a class="nav-link" href="/diskon/daftardiskon">
                 <span class="menu-title">Kode Promo</span>
                 <i class="mdi mdi-ticket-percent menu-icon"></i>
               </a>
@@ -106,16 +102,11 @@
               <form id="logout-form" action="{{ route('logoutpedagang') }}" method="POST" style="display: none;">
                 @csrf
               </form>
-              <a class="nav-link" href="{{ route('logoutpedagang') }}" 
+              <a class="nav-link" href="{{ route('logoutpedagang') }}"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <span class="menu-title">Logout</span>
                 <i class="mdi mdi-logout menu-icon"></i>
               </a>
-            </li>
-            <li>
-            @foreach ($pedagang as $pedagangItem)
-              <a href="{{ route('pedagang.show', $pedagangItem->id) }}">Profil</a>
-              @endforeach
             </li>
           </ul>
         </nav>

@@ -75,45 +75,33 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="daftarmenu">
-                <span class="menu-title">Home</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{id}">
-                <span class="menu-title">Profile</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="menu/{id}/edit">
-                <span class="menu-title">Daftar Menu</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="informasipesanan">
-                <span class="menu-title">Informasi Pesanan</span>
-                <i class="mdi mdi-newspaper menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">
-                <span class="menu-title">Kode Promo</span>
-                <i class="mdi mdi-ticket-percent menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <form id="logout-form" action="{{ route('logoutpedagang') }}" method="POST" style="display: none;">
-                @csrf
-              </form>
-              <a class="nav-link" href="{{ route('logoutpedagang') }}" 
-                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                <span class="menu-title">Logout</span>
-                <i class="mdi mdi-logout menu-icon"></i>
-              </a>
-            </li>
+                <a class="nav-link" href="/pedagang/daftarmenu">
+                  <span class="menu-title">Home</span>
+                  <i class="mdi mdi-home menu-icon"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/informasipesanan">
+                  <span class="menu-title">Informasi Pesanan</span>
+                  <i class="mdi mdi-newspaper menu-icon"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/diskon/daftardiskon">
+                  <span class="menu-title">Kode Promo</span>
+                  <i class="mdi mdi-ticket-percent menu-icon"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <form id="logout-form" action="{{ route('logoutpedagang') }}" method="POST" style="display: none;">
+                  @csrf
+                </form>
+                <a class="nav-link" href="{{ route('logoutpedagang') }}"
+                  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                  <span class="menu-title">Logout</span>
+                  <i class="mdi mdi-logout menu-icon"></i>
+                </a>
+              </li>
           </ul>
         </nav>
             <!-- partial -->
@@ -128,9 +116,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">{{ $i->namaMenu }}</h4>
-                                    <p class="card-description"> Riwayat Kode Promo Toko Anda </p>                                    
-                                    
-                                    
+                                    <p class="card-description"> Riwayat Kode Promo Toko Anda </p>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Kode Promo</label>
                                             <div class="col-sm-7">
@@ -145,6 +131,7 @@
                                         </div>
                                         <form class="forms-sample" action="/diskon/{{ $i->id }}/edit" method="GET">
                                         <button type="submit" class="btn btn-primary">Edit</button>
+                                        <a href="/diskon/create" class="btn btn-primary">Tambah Promo</a>
                                         </form>
 
                                         <form class="forms-sample" action="/diskon/hapusdaftardiskon/{{ $i->id }}" method="POST">

@@ -15,6 +15,10 @@ use App\Http\Controllers\DiskonController;
 use App\Http\Controllers\DaftarDiskonController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\RekomendasiMakananController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfilPedagangController;
+use App\Http\Controllers\LacakpesananUserController;
+use App\Http\Controllers\LacakpesananPedagangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,72 +30,6 @@ use App\Http\Controllers\RekomendasiMakananController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::post('/logoutuser', function () {
-    Auth::logout();
-    return redirect('/login/user'); // atau arahkan ke halaman login yang sesuai
-})->name('logoutuser');
-
-Route::post('/logoutpedagang', function () {
-    Auth::logout();
-    return redirect('/login/pedagang'); // atau arahkan ke halaman login yang sesuai
-})->name('logoutpedagang');
-
-Route::get('/', [DaftarpedagangController::class, 'index']);
-Route::get('/daftarpedagang', [DaftarpedagangController::class, 'index']);
-
-// // Kelola daftar menu (pedagang)
-// Route::get('/pedagang/daftarmenu', [daftarmenuController::class, 'index'])->name('menu.index');
-// Route::get('/pedagang/daftarmenu/create', [daftarmenuController::class, 'create'])->name('menu.create');
-// Route::post('/c/store', [daftarmenuController::class, 'store'])->name('menu.store');
-// Route::get('/menu/{id}/edit', [daftarmenuController::class, 'edit'])->name('menu.edit');
-// Route::put('/menu/{id}', [daftarmenuController::class, 'update'])->name('menu.update');
-// Route::delete('/menu/{id}', [daftarmenuController::class, 'destroy'])->name('menu.destroy');
-
-//detail pesanan(user)
-Route::get('/detailpesanan', [PesananController::class, 'index'])->name('detailpesanan.index');
-
-//pembayaran(user)
-// Route::get('/pesanan',[PesananController::class,'index']);
-// //menu(user)
-// Route::get('/menu', [daftarmenuController::class, 'menuuser'])->name('menuuser.index');
-// // Route::get('/menu',[daftarmenuController::class,'menuuser']);
-// // Route::get('/menu',[menuuserController::class,'index']);
-
-// //lacakPesanan
-// Route::get('/lacakpesanan/lacakpesananUser', [LacakpesananUserController::class, 'index']);
-// Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController::class, 'index'])->name('lacakpesananPedagang');
-// Route::put('/lacakpesanan/updateStatus', [LacakpesananPedagangController::class, 'updateStatus'])->name('lacakpesanan.updateStatus');
-// // Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController::class, 'lacakpesananPedagang'])->name('lacakpesananPedagang');
-
-// //keranjang
-
-// Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
-Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
-// Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
-// Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
-// Route::post('/transfer-to-pesanan', [CartController::class, 'transferToPesanan'])->name('transfer-to-pesanan');
-
-// // Rekomendasi makanan
-// Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'])->name('rekomendasiMakanan.index');
-// Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
-
-// //informasi pesanan (pedagang)
-// // Route::get('/',[InformasiPesananController::class,'index']);
-// // Route::get('/informasipesanan',[InformasiPesananController::class,'index']);
-// Route::get('/informasipesanan',[InformasiPesananController::class,'index'])->name('pesanan.index');
-
-// // Rekomendasi makanan
-// Route::get('/rekomendasi-makanan', [daftarmenuController::class, 'recommend'])->name('rekomendasiMakanan.index');
-// Route::post('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'toggleRecommendation'])->name('menu.toggleRecommendation');
-// Route::delete('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'removeRecommendation'])->name('menu.removeRecommendation');
-
-//pembayaran(user)
-// Route::get('/pesanan',[PesananController::class,'index']);
-
-// //profil pedagang
-// Route::get('/profilpedagang', [ProfilPedagangController::class, 'show'])->name('profilpedagang.index');
-// Route::put('/profilpedagang/{id}/update', [ProfilPedagangController::class, 'update'])->name('profilpedagang.update');
 
 // Landing
 Route::get('/', function(){
@@ -126,29 +64,53 @@ Route::post('/logoutpedagang', function () {
 
 // Rute untuk pedagang
 Route::middleware(['role:pedagang'])->group(function () {
+    // kelola daftar menu
     Route::get('/pedagang/daftarmenu', [daftarmenuController::class, 'index'])->name('menu.index');
     Route::get('/pedagang/daftarmenu/create', [daftarmenuController::class, 'create'])->name('menu.create');
     Route::post('/c/store', [daftarmenuController::class, 'store'])->name('menu.store');
     Route::get('/menu/{id}/edit', [daftarmenuController::class, 'edit'])->name('menu.edit');
     Route::put('/menu/{id}', [daftarmenuController::class, 'update'])->name('menu.update');
     Route::delete('/menu/{id}', [daftarmenuController::class, 'destroy'])->name('menu.destroy');
+
+    // informasipesanan
     Route::get('/informasipesanan',[InformasiPesananController::class,'index'])->name('pesanan.index');
+
+    // ubah status lacak pesanan
     Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController::class, 'index'])->name('lacakpesananPedagang');
     Route::put('/lacakpesanan/updateStatus', [LacakpesananPedagangController::class, 'updateStatus'])->name('lacakpesanan.updateStatus');
-    // Route::get('/profilpedagang', [ProfilPedagangController::class, 'show'])->name('profilpedagang.index');
-    // Route::put('/profilpedagang/{id}/update', [ProfilPedagangController::class, 'update'])->name('profilpedagang.update');
+
+    // Profil pedagang
     Route::get('/pedagang/{id}', [ProfilPedagangController::class, 'show'])->name('pedagang.show');
     Route::get('/pedagang/{id}/edit', [ProfilPedagangController::class, 'edit'])->name('pedagang.edit');
     Route::put('/pedagang/{id}', [ProfilPedagangController::class, 'update'])->name('pedagang.update');
 
     //informasi pesanan (pedagang)
     Route::get('/informasipesanan',[InformasiPesananController::class,'index']);
+
+    //kupon diskon(pedagang)
+    Route::get('/diskon/daftardiskon', [DaftarDiskonController::class, 'index'])->name('daftardiskon.index');
+    Route::get('/diskon/create', [DiskonController::class, 'index'])->name('index.coupons.create');
+    Route::post('/diskon/create/perform', [DiskonController::class, 'create'])->name('coupons.create.perform');
+    Route::get('/diskon/{id}/edit', [DaftarDiskonController::class, 'edit'])->name('daftardiskon.edit');
+    Route::put('/diskon/{id}/perform', [DaftarDiskonController::class, 'update'])->name('daftardiskon.perform');
+    Route::get('/diskon/daftardiskon1', [DaftarDiskonController::class, 'store'])->name('daftardiskon.store');
+    Route::delete('/diskon/hapusdaftardiskon/{id}', [DaftarDiskonController::class, 'destroy'])->name('daftardiskon.delete');
+
+    // rekomendasi makanan
+    Route::post('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'toggleRecommendation'])->name('menu.toggleRecommendation');
+    Route::delete('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'removeRecommendation'])->name('menu.removeRecommendation');
 });
 
 // Rute untuk pembeli
 Route::middleware(['role:pembeli'])->group(function () {
+
+    // home user (menampilkan list pedagang)
     Route::get('/home', [DaftarpedagangController::class, 'index']);
+
+    //detailpesanan
     Route::get('/detailpesanan', [PesananController::class, 'index'])->name('detailpesanan.index');
+
+    // pembayaran
     Route::get('/pembayaran', function(){
         return view('pembayaran.index');
     });
@@ -157,69 +119,39 @@ Route::middleware(['role:pembeli'])->group(function () {
     Route::get('/konfirmasiPembayaranCash', function(){
         return view('pembayaran.konfirmasiPembayaranCash');
     });
+
+    // melihat menu dari pedagang
     Route::get('/menu', [daftarmenuController::class, 'menuuser'])->name('menuuser.index');
+
+    // lacak pesanan
     Route::get('/lacakpesanan/lacakpesananUser', [LacakpesananUserController::class, 'index']);
+
+    // cart
     Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
     Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
     Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
     Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
     Route::post('/transfer-to-pesanan', [CartController::class, 'transferToPesanan'])->name('transfer-to-pesanan');
-    // Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'])->name('rekomendasiMakanan.index');
-    // Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
+
+
+    // rekomendasi makanan
     Route::get('/rekomendasi-makanan', [daftarmenuController::class, 'recommend'])->name('rekomendasiMakanan.index');
-    Route::post('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'toggleRecommendation'])->name('menu.toggleRecommendation');
-    Route::delete('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'removeRecommendation'])->name('menu.removeRecommendation');
+
+
+    // Daftar Promo
+    Route::get('/diskon/daftarpromo', [DaftarDiskonController::class, 'showpromo'])->name('promo.index');
+
+    // riwayat pesanan pedagang
+    Route::get('/riwayatpesanan', [riwayatPesananController::class, 'index'])->name('riwayatPesanan.index');
+
+    //TESTING UNTUK PEMBAYARAN BARU
+    Route::get('/checkout', [PembayaranController::class, 'showCheckout'])->name('checkout');
+    Route::post('/payment/cash', [PembayaranController::class, 'payCash'])->name('payment.cash');
+    Route::get('/payment/confirmation', [PembayaranController::class, 'showCashConfirmation'])->name('payment.cash.confirmation');
+    Route::get('/payment/upload', [PembayaranController::class, 'showUploadForm'])->name('payment.upload');
+    Route::post('/payment/upload', [PembayaranController::class, 'uploadProof'])->name('payment.upload.submit');
 });
-//menu(user)
-Route::get('/menu',[daftarmenuController::class,'menuuser']);
-// Route::get('/menu',[menuuserController::class,'index']);
-// Menu (user)
-Route::get('/menu', [daftarmenuController::class, 'menuuser'])->name('menuuser.index');
-
-// Rekomendasi makanan
-// Route::get('/rekomendasi-makanan', [daftarmenuController::class, 'recommend'])->name('rekomendasiMakanan.index');
-// Route::post('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'toggleRecommendation'])->name('menu.toggleRecommendation');
-// Route::delete('/menu/{id}/toggle-recommendation', [daftarmenuController::class, 'removeRecommendation'])->name('menu.removeRecommendation');
-
-// Daftar Promo
-Route::get('/diskon/daftarpromo', [DaftarDiskonController::class, 'showpromo'])->name('promo.index');
-
-//kupon diskon(pedagang)
-Route::get('/diskon/create', [DiskonController::class, 'index'])->name('index.coupons.create');
-Route::post('/diskon/create/perform', [DiskonController::class, 'create'])->name('coupons.create.perform');
-
-//daftar diskon
-Route::get('/inputdiskon/daftardiskon', [DaftarDiskonController::class, 'index'])->name('daftardiskon.index');
-Route::post('/inputdiskon1/daftardiskon', [DaftarDiskonController::class, 'store'])->name('daftardiskon.store');
-//lacakPesanan
-Route::get('/lacakpesanan/lacakpesananUser', [LacakpesananUserController::class, 'index']);
-Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController::class, 'index'])->name('lacakpesananPedagang');
-Route::put('/lacakpesanan/updateStatus', [LacakpesananPedagangController::class, 'updateStatus'])->name('lacakpesanan.updateStatus');
-// Route::get('/lacakpesanan/lacakpesananPedagang', [LacakpesananPedagangController::class, 'lacakpesananPedagang'])->name('lacakpesananPedagang');
-
-//keranjang
-
-Route::get('/riwayatpesanan', [riwayatPesananController::class, 'index'])->name('riwayatPesanan.index');
-
-Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
-Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
-Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
-Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
-
-// Rekomendasi makanan
-// Route::get('/rekomendasi-makanan', [RekomendasiMakananController::class, 'index'])->name('rekomendasiMakanan.index');
-// Route::post('/rekomendasi-makanan', [RekomendasiMakananController::class, 'store'])->name('rekomendasiMakanan.store');
 
 
 
-//TESTING UNTUK PEMBAYARAN BARU
-Route::get('/checkout', [PembayaranController::class, 'showCheckout'])->name('checkout');
-Route::post('/payment/cash', [PembayaranController::class, 'payCash'])->name('payment.cash');
-Route::get('/payment/confirmation', [PembayaranController::class, 'showCashConfirmation'])->name('payment.cash.confirmation');
-Route::get('/payment/upload', [PembayaranController::class, 'showUploadForm'])->name('payment.upload');
-Route::post('/payment/upload', [PembayaranController::class, 'uploadProof'])->name('payment.upload.submit');
-Route::get('/diskon/daftardiskon', [DaftarDiskonController::class, 'index'])->name('daftardiskon.index');
-Route::get('/diskon/daftardiskon1', [DaftarDiskonController::class, 'store'])->name('daftardiskon.store');
-Route::delete('/diskon/hapusdaftardiskon/{id}', [DaftarDiskonController::class, 'destroy'])->name('daftardiskon.delete');
-Route::get('/diskon/{id}/edit', [DaftarDiskonController::class, 'edit'])->name('daftardiskon.edit');
-Route::put('/diskon/{id}/perform', [DaftarDiskonController::class, 'update'])->name('daftardiskon.perform');
+

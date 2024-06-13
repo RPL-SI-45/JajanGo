@@ -73,7 +73,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="home">
+              <a class="nav-link" href="/home">
                 <span class="menu-title">Home</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
@@ -85,7 +85,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="riwayatpesanan">
+              <a class="nav-link" href="/riwayatpesanan">
                 <span class="menu-title">Riwayat Pesanan</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>

@@ -74,11 +74,33 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span class="menu-title">Daftar Menu</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
-            </li>
+                <a class="nav-link" href="/pedagang/daftarmenu">
+                  <span class="menu-title">Home</span>
+                  <i class="mdi mdi-home menu-icon"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/informasipesanan">
+                  <span class="menu-title">Informasi Pesanan</span>
+                  <i class="mdi mdi-newspaper menu-icon"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/diskon/daftardiskon">
+                  <span class="menu-title">Kode Promo</span>
+                  <i class="mdi mdi-ticket-percent menu-icon"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <form id="logout-form" action="{{ route('logoutpedagang') }}" method="POST" style="display: none;">
+                  @csrf
+                </form>
+                <a class="nav-link" href="{{ route('logoutpedagang') }}"
+                  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                  <span class="menu-title">Logout</span>
+                  <i class="mdi mdi-logout menu-icon"></i>
+                </a>
+              </li>
           </ul>
         </nav>
         <!-- partial -->
